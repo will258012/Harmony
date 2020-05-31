@@ -121,7 +121,7 @@ namespace HarmonyLib
 			patchInfo.RemovePatch(patch);
 		}
 
-		/// <summary>Gets sorted patch methods</summary>
+		/// <summary>Sorts patch methods by their priority rules</summary>
 		/// <param name="original">The original method</param>
 		/// <param name="patches">Patches to sort</param>
 		/// <param name="debug">Use debug mode</param>

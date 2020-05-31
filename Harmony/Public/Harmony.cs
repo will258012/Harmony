@@ -135,8 +135,8 @@ namespace HarmonyLib
 			return PatchFunctions.ReversePatch(standin, original, transpiler);
 		}
 
-		/// <summary>Unpatches methods</summary>
-		/// <param name="harmonyID">The optional Harmony ID to restrict unpatching to a specific instance</param>
+		/// <summary>Unpatches methods by patching them with zero patches. Fully unpatching is not supported. Be careful, unpatching is global</summary>
+		/// <param name="harmonyID">The optional Harmony ID to restrict unpatching to a specific Harmony instance</param>
 		/// <remarks>This method could be static if it wasn't for the fact that unpatching creates a new replacement method that contains your harmony ID</remarks>
 		///
 		public void UnpatchAll(string harmonyID = null)
@@ -146,7 +146,7 @@ namespace HarmonyLib
 			var originals = GetAllPatchedMethods().ToList(); // keep as is to avoid "Collection was modified"
 			foreach (var original in originals)
 			{
-				var hasBody = original.GetMethodBody() != null;
+				var hasBody = original.HasMethodBody();
 				var info = GetPatchInfo(original);
 				if (hasBody)
 				{
@@ -159,10 +159,10 @@ namespace HarmonyLib
 			}
 		}
 
-		/// <summary>Unpatches a method</summary>
+		/// <summary>Unpatches a method by patching it with zero patches. Fully unpatching is not supported. Be careful, unpatching is global</summary>
 		/// <param name="original">The original method/constructor</param>
 		/// <param name="type">The <see cref="HarmonyPatchType"/></param>
-		/// <param name="harmonyID">The optional Harmony ID to restrict unpatching to a specific instance</param>
+		/// <param name="harmonyID">The optional Harmony ID to restrict unpatching to a specific Harmony instance</param>
 		///
 		public void Unpatch(MethodBase original, HarmonyPatchType type, string harmonyID = null)
 		{
@@ -170,7 +170,7 @@ namespace HarmonyLib
 			_ = processor.Unpatch(type, harmonyID);
 		}
 
-		/// <summary>Unpatches a method</summary>
+		/// <summary>Unpatches a method by patching it with zero patches. Fully unpatching is not supported. Be careful, unpatching is global</summary>
 		/// <param name="original">The original method/constructor</param>
 		/// <param name="patch">The patch method as method to remove</param>
 		///
