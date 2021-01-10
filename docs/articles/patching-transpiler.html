@@ -8,7 +8,7 @@
     <title>Patching </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Patching ">
-    <meta name="generator" content="docfx 2.52.0.0">
+    <meta name="generator" content="docfx 2.56.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -93,14 +93,14 @@ static IEnumerable&lt;CodeInstruction&gt; Transpiler(IEnumerable&lt;CodeInstruct
     var found = false;
     foreach (var instruction in instructions)
     {
-        if (instruction.opcode == OpCodes.Stfld &amp;&amp; instruction.operand == f_someField)
+        if (instruction.StoresField(f_someField))
         {
             yield return new CodeInstruction(OpCodes.Call, m_MyExtraMethod);
             found = true;
         }
         yield return instruction;
     }
-    if (found == false)
+    if (found is false)
         ReportError(&quot;Cannot find &lt;Stdfld someField&gt; in OriginalType.OriginalMethod&quot;);
 }
 </code></pre>
@@ -265,10 +265,11 @@ public static class Dialog_FormCaravan_CheckForErrors_Patch
     static IEnumerable&lt;CodeInstruction&gt; Transpiler(IEnumerable&lt;CodeInstruction&gt; instructions)
     {
         var foundMassUsageMethod = false;
-        int startIndex = -1, endIndex = -1;
+        var startIndex = -1;
+        var endIndex = -1;
 
         var codes = new List&lt;CodeInstruction&gt;(instructions);
-        for (int i = 0; i &lt; codes.Count; i++)
+        for (var i = 0; i &lt; codes.Count; i++)
         {
             if (codes[i].opcode == OpCodes.Ret)
             {
@@ -285,11 +286,11 @@ public static class Dialog_FormCaravan_CheckForErrors_Patch
 
                     startIndex = i + 1; // exclude current 'ret'
 
-                    for (int j = startIndex; j &lt; codes.Count; j++)
+                    for (var j = startIndex; j &lt; codes.Count; j++)
                     {
                         if (codes[j].opcode == OpCodes.Ret)
                             break;
-                        var strOperand = codes[j].operand as String;
+                        var strOperand = codes[j].operand as string;
                         if (strOperand == &quot;TooBigCaravanMassUsage&quot;)
                         {
                             foundMassUsageMethod = true;
@@ -311,7 +312,7 @@ public static class Dialog_FormCaravan_CheckForErrors_Patch
     }
 }
 </code></pre>
-<p>There it is. Add this to your code and use the normal Harmony bootstrapping as described in the <a href="https://github.com/pardeike/Harmony/wiki">Harmony Wiki</a> and you have just done your first Harmony Transpiler!</p>
+<p>There it is. Add this to your code and use the normal Harmony bootstrapping and you have just done your first Harmony Transpiler!</p>
 </article>
           </div>
           
@@ -325,7 +326,8 @@ public static class Dialog_FormCaravan_CheckForErrors_Patch
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+                <h5>In This Article</h5>
+                <div></div>
               </nav>
             </div>
           </div>

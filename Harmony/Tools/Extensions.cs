@@ -21,7 +21,7 @@ namespace HarmonyLib
 		///
 		public static string Join<T>(this IEnumerable<T> enumeration, Func<T, string> converter = null, string delimiter = ", ")
 		{
-			if (converter == null) converter = t => t.ToString();
+			if (converter is null) converter = t => t.ToString();
 			return enumeration.Aggregate("", (prev, curr) => prev + (prev.Length > 0 ? delimiter : "") + converter(curr));
 		}
 
@@ -31,7 +31,7 @@ namespace HarmonyLib
 		///
 		public static string Description(this Type[] parameters)
 		{
-			if (parameters == null) return "NULL";
+			if (parameters is null) return "NULL";
 			return $"({parameters.Join(p => p.FullDescription())})";
 		}
 
@@ -41,11 +41,11 @@ namespace HarmonyLib
 		///
 		public static string FullDescription(this Type type)
 		{
-			if (type == null)
+			if (type is null)
 				return "null";
 
 			var ns = type.Namespace;
-			if (string.IsNullOrEmpty(ns) == false) ns += ".";
+			if (string.IsNullOrEmpty(ns) is false) ns += ".";
 			var result = ns + type.Name;
 
 			if (type.IsGenericType)
@@ -54,7 +54,7 @@ namespace HarmonyLib
 				var subTypes = type.GetGenericArguments();
 				for (var i = 0; i < subTypes.Length; i++)
 				{
-					if (result.EndsWith("<", StringComparison.Ordinal) == false)
+					if (result.EndsWith("<", StringComparison.Ordinal) is false)
 						result += ", ";
 					result += subTypes[i].FullDescription();
 				}
@@ -69,7 +69,7 @@ namespace HarmonyLib
 		///
 		public static string FullDescription(this MethodBase member)
 		{
-			if (member == null) return "null";
+			if (member is null) return "null";
 			var returnType = AccessTools.GetReturnedType(member);
 
 			var result = new StringBuilder();
@@ -77,7 +77,7 @@ namespace HarmonyLib
 			if (member.IsAbstract) _ = result.Append("abstract ");
 			if (member.IsVirtual) _ = result.Append("virtual ");
 			_ = result.Append($"{returnType.FullDescription()} ");
-			if (member.DeclaringType != null)
+			if (member.DeclaringType is object)
 				_ = result.Append($"{member.DeclaringType.FullDescription()}::");
 			var parameterString = member.GetParameters().Join(p => $"{p.ParameterType.FullDescription()} {p.Name}");
 			_ = result.Append($"{member.Name}({parameterString})");
@@ -199,8 +199,8 @@ namespace HarmonyLib
 		///
 		public static bool OperandIs(this CodeInstruction code, object value)
 		{
-			if (value == null) throw new ArgumentNullException(nameof(value));
-			if (code.operand == null) return false;
+			if (value is null) throw new ArgumentNullException(nameof(value));
+			if (code.operand is null) return false;
 			var type = value.GetType();
 			var operandType = code.operand.GetType();
 			if (AccessTools.IsInteger(type) && AccessTools.IsNumber(operandType))
@@ -219,7 +219,7 @@ namespace HarmonyLib
 		[EditorBrowsable(EditorBrowsableState.Never)]
 		public static bool OperandIs(this CodeInstruction code, MemberInfo value)
 		{
-			if (value == null) throw new ArgumentNullException(nameof(value));
+			if (value is null) throw new ArgumentNullException(nameof(value));
 			return Equals(code.operand, value);
 		}
 
@@ -254,12 +254,12 @@ namespace HarmonyLib
 		///
 		public static bool IsLdarg(this CodeInstruction code, int? n = null)
 		{
-			if ((n.HasValue == false || n.Value == 0) && code.opcode == OpCodes.Ldarg_0) return true;
-			if ((n.HasValue == false || n.Value == 1) && code.opcode == OpCodes.Ldarg_1) return true;
-			if ((n.HasValue == false || n.Value == 2) && code.opcode == OpCodes.Ldarg_2) return true;
-			if ((n.HasValue == false || n.Value == 3) && code.opcode == OpCodes.Ldarg_3) return true;
-			if (code.opcode == OpCodes.Ldarg && (n.HasValue == false || n.Value == Convert.ToInt32(code.operand))) return true;
-			if (code.opcode == OpCodes.Ldarg_S && (n.HasValue == false || n.Value == Convert.ToInt32(code.operand))) return true;
+			if ((n.HasValue is false || n.Value == 0) && code.opcode == OpCodes.Ldarg_0) return true;
+			if ((n.HasValue is false || n.Value == 1) && code.opcode == OpCodes.Ldarg_1) return true;
+			if ((n.HasValue is false || n.Value == 2) && code.opcode == OpCodes.Ldarg_2) return true;
+			if ((n.HasValue is false || n.Value == 3) && code.opcode == OpCodes.Ldarg_3) return true;
+			if (code.opcode == OpCodes.Ldarg && (n.HasValue is false || n.Value == Convert.ToInt32(code.operand))) return true;
+			if (code.opcode == OpCodes.Ldarg_S && (n.HasValue is false || n.Value == Convert.ToInt32(code.operand))) return true;
 			return false;
 		}
 
@@ -271,7 +271,7 @@ namespace HarmonyLib
 		public static bool IsLdarga(this CodeInstruction code, int? n = null)
 		{
 			if (code.opcode != OpCodes.Ldarga && code.opcode != OpCodes.Ldarga_S) return false;
-			return n.HasValue == false || n.Value == Convert.ToInt32(code.operand);
+			return n.HasValue is false || n.Value == Convert.ToInt32(code.operand);
 		}
 
 		/// <summary>Tests for Starg/Starg_S</summary>
@@ -282,7 +282,7 @@ namespace HarmonyLib
 		public static bool IsStarg(this CodeInstruction code, int? n = null)
 		{
 			if (code.opcode != OpCodes.Starg && code.opcode != OpCodes.Starg_S) return false;
-			return n.HasValue == false || n.Value == Convert.ToInt32(code.operand);
+			return n.HasValue is false || n.Value == Convert.ToInt32(code.operand);
 		}
 
 		/// <summary>Tests for any form of Ldloc*</summary>
@@ -292,8 +292,8 @@ namespace HarmonyLib
 		///
 		public static bool IsLdloc(this CodeInstruction code, LocalBuilder variable = null)
 		{
-			if (loadVarCodes.Contains(code.opcode) == false) return false;
-			return variable == null || Equals(variable, code.operand);
+			if (loadVarCodes.Contains(code.opcode) is false) return false;
+			return variable is null || Equals(variable, code.operand);
 		}
 
 		/// <summary>Tests for any form of Stloc*</summary>
@@ -303,8 +303,8 @@ namespace HarmonyLib
 		///
 		public static bool IsStloc(this CodeInstruction code, LocalBuilder variable = null)
 		{
-			if (storeVarCodes.Contains(code.opcode) == false) return false;
-			return variable == null || Equals(variable, code.operand);
+			if (storeVarCodes.Contains(code.opcode) is false) return false;
+			return variable is null || Equals(variable, code.operand);
 		}
 
 		/// <summary>Tests if the code instruction branches</summary>
@@ -330,7 +330,7 @@ namespace HarmonyLib
 		///
 		public static bool Calls(this CodeInstruction code, MethodInfo method)
 		{
-			if (method == null) throw new ArgumentNullException(nameof(method));
+			if (method is null) throw new ArgumentNullException(nameof(method));
 			if (code.opcode != OpCodes.Call && code.opcode != OpCodes.Callvirt) return false;
 			return Equals(code.operand, method);
 		}
@@ -396,9 +396,9 @@ namespace HarmonyLib
 		///
 		public static bool LoadsField(this CodeInstruction code, FieldInfo field, bool byAddress = false)
 		{
-			if (field == null) throw new ArgumentNullException(nameof(field));
+			if (field is null) throw new ArgumentNullException(nameof(field));
 			var ldfldCode = field.IsStatic ? OpCodes.Ldsfld : OpCodes.Ldfld;
-			if (byAddress == false && code.opcode == ldfldCode && Equals(code.operand, field)) return true;
+			if (byAddress is false && code.opcode == ldfldCode && Equals(code.operand, field)) return true;
 			var ldfldaCode = field.IsStatic ? OpCodes.Ldsflda : OpCodes.Ldflda;
 			if (byAddress == true && code.opcode == ldfldaCode && Equals(code.operand, field)) return true;
 			return false;
@@ -411,9 +411,107 @@ namespace HarmonyLib
 		///
 		public static bool StoresField(this CodeInstruction code, FieldInfo field)
 		{
-			if (field == null) throw new ArgumentNullException(nameof(field));
+			if (field is null) throw new ArgumentNullException(nameof(field));
 			var stfldCode = field.IsStatic ? OpCodes.Stsfld : OpCodes.Stfld;
 			return code.opcode == stfldCode && Equals(code.operand, field);
+		}
+
+		/// <summary>Adds labels to the code instruction and return it</summary>
+		/// <param name="code">The <see cref="CodeInstruction"/></param>
+		/// <param name="labels">One or several <see cref="Label"/> to add</param>
+		/// <returns>The same code instruction</returns>
+		public static CodeInstruction WithLabels(this CodeInstruction code, params Label[] labels)
+		{
+			code.labels.AddRange(labels);
+			return code;
+		}
+
+		/// <summary>Adds labels to the code instruction and return it</summary>
+		/// <param name="code">The <see cref="CodeInstruction"/></param>
+		/// <param name="labels">An enumeration of <see cref="Label"/></param>
+		/// <returns>The same code instruction</returns>
+		public static CodeInstruction WithLabels(this CodeInstruction code, IEnumerable<Label> labels)
+		{
+			code.labels.AddRange(labels);
+			return code;
+		}
+
+		/// <summary>Extracts all labels from the code instruction and returns them</summary>
+		/// <param name="code">The <see cref="CodeInstruction"/></param>
+		/// <returns>A list of <see cref="Label"/></returns>
+		public static List<Label> ExtractLabels(this CodeInstruction code)
+		{
+			var labels = new List<Label>(code.labels);
+			code.labels.Clear();
+			return labels;
+		}
+
+		/// <summary>Moves all labels from the code instruction to a different one</summary>
+		/// <param name="code">The <see cref="CodeInstruction"/> to move the labels from</param>
+		/// <param name="other">The <see cref="CodeInstruction"/> to move the labels to</param>
+		/// <returns>The code instruction labels were moved from (now empty)</returns>
+		public static CodeInstruction MoveLabelsTo(this CodeInstruction code, CodeInstruction other)
+		{
+			_ = other.WithLabels(code.ExtractLabels());
+			return code;
+		}
+
+		/// <summary>Moves all labels from a different code instruction to the current one</summary>
+		/// <param name="code">The <see cref="CodeInstruction"/> to move the labels from</param>
+		/// <param name="other">The <see cref="CodeInstruction"/> to move the labels to</param>
+		/// <returns>The code instruction that received the labels</returns>
+		public static CodeInstruction MoveLabelsFrom(this CodeInstruction code, CodeInstruction other)
+		{
+			return code.WithLabels(other.ExtractLabels());
+		}
+
+		/// <summary>Adds ExceptionBlocks to the code instruction and return it</summary>
+		/// <param name="code">The <see cref="CodeInstruction"/></param>
+		/// <param name="blocks">One or several <see cref="ExceptionBlock"/> to add</param>
+		/// <returns>The same code instruction</returns>
+		public static CodeInstruction WithBlocks(this CodeInstruction code, params ExceptionBlock[] blocks)
+		{
+			code.blocks.AddRange(blocks);
+			return code;
+		}
+
+		/// <summary>Adds ExceptionBlocks to the code instruction and return it</summary>
+		/// <param name="code">The <see cref="CodeInstruction"/></param>
+		/// <param name="blocks">An enumeration of <see cref="ExceptionBlock"/></param>
+		/// <returns>The same code instruction</returns>
+		public static CodeInstruction WithBlocks(this CodeInstruction code, IEnumerable<ExceptionBlock> blocks)
+		{
+			code.blocks.AddRange(blocks);
+			return code;
+		}
+
+		/// <summary>Extracts all ExceptionBlocks from the code instruction and returns them</summary>
+		/// <param name="code">The <see cref="CodeInstruction"/></param>
+		/// <returns>A list of <see cref="ExceptionBlock"/></returns>
+		public static List<ExceptionBlock> ExtractBlocks(this CodeInstruction code)
+		{
+			var blocks = new List<ExceptionBlock>(code.blocks);
+			code.blocks.Clear();
+			return blocks;
+		}
+
+		/// <summary>Moves all ExceptionBlocks from the code instruction to a different one</summary>
+		/// <param name="code">The <see cref="CodeInstruction"/> to move the ExceptionBlocks from</param>
+		/// <param name="other">The <see cref="CodeInstruction"/> to move the ExceptionBlocks to</param>
+		/// <returns>The code instruction blocks were moved from (now empty)</returns>
+		public static CodeInstruction MoveBlocksTo(this CodeInstruction code, CodeInstruction other)
+		{
+			_ = other.WithBlocks(code.ExtractBlocks());
+			return code;
+		}
+
+		/// <summary>Moves all ExceptionBlocks from a different code instruction to the current one</summary>
+		/// <param name="code">The <see cref="CodeInstruction"/> to move the ExceptionBlocks from</param>
+		/// <param name="other">The <see cref="CodeInstruction"/> to move the ExceptionBlocks to</param>
+		/// <returns>The code instruction that received the blocks</returns>
+		public static CodeInstruction MoveBlocksFrom(this CodeInstruction code, CodeInstruction other)
+		{
+			return code.WithBlocks(other.ExtractBlocks());
 		}
 	}
 
@@ -428,7 +526,7 @@ namespace HarmonyLib
 		///
 		public static void Do<T>(this IEnumerable<T> sequence, Action<T> action)
 		{
-			if (sequence == null) return;
+			if (sequence is null) return;
 			var enumerator = sequence.GetEnumerator();
 			while (enumerator.MoveNext()) action(enumerator.Current);
 		}
@@ -475,6 +573,37 @@ namespace HarmonyLib
 		public static T[] AddRangeToArray<T>(this T[] sequence, T[] items)
 		{
 			return (sequence ?? Enumerable.Empty<T>()).Concat(items).ToArray();
+		}
+
+		// TODO: Should these be made public?
+		// These extension methods may collide with extension methods from other libraries users may be using,
+		// just due to their general nature and naming commonality.
+		// This is also a concern for the existing public extension methods in this file,
+		// but it's too late to make such extension method internal like these.
+
+		// Returns a new dictionary with entries merged from given dictionaries.
+		// For key collisions, latter dictionary values are favored.
+		// None of the given dictionaries are mutated.
+		internal static Dictionary<K, V> Merge<K, V>(this IEnumerable<KeyValuePair<K, V>> firstDict, params IEnumerable<KeyValuePair<K, V>>[] otherDicts)
+		{
+			var dict = new Dictionary<K, V>();
+			foreach (var pair in firstDict)
+				dict[pair.Key] = pair.Value;
+			foreach (var otherDict in otherDicts)
+			{
+				foreach (var pair in otherDict)
+					dict[pair.Key] = pair.Value;
+			}
+			return dict;
+		}
+
+		// Returns a new dictionary copied from given dictionary with keys run through a transform function.
+		internal static Dictionary<K, V> TransformKeys<K, V>(this Dictionary<K, V> origDict, Func<K, K> transform)
+		{
+			var dict = new Dictionary<K, V>();
+			foreach (var pair in origDict)
+				dict.Add(transform(pair.Key), pair.Value);
+			return dict;
 		}
 	}
 

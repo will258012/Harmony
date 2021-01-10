@@ -8,7 +8,7 @@
     <title>Annotations </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Annotations ">
-    <meta name="generator" content="docfx 2.52.0.0">
+    <meta name="generator" content="docfx 2.56.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -167,7 +167,7 @@ class MyPatches
 [HarmonyPatch(new Type[] { typeof(int) })]
 </code></pre>
 <h4 id="getterssetters">Getters/Setters</h4>
-<p>To patch constructors you use the annotations that contain a <code>MethodType</code> argument and set it to <code>MethodType.Getter</code> or <code>MethodType.Setter</code>:</p>
+<p>To patch a property you use the annotations that contain a <code>MethodType</code> argument and set it to <code>MethodType.Getter</code> or <code>MethodType.Setter</code>:</p>
 <pre><code class="lang-csharp">// in one row:
 [HarmonyPatch(typeof(TestClass), &quot;GameInstance&quot;, MethodType.Getter)]
 // in two rows:
@@ -253,7 +253,8 @@ class MyPatches3
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+                <h5>In This Article</h5>
+                <div></div>
               </nav>
             </div>
           </div>

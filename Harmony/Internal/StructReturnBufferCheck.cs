@@ -85,22 +85,23 @@ namespace HarmonyLib
 
 		static int SizeOf(Type type)
 		{
-			if (sizes.TryGetValue(type, out var size))
+			lock (sizes)
+			{
+				if (sizes.TryGetValue(type, out var size))
+					return size;
+				size = type.GetManagedSize();
+				sizes.Add(type, size);
 				return size;
-
-			size = type.GetManagedSize();
-
-			sizes.Add(type, size);
-			return size;
+			}
 		}
 
 		static readonly HashSet<int> specialSizes = new HashSet<int> { 1, 2, 4, 8 };
 		internal static bool NeedsFix(MethodBase method)
 		{
 			var returnType = AccessTools.GetReturnedType(method);
-			if (AccessTools.IsStruct(returnType) == false) return false;
-			if (AccessTools.IsMonoRuntime == false && method.IsStatic) return false;
-			if (AccessTools.IsMonoRuntime == true && !method.IsStatic) return false;
+			if (AccessTools.IsStruct(returnType) is false) return false;
+			if (AccessTools.IsMonoRuntime is false && method.IsStatic) return false;
+			if (AccessTools.IsMonoRuntime && method.IsStatic is false) return false;
 
 			var size = SizeOf(returnType);
 			if (specialSizes.Contains(size))
@@ -108,36 +109,51 @@ namespace HarmonyLib
 			return HasStructReturnBuffer();
 		}
 
-		internal static bool hasTestResult_Net;
 		internal static bool hasTestResult_Mono;
+		static readonly object hasTestResult_Mono_lock = new object();
+		internal static bool hasTestResult_Net;
+		static readonly object hasTestResult_Net_lock = new object();
 		static bool HasStructReturnBuffer()
 		{
 			if (AccessTools.IsMonoRuntime)
 			{
-				if (hasTestResult_Mono == false)
+				lock (hasTestResult_Mono_lock)
 				{
-					Sandbox.hasStructReturnBuffer_Mono = false;
-					var self = new StructReturnBuffer();
-					var original = AccessTools.DeclaredMethod(typeof(Sandbox), nameof(Sandbox.GetStruct_Mono));
-					var replacement = AccessTools.DeclaredMethod(typeof(Sandbox), nameof(Sandbox.GetStructReplacement_Mono));
-					_ = Memory.DetourMethod(original, replacement);
-					_ = new Sandbox().GetStruct_Mono(Sandbox.magicValue, Sandbox.magicValue);
-					hasTestResult_Mono = true;
+					if (hasTestResult_Mono is false)
+					{
+						Sandbox.hasStructReturnBuffer_Mono = false;
+						var self = new StructReturnBuffer();
+						var original = AccessTools.DeclaredMethod(typeof(Sandbox), nameof(Sandbox.GetStruct_Mono));
+						var replacement = AccessTools.DeclaredMethod(typeof(Sandbox), nameof(Sandbox.GetStructReplacement_Mono));
+						_ = Memory.DetourMethod(original, replacement);
+						_ = new Sandbox().GetStruct_Mono(Sandbox.magicValue, Sandbox.magicValue);
+						hasTestResult_Mono = true;
+					}
 				}
 				return Sandbox.hasStructReturnBuffer_Mono;
 			}
 
-			if (hasTestResult_Net == false)
+			lock (hasTestResult_Net_lock)
 			{
-				Sandbox.hasStructReturnBuffer_Net = false;
-				var self = new StructReturnBuffer();
-				var original = AccessTools.DeclaredMethod(typeof(Sandbox), nameof(Sandbox.GetStruct_Net));
-				var replacement = AccessTools.DeclaredMethod(typeof(Sandbox), nameof(Sandbox.GetStructReplacement_Net));
-				_ = Memory.DetourMethod(original, replacement);
-				_ = new Sandbox().GetStruct_Net(Sandbox.magicValue, Sandbox.magicValue);
-				hasTestResult_Net = true;
+				if (hasTestResult_Net is false)
+				{
+					Sandbox.hasStructReturnBuffer_Net = false;
+					var self = new StructReturnBuffer();
+					var original = AccessTools.DeclaredMethod(typeof(Sandbox), nameof(Sandbox.GetStruct_Net));
+					var replacement = AccessTools.DeclaredMethod(typeof(Sandbox), nameof(Sandbox.GetStructReplacement_Net));
+					_ = Memory.DetourMethod(original, replacement);
+					_ = new Sandbox().GetStruct_Net(Sandbox.magicValue, Sandbox.magicValue);
+					hasTestResult_Net = true;
+				}
 			}
 			return Sandbox.hasStructReturnBuffer_Net;
+		}
+
+		internal static void ResetCaches() // used in testing
+		{
+			lock (sizes) sizes.Clear();
+			lock (hasTestResult_Mono_lock) hasTestResult_Mono = false;
+			lock (hasTestResult_Net_lock) hasTestResult_Net = false;
 		}
 
 		internal static void ArgumentShifter(List<CodeInstruction> instructions, bool shiftArgZero)
@@ -146,7 +162,7 @@ namespace HarmonyLib
 			//
 			//        insert
 			//          |
-			//          V 
+			//          V
 			// THIS , IntPtr , arg0 , arg1 , arg2 ...
 			//
 			// So we make space at index 1 by moving all Ldarg_[n] to Ldarg_[n+1]
@@ -156,7 +172,7 @@ namespace HarmonyLib
 			//
 			//  insert
 			//    |
-			//    V 
+			//    V
 			// +IntPtr , arg0 , arg1 , arg2 ...
 			//
 			// So we make space at index 0 by moving all Ldarg_[n] to Ldarg_[n+1]

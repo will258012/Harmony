@@ -1,8 +1,8 @@
-﻿using HarmonyLib;
+using HarmonyLib;
 using HarmonyLibTests.Assets;
 using NUnit.Framework;
 
-namespace HarmonyLibTests
+namespace HarmonyLibTests.Patching
 {
 	[TestFixture]
 	public class Arguments : TestLogger
@@ -127,6 +127,99 @@ namespace HarmonyLibTests
 
 			testInstance.Method("bar");
 			Assert.AreEqual("patched", testInstance.TestValue);
+		}
+
+		[Test]
+		public void Test_InjectBaseDelegateForClass()
+		{
+			var instance = new InjectDelegateClass() { pre = "{", post = "}" };
+			instance.Method(123);
+			Assert.AreEqual("[{test:123}]", instance.result);
+
+			var harmony = new Harmony("test");
+			var processor = new PatchClassProcessor(harmony, typeof(InjectDelegateClassPatch));
+			var patches = processor.Patch();
+			Assert.NotNull(patches, "patches");
+			Assert.AreEqual(1, patches.Count);
+
+			instance.Method(123);
+			Assert.AreEqual("{patch:456} | [{patch:456}]", InjectDelegateClassPatch.result);
+		}
+
+		[Test]
+		public void Test_InjectDelegateForStaticClass()
+		{
+			Assert.AreEqual("[1999]", InjectDelegateStaticClass.Method(999));
+
+			var harmony = new Harmony("test");
+			var processor = new PatchClassProcessor(harmony, typeof(InjectDelegateStaticClassPatch));
+			var patches = processor.Patch();
+			Assert.NotNull(patches, "patches");
+			Assert.AreEqual(1, patches.Count);
+			Assert.AreEqual("[123]/[456]", InjectDelegateStaticClass.Method(4444));
+		}
+
+		[Test]
+		public void Test_InjectDelegateForValueType()
+		{
+			var instance = new InjectDelegateStruct() { pre = "{", post = "}" };
+			Assert.AreEqual("{1999}", instance.Method(999));
+
+			var harmony = new Harmony("test");
+			var processor = new PatchClassProcessor(harmony, typeof(InjectDelegateStructPatch));
+			var patches = processor.Patch();
+			Assert.NotNull(patches, "patches");
+			Assert.AreEqual(1, patches.Count);
+			Assert.AreEqual("{123}/{456}", instance.Method(4444));
+		}
+
+		[Test]
+		public void Test_RefResults()
+		{
+			var intRef1 = Class19.Method19();
+			Assert.AreEqual(123, intRef1);
+
+			var harmony = new Harmony("test");
+			var processor = new PatchClassProcessor(harmony, typeof(Class19Patch));
+			var patches = processor.Patch();
+			Assert.NotNull(patches, "patches");
+			Assert.AreEqual(1, patches.Count);
+
+			var intRef2 = Class19.Method19();
+			Assert.AreEqual(456, intRef2);
+		}
+
+		[Test]
+		public void Test_BoxingValueResults()
+		{
+			var struct1 = Class20.Method20();
+			Assert.AreEqual(123, struct1.value);
+
+			var harmony = new Harmony("test");
+			var processor = new PatchClassProcessor(harmony, typeof(Class20Patch));
+			var patches = processor.Patch();
+			Assert.NotNull(patches, "patches");
+			Assert.AreEqual(1, patches.Count);
+
+			_ = Class20.Method20();
+			var result = (Class20.Struct20)Class20Patch.theResult;
+			Assert.AreEqual(123, result.value);
+		}
+
+		[Test]
+		public void Test_BoxingRefValueResults()
+		{
+			var struct1 = Class21.Method21();
+			Assert.AreEqual(123, struct1.value);
+
+			var harmony = new Harmony("test");
+			var processor = new PatchClassProcessor(harmony, typeof(Class21Patch));
+			var patches = processor.Patch();
+			Assert.NotNull(patches, "patches");
+			Assert.AreEqual(1, patches.Count);
+
+			var result = Class21.Method21();
+			Assert.AreEqual(456, result.value);
 		}
 	}
 }

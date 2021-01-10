@@ -12,6 +12,8 @@
 
 ## [Transpiler](patching-transpiler.md)
 
+## [Transpiler - CodeInstruction](patching-transpiler-codes.md)
+
 ## [Finalizer](patching-finalizer.md)
 
 ## [Injections](patching-injections.md)
@@ -19,6 +21,8 @@
 ## [Reverse Patch](reverse-patching.md)
 
 ## [Auxilary methods](patching-auxilary.md)
+
+## [Edge Cases](patching-edgecases.md)
 
 # [Annotations](annotations.md)
 

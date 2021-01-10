@@ -1,15 +1,21 @@
 using MonoMod.RuntimeDetour;
+using MonoMod.Utils;
 using System;
 using System.Reflection;
+using System.Reflection.Emit;
 using System.Runtime.CompilerServices;
 
 namespace HarmonyLib
 {
 	/// <summary>A low level memory helper</summary>
+	///
 	public static class Memory
 	{
+		static readonly bool isWindows = Environment.OSVersion.Platform.Equals(PlatformID.Win32NT);
+
 		/// <summary>Mark method for no inlining (currently only works on Mono)</summary>
 		/// <param name="method">The method/constructor to change</param>
+		///
 		unsafe public static void MarkForNoInlining(MethodBase method)
 		{
 			// TODO for now, this only works on mono
@@ -30,6 +36,9 @@ namespace HarmonyLib
 			var originalCodeStart = GetMethodStart(original, out var exception);
 			if (originalCodeStart == 0)
 				return exception.Message;
+
+			PadShortMethods(original);
+
 			var patchCodeStart = GetMethodStart(replacement, out exception);
 			if (patchCodeStart == 0)
 				return exception.Message;
@@ -40,9 +49,51 @@ namespace HarmonyLib
 		internal static void DetourMethodAndPersist(MethodBase original, MethodBase replacement)
 		{
 			var errorString = DetourMethod(original, replacement);
-			if (errorString != null)
+			if (errorString is object)
 				throw new FormatException($"Method {original.FullDescription()} cannot be patched. Reason: {errorString}");
 			PatchTools.RememberObject(original, replacement);
+		}
+
+		/*
+		 * Fix for detour jump overriding the method that's right next in memory
+		 * See https://github.com/MonoMod/MonoMod.Common/blob/58702d64645aba613ad16275c0b78278ff0d2055/RuntimeDetour/Platforms/Native/DetourNativeX86Platform.cs#L77
+		 * 
+		 * It happens for any very small method, not just virtual, but it just so happens that
+		 * virtual methods are usually the only empty ones. The problem is with the detour code
+		 * overriding the method that's right next in memory.
+		 * 
+		 * The 64bit absolute jump detour requires 14 bytes but on Linux an empty method is just 
+		 * 10 bytes. On Windows, due to prologue differences, an empty method is exactly 14 bytes 
+		 * as required.
+		 * 
+		 * Now, the small code size wouldn't be a problem if it wasn't for the way Mono compiles 
+		 * trampolines. Usually methods on x64 are 16 bytes aligned, so no actual code could get 
+		 * overriden by the detour, but trampolines don't follow this rule and a trampoline generated 
+		 * for the dynamic method from the patch is placed right after the method being detoured. 
+		 * 
+		 * The detour code then overrides the beggining of the trampoline and that leads to a 
+		 * segfault on execution.
+		 * 
+		 * There's also the fact that Linux seems to allocate the detour code far away in memory 
+		 * so it uses the 64 bit jump in the first place. On Windows with Mono usually the 32 bit 
+		 * smaller jumps suffice.
+		 * 
+		 * The fix changes the order in which methods are JITted so that no trampoline is placed 
+		 * after the detoured method (or at least the trampoline that causes this specific crash)
+		 */
+		internal static void PadShortMethods(MethodBase method)
+		{
+			if (isWindows) return;
+			var count = method.GetMethodBody()?.GetILAsByteArray()?.Length ?? 0;
+			if (count == 0) return;
+
+			// the 16 here is arbitrary but high enough to prevent the jitted code from getting under 14 bytes
+			// and high enough to not generate too many fix methods
+			if (count >= 16) return;
+
+			var methodDef = new DynamicMethodDefinition($"PadMethod-{Guid.NewGuid()}", typeof(void), new Type[0]);
+			methodDef.GetILGenerator().Emit(OpCodes.Ret);
+			_ = GetMethodStart(methodDef.Generate(), out var _); // trigger allocation/generation of jitted assembler
 		}
 
 		/// <summary>Writes a jump to memory</summary>

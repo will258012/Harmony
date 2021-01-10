@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class AccessTools
    ">
-    <meta name="generator" content="docfx 2.52.0.0">
+    <meta name="generator" content="docfx 2.56.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -118,7 +118,7 @@
     <a href="https://github.com/pardeike/Harmony/new/master/apiSpec/new?filename=HarmonyLib_AccessTools_all.md&amp;value=---%0Auid%3A%20HarmonyLib.AccessTools.all%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L19">View Source</a>
+    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L22">View Source</a>
   </span>
   <h4 id="HarmonyLib_AccessTools_all" data-uid="HarmonyLib.AccessTools.all">all</h4>
   <div class="markdown level1 summary"><p>Shortcut for <span class="xref">System.Reflection.BindingFlags</span> to simplify the use of reflections and make it work for any access level</p>
@@ -126,7 +126,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static BindingFlags all</code></pre>
+    <pre><code class="lang-csharp hljs">public static readonly BindingFlags all</code></pre>
   </div>
   <h5 class="fieldValue">Field Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -148,7 +148,7 @@
     <a href="https://github.com/pardeike/Harmony/new/master/apiSpec/new?filename=HarmonyLib_AccessTools_allDeclared.md&amp;value=---%0Auid%3A%20HarmonyLib.AccessTools.allDeclared%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L30">View Source</a>
+    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L34">View Source</a>
   </span>
   <h4 id="HarmonyLib_AccessTools_allDeclared" data-uid="HarmonyLib.AccessTools.allDeclared">allDeclared</h4>
   <div class="markdown level1 summary"><p>Shortcut for <span class="xref">System.Reflection.BindingFlags</span> to simplify the use of reflections and make it work for any access level but only within the current type</p>
@@ -156,7 +156,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static BindingFlags allDeclared</code></pre>
+    <pre><code class="lang-csharp hljs">public static readonly BindingFlags allDeclared</code></pre>
   </div>
   <h5 class="fieldValue">Field Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -180,11 +180,11 @@
     <a href="https://github.com/pardeike/Harmony/new/master/apiSpec/new?filename=HarmonyLib_AccessTools_IsMonoRuntime.md&amp;value=---%0Auid%3A%20HarmonyLib.AccessTools.IsMonoRuntime%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L978">View Source</a>
+    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L1617">View Source</a>
   </span>
   <a id="HarmonyLib_AccessTools_IsMonoRuntime_" data-uid="HarmonyLib.AccessTools.IsMonoRuntime*"></a>
   <h4 id="HarmonyLib_AccessTools_IsMonoRuntime" data-uid="HarmonyLib.AccessTools.IsMonoRuntime">IsMonoRuntime</h4>
-  <div class="markdown level1 summary"><p>Tells you if the current runtime is based on Mono</p>
+  <div class="markdown level1 summary"><p>True if the current runtime is based on Mono, false otherwise (.NET)</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -202,8 +202,69 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Boolean</span></td>
-        <td><p>True if we are running under Mono, false otherwise (.NET)</p>
-</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/pardeike/Harmony/new/master/apiSpec/new?filename=HarmonyLib_AccessTools_IsNetCoreRuntime.md&amp;value=---%0Auid%3A%20HarmonyLib.AccessTools.IsNetCoreRuntime%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L1627">View Source</a>
+  </span>
+  <a id="HarmonyLib_AccessTools_IsNetCoreRuntime_" data-uid="HarmonyLib.AccessTools.IsNetCoreRuntime*"></a>
+  <h4 id="HarmonyLib_AccessTools_IsNetCoreRuntime" data-uid="HarmonyLib.AccessTools.IsNetCoreRuntime">IsNetCoreRuntime</h4>
+  <div class="markdown level1 summary"><p>True if the current runtime is .NET Core, false otherwise (Mono or .NET Framework)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool IsNetCoreRuntime { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/pardeike/Harmony/new/master/apiSpec/new?filename=HarmonyLib_AccessTools_IsNetFrameworkRuntime.md&amp;value=---%0Auid%3A%20HarmonyLib.AccessTools.IsNetFrameworkRuntime%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L1621">View Source</a>
+  </span>
+  <a id="HarmonyLib_AccessTools_IsNetFrameworkRuntime_" data-uid="HarmonyLib.AccessTools.IsNetFrameworkRuntime*"></a>
+  <h4 id="HarmonyLib_AccessTools_IsNetFrameworkRuntime" data-uid="HarmonyLib.AccessTools.IsNetFrameworkRuntime">IsNetFrameworkRuntime</h4>
+  <div class="markdown level1 summary"><p>True if the current runtime is .NET Framework, false otherwise (.NET Core or Mono, although latter isn't guaranteed)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool IsNetFrameworkRuntime { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
       </tr>
     </tbody>
   </table>
@@ -214,7 +275,7 @@
     <a href="https://github.com/pardeike/Harmony/new/master/apiSpec/new?filename=HarmonyLib_AccessTools_ActualParameters_System_Reflection_MethodBase_System_Object___.md&amp;value=---%0Auid%3A%20HarmonyLib.AccessTools.ActualParameters(System.Reflection.MethodBase%2CSystem.Object%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L765">View Source</a>
+    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L772">View Source</a>
   </span>
   <a id="HarmonyLib_AccessTools_ActualParameters_" data-uid="HarmonyLib.AccessTools.ActualParameters*"></a>
   <h4 id="HarmonyLib_AccessTools_ActualParameters_System_Reflection_MethodBase_System_Object___" data-uid="HarmonyLib.AccessTools.ActualParameters(System.Reflection.MethodBase,System.Object[])">ActualParameters(MethodBase, Object[])</h4>
@@ -270,7 +331,7 @@
     <a href="https://github.com/pardeike/Harmony/new/master/apiSpec/new?filename=HarmonyLib_AccessTools_CombinedHashCode_System_Collections_Generic_IEnumerable_System_Object__.md&amp;value=---%0Auid%3A%20HarmonyLib.AccessTools.CombinedHashCode(System.Collections.Generic.IEnumerable%7BSystem.Object%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L1218">View Source</a>
+    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L1959">View Source</a>
   </span>
   <a id="HarmonyLib_AccessTools_CombinedHashCode_" data-uid="HarmonyLib.AccessTools.CombinedHashCode*"></a>
   <h4 id="HarmonyLib_AccessTools_CombinedHashCode_System_Collections_Generic_IEnumerable_System_Object__" data-uid="HarmonyLib.AccessTools.CombinedHashCode(System.Collections.Generic.IEnumerable{System.Object})">CombinedHashCode(IEnumerable&lt;Object&gt;)</h4>
@@ -320,7 +381,7 @@
     <a href="https://github.com/pardeike/Harmony/new/master/apiSpec/new?filename=HarmonyLib_AccessTools_Constructor_System_Type_System_Type___System_Boolean_.md&amp;value=---%0Auid%3A%20HarmonyLib.AccessTools.Constructor(System.Type%2CSystem.Type%5B%5D%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L546">View Source</a>
+    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L553">View Source</a>
   </span>
   <a id="HarmonyLib_AccessTools_Constructor_" data-uid="HarmonyLib.AccessTools.Constructor*"></a>
   <h4 id="HarmonyLib_AccessTools_Constructor_System_Type_System_Type___System_Boolean_" data-uid="HarmonyLib.AccessTools.Constructor(System.Type,System.Type[],System.Boolean)">Constructor(Type, Type[], Boolean)</h4>
@@ -382,7 +443,7 @@
     <a href="https://github.com/pardeike/Harmony/new/master/apiSpec/new?filename=HarmonyLib_AccessTools_CreateInstance_System_Type_.md&amp;value=---%0Auid%3A%20HarmonyLib.AccessTools.CreateInstance(System.Type)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L1013">View Source</a>
+    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L1664">View Source</a>
   </span>
   <a id="HarmonyLib_AccessTools_CreateInstance_" data-uid="HarmonyLib.AccessTools.CreateInstance*"></a>
   <h4 id="HarmonyLib_AccessTools_CreateInstance_System_Type_" data-uid="HarmonyLib.AccessTools.CreateInstance(System.Type)">CreateInstance(Type)</h4>
@@ -432,7 +493,7 @@
     <a href="https://github.com/pardeike/Harmony/new/master/apiSpec/new?filename=HarmonyLib_AccessTools_DeclaredConstructor_System_Type_System_Type___System_Boolean_.md&amp;value=---%0Auid%3A%20HarmonyLib.AccessTools.DeclaredConstructor(System.Type%2CSystem.Type%5B%5D%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L527">View Source</a>
+    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L534">View Source</a>
   </span>
   <a id="HarmonyLib_AccessTools_DeclaredConstructor_" data-uid="HarmonyLib.AccessTools.DeclaredConstructor*"></a>
   <h4 id="HarmonyLib_AccessTools_DeclaredConstructor_System_Type_System_Type___System_Boolean_" data-uid="HarmonyLib.AccessTools.DeclaredConstructor(System.Type,System.Type[],System.Boolean)">DeclaredConstructor(Type, Type[], Boolean)</h4>
@@ -494,7 +555,7 @@
     <a href="https://github.com/pardeike/Harmony/new/master/apiSpec/new?filename=HarmonyLib_AccessTools_DeclaredField_System_Type_System_Int32_.md&amp;value=---%0Auid%3A%20HarmonyLib.AccessTools.DeclaredField(System.Type%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L163">View Source</a>
+    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L176">View Source</a>
   </span>
   <a id="HarmonyLib_AccessTools_DeclaredField_" data-uid="HarmonyLib.AccessTools.DeclaredField*"></a>
   <h4 id="HarmonyLib_AccessTools_DeclaredField_System_Type_System_Int32_" data-uid="HarmonyLib.AccessTools.DeclaredField(System.Type,System.Int32)">DeclaredField(Type, Int32)</h4>
@@ -550,7 +611,7 @@
     <a href="https://github.com/pardeike/Harmony/new/master/apiSpec/new?filename=HarmonyLib_AccessTools_DeclaredField_System_Type_System_String_.md&amp;value=---%0Auid%3A%20HarmonyLib.AccessTools.DeclaredField(System.Type%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L113">View Source</a>
+    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L126">View Source</a>
   </span>
   <a id="HarmonyLib_AccessTools_DeclaredField_" data-uid="HarmonyLib.AccessTools.DeclaredField*"></a>
   <h4 id="HarmonyLib_AccessTools_DeclaredField_System_Type_System_String_" data-uid="HarmonyLib.AccessTools.DeclaredField(System.Type,System.String)">DeclaredField(Type, String)</h4>
@@ -606,7 +667,7 @@
     <a href="https://github.com/pardeike/Harmony/new/master/apiSpec/new?filename=HarmonyLib_AccessTools_DeclaredMethod_System_Type_System_String_System_Type___System_Type___.md&amp;value=---%0Auid%3A%20HarmonyLib.AccessTools.DeclaredMethod(System.Type%2CSystem.String%2CSystem.Type%5B%5D%2CSystem.Type%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L274">View Source</a>
+    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L287">View Source</a>
   </span>
   <a id="HarmonyLib_AccessTools_DeclaredMethod_" data-uid="HarmonyLib.AccessTools.DeclaredMethod*"></a>
   <h4 id="HarmonyLib_AccessTools_DeclaredMethod_System_Type_System_String_System_Type___System_Type___" data-uid="HarmonyLib.AccessTools.DeclaredMethod(System.Type,System.String,System.Type[],System.Type[])">DeclaredMethod(Type, String, Type[], Type[])</h4>
@@ -674,7 +735,7 @@
     <a href="https://github.com/pardeike/Harmony/new/master/apiSpec/new?filename=HarmonyLib_AccessTools_DeclaredProperty_System_Type_System_String_.md&amp;value=---%0Auid%3A%20HarmonyLib.AccessTools.DeclaredProperty(System.Type%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L182">View Source</a>
+    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L195">View Source</a>
   </span>
   <a id="HarmonyLib_AccessTools_DeclaredProperty_" data-uid="HarmonyLib.AccessTools.DeclaredProperty*"></a>
   <h4 id="HarmonyLib_AccessTools_DeclaredProperty_System_Type_System_String_" data-uid="HarmonyLib.AccessTools.DeclaredProperty(System.Type,System.String)">DeclaredProperty(Type, String)</h4>
@@ -730,7 +791,7 @@
     <a href="https://github.com/pardeike/Harmony/new/master/apiSpec/new?filename=HarmonyLib_AccessTools_DeclaredPropertyGetter_System_Type_System_String_.md&amp;value=---%0Auid%3A%20HarmonyLib.AccessTools.DeclaredPropertyGetter(System.Type%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L207">View Source</a>
+    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L220">View Source</a>
   </span>
   <a id="HarmonyLib_AccessTools_DeclaredPropertyGetter_" data-uid="HarmonyLib.AccessTools.DeclaredPropertyGetter*"></a>
   <h4 id="HarmonyLib_AccessTools_DeclaredPropertyGetter_System_Type_System_String_" data-uid="HarmonyLib.AccessTools.DeclaredPropertyGetter(System.Type,System.String)">DeclaredPropertyGetter(Type, String)</h4>
@@ -786,7 +847,7 @@
     <a href="https://github.com/pardeike/Harmony/new/master/apiSpec/new?filename=HarmonyLib_AccessTools_DeclaredPropertySetter_System_Type_System_String_.md&amp;value=---%0Auid%3A%20HarmonyLib.AccessTools.DeclaredPropertySetter(System.Type%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L217">View Source</a>
+    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L230">View Source</a>
   </span>
   <a id="HarmonyLib_AccessTools_DeclaredPropertySetter_" data-uid="HarmonyLib.AccessTools.DeclaredPropertySetter*"></a>
   <h4 id="HarmonyLib_AccessTools_DeclaredPropertySetter_System_Type_System_String_" data-uid="HarmonyLib.AccessTools.DeclaredPropertySetter(System.Type,System.String)">DeclaredPropertySetter(Type, String)</h4>
@@ -842,7 +903,7 @@
     <a href="https://github.com/pardeike/Harmony/new/master/apiSpec/new?filename=HarmonyLib_AccessTools_Field_System_Type_System_String_.md&amp;value=---%0Auid%3A%20HarmonyLib.AccessTools.Field(System.Type%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L138">View Source</a>
+    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L151">View Source</a>
   </span>
   <a id="HarmonyLib_AccessTools_Field_" data-uid="HarmonyLib.AccessTools.Field*"></a>
   <h4 id="HarmonyLib_AccessTools_Field_System_Type_System_String_" data-uid="HarmonyLib.AccessTools.Field(System.Type,System.String)">Field(Type, String)</h4>
@@ -898,11 +959,11 @@
     <a href="https://github.com/pardeike/Harmony/new/master/apiSpec/new?filename=HarmonyLib_AccessTools_FieldRefAccess__1_System_Type_System_String_.md&amp;value=---%0Auid%3A%20HarmonyLib.AccessTools.FieldRefAccess%60%601(System.Type%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L826">View Source</a>
+    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L925">View Source</a>
   </span>
   <a id="HarmonyLib_AccessTools_FieldRefAccess_" data-uid="HarmonyLib.AccessTools.FieldRefAccess*"></a>
   <h4 id="HarmonyLib_AccessTools_FieldRefAccess__1_System_Type_System_String_" data-uid="HarmonyLib.AccessTools.FieldRefAccess``1(System.Type,System.String)">FieldRefAccess&lt;F&gt;(Type, String)</h4>
-  <div class="markdown level1 summary"><p>Creates an instance field reference delegate for a private type</p>
+  <div class="markdown level1 summary"><p>Creates a field reference delegate for an instance field of a class or static field (NOT an instance field of a struct)</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -922,7 +983,7 @@
       <tr>
         <td><span class="xref">System.Type</span></td>
         <td><span class="parametername">type</span></td>
-        <td><p>The class/type</p>
+        <td><p>The type that defines the field, or derived class of this type; must not be a struct type unless the field is static</p>
 </td>
       </tr>
       <tr>
@@ -944,7 +1005,8 @@
     <tbody>
       <tr>
         <td><a class="xref" href="HarmonyLib.AccessTools.FieldRef-2.html">AccessTools.FieldRef</a>&lt;<span class="xref">System.Object</span>, F&gt;</td>
-        <td><p>A read and writable <a class="xref" href="HarmonyLib.AccessTools.FieldRef-2.html">AccessTools.FieldRef&lt;T, F&gt;</a> delegate</p>
+        <td><p>A readable/assignable <a class="xref" href="HarmonyLib.AccessTools.FieldRef-2.html">AccessTools.FieldRef&lt;T, F&gt;</a> delegate with <code>T=object</code>
+(for static fields, the <code>instance</code> delegate parameter is ignored)</p>
 </td>
       </tr>
     </tbody>
@@ -960,21 +1022,122 @@
     <tbody>
       <tr>
         <td><span class="parametername">F</span></td>
-        <td><p>The type of the field</p>
+        <td><p>The type of the field; or if the field's type is a reference type (a class or interface, NOT a struct or other value type),
+a type that <span class="xref">System.Type.IsAssignableFrom(System.Type)</span> the field's type</p>
 </td>
       </tr>
     </tbody>
   </table>
+  <h5 id="HarmonyLib_AccessTools_FieldRefAccess__1_System_Type_System_String__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>
+This method is meant for cases where the given type is only known at runtime and thus can&apos;t be used as a type parameter <code>T</code>
+in e.g. <a class="xref" href="HarmonyLib.AccessTools.html#HarmonyLib_AccessTools_FieldRefAccess__2_System_String_">FieldRefAccess&lt;T, F&gt;(String)</a>.
+</p>
+<p>
+This method supports static fields, even those defined in structs, for legacy reasons.
+Consider using <a class="xref" href="HarmonyLib.AccessTools.html#HarmonyLib_AccessTools_StaticFieldRefAccess__1_System_Type_System_String_">StaticFieldRefAccess&lt;F&gt;(Type, String)</a> (and other overloads) instead for static fields.
+</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/pardeike/Harmony/new/master/apiSpec/new?filename=HarmonyLib_AccessTools_FieldRefAccess__2___0_System_Reflection_FieldInfo_.md&amp;value=---%0Auid%3A%20HarmonyLib.AccessTools.FieldRefAccess%60%602(%60%600%2CSystem.Reflection.FieldInfo)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L1032">View Source</a>
+  </span>
+  <a id="HarmonyLib_AccessTools_FieldRefAccess_" data-uid="HarmonyLib.AccessTools.FieldRefAccess*"></a>
+  <h4 id="HarmonyLib_AccessTools_FieldRefAccess__2___0_System_Reflection_FieldInfo_" data-uid="HarmonyLib.AccessTools.FieldRefAccess``2(``0,System.Reflection.FieldInfo)">FieldRefAccess&lt;T, F&gt;(T, FieldInfo)</h4>
+  <div class="markdown level1 summary"><p>Creates a field reference for an instance field of a class</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static F FieldRefAccess&lt;T, F&gt;(T instance, FieldInfo fieldInfo)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">instance</span></td>
+        <td><p>The instance</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Reflection.FieldInfo</span></td>
+        <td><span class="parametername">fieldInfo</span></td>
+        <td><p>The field</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">F</span></td>
+        <td><p>A readable/assignable reference to the field</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>The type that defines the field; or a parent class (including <span class="xref">System.Object</span>), implemented interface, or derived class of this type
+(&quot;<code>instanceOfT is FieldDeclaringType</code>&quot; must be possible)</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="parametername">F</span></td>
+        <td><p>The type of the field; or if the field's type is a reference type (a class or interface, NOT a struct or other value type),
+a type that <span class="xref">System.Type.IsAssignableFrom(System.Type)</span> the field's type</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="HarmonyLib_AccessTools_FieldRefAccess__2___0_System_Reflection_FieldInfo__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>
+This method is meant for one-off access to a field&apos;s value for a single instance and where the field has already been obtained.
+If you need to access a field&apos;s value for potentially multiple instances, use <a class="xref" href="HarmonyLib.AccessTools.html#HarmonyLib_AccessTools_FieldRefAccess__2_System_Reflection_FieldInfo_">FieldRefAccess&lt;T, F&gt;(FieldInfo)</a> instead.
+<code>FieldRefAccess&lt;T, F>(instance, fieldInfo)</code> is functionally equivalent to <code>FieldRefAccess&lt;T, F>(fieldInfo)(instance)</code>.
+</p>
+<p>
+For backwards compatibility, there is no class constraint on <code data-dev-comment-type="typeparamref" class="typeparamref">T</code>.
+Instead, the non-value-type check is done at runtime within the method.
+</p>
+</div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
     <a href="https://github.com/pardeike/Harmony/new/master/apiSpec/new?filename=HarmonyLib_AccessTools_FieldRefAccess__2___0_System_String_.md&amp;value=---%0Auid%3A%20HarmonyLib.AccessTools.FieldRefAccess%60%602(%60%600%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L815">View Source</a>
+    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L882">View Source</a>
   </span>
   <a id="HarmonyLib_AccessTools_FieldRefAccess_" data-uid="HarmonyLib.AccessTools.FieldRefAccess*"></a>
   <h4 id="HarmonyLib_AccessTools_FieldRefAccess__2___0_System_String_" data-uid="HarmonyLib.AccessTools.FieldRefAccess``2(``0,System.String)">FieldRefAccess&lt;T, F&gt;(T, String)</h4>
-  <div class="markdown level1 summary"><p>Creates an instance field reference for a specific instance</p>
+  <div class="markdown level1 summary"><p>Creates an instance field reference for a specific instance of a class</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -1016,7 +1179,7 @@
     <tbody>
       <tr>
         <td><span class="xref">F</span></td>
-        <td><p>An readable/assignable object representing the field</p>
+        <td><p>A readable/assignable reference to the field</p>
 </td>
       </tr>
     </tbody>
@@ -1032,26 +1195,38 @@
     <tbody>
       <tr>
         <td><span class="parametername">T</span></td>
-        <td><p>The class the field is defined in</p>
+        <td><p>The class that defines the instance field, or derived class of this type</p>
 </td>
       </tr>
       <tr>
         <td><span class="parametername">F</span></td>
-        <td><p>The type of the field</p>
+        <td><p>The type of the field; or if the field's type is a reference type (a class or interface, NOT a struct or other value type),
+a type that <span class="xref">System.Type.IsAssignableFrom(System.Type)</span> the field's type</p>
 </td>
       </tr>
     </tbody>
   </table>
+  <h5 id="HarmonyLib_AccessTools_FieldRefAccess__2___0_System_String__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>
+This method is meant for one-off access to a field&apos;s value for a single instance.
+If you need to access a field&apos;s value for potentially multiple instances, use <a class="xref" href="HarmonyLib.AccessTools.html#HarmonyLib_AccessTools_FieldRefAccess__2_System_String_">FieldRefAccess&lt;T, F&gt;(String)</a> instead.
+<code>FieldRefAccess&lt;T, F>(instance, fieldName)</code> is functionally equivalent to <code>FieldRefAccess&lt;T, F>(fieldName)(instance)</code>.
+</p>
+<p>
+For backwards compatibility, there is no class constraint on <code data-dev-comment-type="typeparamref" class="typeparamref">T</code>.
+Instead, the non-value-type check is done at runtime within the method.
+</p>
+</div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
     <a href="https://github.com/pardeike/Harmony/new/master/apiSpec/new?filename=HarmonyLib_AccessTools_FieldRefAccess__2_System_Reflection_FieldInfo_.md&amp;value=---%0Auid%3A%20HarmonyLib.AccessTools.FieldRefAccess%60%602(System.Reflection.FieldInfo)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L837">View Source</a>
+    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L980">View Source</a>
   </span>
   <a id="HarmonyLib_AccessTools_FieldRefAccess_" data-uid="HarmonyLib.AccessTools.FieldRefAccess*"></a>
   <h4 id="HarmonyLib_AccessTools_FieldRefAccess__2_System_Reflection_FieldInfo_" data-uid="HarmonyLib.AccessTools.FieldRefAccess``2(System.Reflection.FieldInfo)">FieldRefAccess&lt;T, F&gt;(FieldInfo)</h4>
-  <div class="markdown level1 summary"><p>Creates an instance field reference delegate for a fieldinfo</p>
+  <div class="markdown level1 summary"><p>Creates a field reference delegate for an instance field of a class or static field (NOT an instance field of a struct)</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -1071,7 +1246,7 @@
       <tr>
         <td><span class="xref">System.Reflection.FieldInfo</span></td>
         <td><span class="parametername">fieldInfo</span></td>
-        <td><p>The field of the field</p>
+        <td><p>The field</p>
 </td>
       </tr>
     </tbody>
@@ -1087,7 +1262,7 @@
     <tbody>
       <tr>
         <td><a class="xref" href="HarmonyLib.AccessTools.FieldRef-2.html">AccessTools.FieldRef</a>&lt;T, F&gt;</td>
-        <td><p>A read and writable <a class="xref" href="HarmonyLib.AccessTools.FieldRef-2.html">AccessTools.FieldRef&lt;T, F&gt;</a> delegate</p>
+        <td><p>A readable/assignable <a class="xref" href="HarmonyLib.AccessTools.FieldRef-2.html">AccessTools.FieldRef&lt;T, F&gt;</a> delegate</p>
 </td>
       </tr>
     </tbody>
@@ -1103,26 +1278,43 @@
     <tbody>
       <tr>
         <td><span class="parametername">T</span></td>
-        <td><p>The class the field is defined in or &quot;object&quot; if type cannot be accessed at compile time</p>
+        <td><p>An arbitrary type if the field is static; otherwise the class that defines the field, or a parent class (including <span class="xref">System.Object</span>),
+implemented interface, or derived class of this type (&quot;<code>instanceOfT is FieldDeclaringType</code>&quot; must be possible)</p>
 </td>
       </tr>
       <tr>
         <td><span class="parametername">F</span></td>
-        <td><p>The type of the field</p>
+        <td><p>The type of the field; or if the field's type is a reference type (a class or interface, NOT a struct or other value type),
+a type that <span class="xref">System.Type.IsAssignableFrom(System.Type)</span> the field's type</p>
 </td>
       </tr>
     </tbody>
   </table>
+  <h5 id="HarmonyLib_AccessTools_FieldRefAccess__2_System_Reflection_FieldInfo__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>
+This method is meant for cases where the field has already been obtained, avoiding the field searching cost in
+e.g. <a class="xref" href="HarmonyLib.AccessTools.html#HarmonyLib_AccessTools_FieldRefAccess__2_System_String_">FieldRefAccess&lt;T, F&gt;(String)</a>.
+</p>
+<p>
+This method supports static fields, even those defined in structs, for legacy reasons.
+For such static fields, <code data-dev-comment-type="typeparamref" class="typeparamref">T</code> is effectively ignored.
+Consider using <a class="xref" href="HarmonyLib.AccessTools.html#HarmonyLib_AccessTools_StaticFieldRefAccess__2_System_Reflection_FieldInfo_">StaticFieldRefAccess&lt;T, F&gt;(FieldInfo)</a> (and other overloads) instead for static fields.
+</p>
+<p>
+For backwards compatibility, there is no class constraint on <code data-dev-comment-type="typeparamref" class="typeparamref">T</code>.
+Instead, the non-value-type check is done at runtime within the method.
+</p>
+</div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
     <a href="https://github.com/pardeike/Harmony/new/master/apiSpec/new?filename=HarmonyLib_AccessTools_FieldRefAccess__2_System_String_.md&amp;value=---%0Auid%3A%20HarmonyLib.AccessTools.FieldRefAccess%60%602(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L791">View Source</a>
+    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L844">View Source</a>
   </span>
   <a id="HarmonyLib_AccessTools_FieldRefAccess_" data-uid="HarmonyLib.AccessTools.FieldRefAccess*"></a>
   <h4 id="HarmonyLib_AccessTools_FieldRefAccess__2_System_String_" data-uid="HarmonyLib.AccessTools.FieldRefAccess``2(System.String)">FieldRefAccess&lt;T, F&gt;(String)</h4>
-  <div class="markdown level1 summary"><p>Creates an instance field reference</p>
+  <div class="markdown level1 summary"><p>Creates a field reference delegate for an instance field of a class</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -1158,7 +1350,7 @@
     <tbody>
       <tr>
         <td><a class="xref" href="HarmonyLib.AccessTools.FieldRef-2.html">AccessTools.FieldRef</a>&lt;T, F&gt;</td>
-        <td><p>A read and writable field reference delegate</p>
+        <td><p>A readable/assignable <a class="xref" href="HarmonyLib.AccessTools.FieldRef-2.html">AccessTools.FieldRef&lt;T, F&gt;</a> delegate</p>
 </td>
       </tr>
     </tbody>
@@ -1174,26 +1366,33 @@
     <tbody>
       <tr>
         <td><span class="parametername">T</span></td>
-        <td><p>The class the field is defined in</p>
+        <td><p>The class that defines the instance field, or derived class of this type</p>
 </td>
       </tr>
       <tr>
         <td><span class="parametername">F</span></td>
-        <td><p>The type of the field</p>
+        <td><p>The type of the field; or if the field's type is a reference type (a class or interface, NOT a struct or other value type),
+a type that <span class="xref">System.Type.IsAssignableFrom(System.Type)</span> the field's type</p>
 </td>
       </tr>
     </tbody>
   </table>
+  <h5 id="HarmonyLib_AccessTools_FieldRefAccess__2_System_String__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>
+For backwards compatibility, there is no class constraint on <code data-dev-comment-type="typeparamref" class="typeparamref">T</code>.
+Instead, the non-value-type check is done at runtime within the method.
+</p>
+</div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
     <a href="https://github.com/pardeike/Harmony/new/master/apiSpec/new?filename=HarmonyLib_AccessTools_FindIncludingBaseTypes__1_System_Type_System_Func_System_Type___0__.md&amp;value=---%0Auid%3A%20HarmonyLib.AccessTools.FindIncludingBaseTypes%60%601(System.Type%2CSystem.Func%7BSystem.Type%2C%60%600%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L72">View Source</a>
+    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L91">View Source</a>
   </span>
   <a id="HarmonyLib_AccessTools_FindIncludingBaseTypes_" data-uid="HarmonyLib.AccessTools.FindIncludingBaseTypes*"></a>
   <h4 id="HarmonyLib_AccessTools_FindIncludingBaseTypes__1_System_Type_System_Func_System_Type___0__" data-uid="HarmonyLib.AccessTools.FindIncludingBaseTypes``1(System.Type,System.Func{System.Type,``0})">FindIncludingBaseTypes&lt;T&gt;(Type, Func&lt;Type, T&gt;)</h4>
-  <div class="markdown level1 summary"><p>Applies a function going up the type hierarchy and stops at the first non null result</p>
+  <div class="markdown level1 summary"><p>Applies a function going up the type hierarchy and stops at the first non-<code>null</code> result</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -1236,7 +1435,7 @@
     <tbody>
       <tr>
         <td><span class="xref">T</span></td>
-        <td><p>Returns the first non null result or <code>default(T)</code> when reaching the top level type object</p>
+        <td><p>The first non-<code>null</code> result, or <code>null</code> if no match</p>
 </td>
       </tr>
     </tbody>
@@ -1257,16 +1456,21 @@
       </tr>
     </tbody>
   </table>
+  <h5 id="HarmonyLib_AccessTools_FindIncludingBaseTypes__1_System_Type_System_Func_System_Type___0___remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>The type hierarchy of a class or value type (including struct) does NOT include implemented interfaces,
+and the type hierarchy of an interface is only itself (regardless of whether that interface implements other interfaces).
+The top-most type in the type hierarchy of all non-interface types (including value types) is <span class="xref">System.Object</span>.</p>
+</div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
     <a href="https://github.com/pardeike/Harmony/new/master/apiSpec/new?filename=HarmonyLib_AccessTools_FindIncludingInnerTypes__1_System_Type_System_Func_System_Type___0__.md&amp;value=---%0Auid%3A%20HarmonyLib.AccessTools.FindIncludingInnerTypes%60%601(System.Type%2CSystem.Func%7BSystem.Type%2C%60%600%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L91">View Source</a>
+    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L108">View Source</a>
   </span>
   <a id="HarmonyLib_AccessTools_FindIncludingInnerTypes_" data-uid="HarmonyLib.AccessTools.FindIncludingInnerTypes*"></a>
   <h4 id="HarmonyLib_AccessTools_FindIncludingInnerTypes__1_System_Type_System_Func_System_Type___0__" data-uid="HarmonyLib.AccessTools.FindIncludingInnerTypes``1(System.Type,System.Func{System.Type,``0})">FindIncludingInnerTypes&lt;T&gt;(Type, Func&lt;Type, T&gt;)</h4>
-  <div class="markdown level1 summary"><p>Applies a function going into inner types and stops at the first non null result</p>
+  <div class="markdown level1 summary"><p>Applies a function going into inner types and stops at the first non-<code>null</code> result</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -1309,7 +1513,7 @@
     <tbody>
       <tr>
         <td><span class="xref">T</span></td>
-        <td><p>Returns the first non null result or null with no match</p>
+        <td><p>The first non-<code>null</code> result, or <code>null</code> if no match</p>
 </td>
       </tr>
     </tbody>
@@ -1335,7 +1539,7 @@
     <a href="https://github.com/pardeike/Harmony/new/master/apiSpec/new?filename=HarmonyLib_AccessTools_FirstConstructor_System_Type_System_Func_System_Reflection_ConstructorInfo_System_Boolean__.md&amp;value=---%0Auid%3A%20HarmonyLib.AccessTools.FirstConstructor(System.Type%2CSystem.Func%7BSystem.Reflection.ConstructorInfo%2CSystem.Boolean%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L711">View Source</a>
+    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L718">View Source</a>
   </span>
   <a id="HarmonyLib_AccessTools_FirstConstructor_" data-uid="HarmonyLib.AccessTools.FirstConstructor*"></a>
   <h4 id="HarmonyLib_AccessTools_FirstConstructor_System_Type_System_Func_System_Reflection_ConstructorInfo_System_Boolean__" data-uid="HarmonyLib.AccessTools.FirstConstructor(System.Type,System.Func{System.Reflection.ConstructorInfo,System.Boolean})">FirstConstructor(Type, Func&lt;ConstructorInfo, Boolean&gt;)</h4>
@@ -1391,7 +1595,7 @@
     <a href="https://github.com/pardeike/Harmony/new/master/apiSpec/new?filename=HarmonyLib_AccessTools_FirstInner_System_Type_System_Func_System_Type_System_Boolean__.md&amp;value=---%0Auid%3A%20HarmonyLib.AccessTools.FirstInner(System.Type%2CSystem.Func%7BSystem.Type%2CSystem.Boolean%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L667">View Source</a>
+    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L674">View Source</a>
   </span>
   <a id="HarmonyLib_AccessTools_FirstInner_" data-uid="HarmonyLib.AccessTools.FirstInner*"></a>
   <h4 id="HarmonyLib_AccessTools_FirstInner_System_Type_System_Func_System_Type_System_Boolean__" data-uid="HarmonyLib.AccessTools.FirstInner(System.Type,System.Func{System.Type,System.Boolean})">FirstInner(Type, Func&lt;Type, Boolean&gt;)</h4>
@@ -1447,7 +1651,7 @@
     <a href="https://github.com/pardeike/Harmony/new/master/apiSpec/new?filename=HarmonyLib_AccessTools_FirstMethod_System_Type_System_Func_System_Reflection_MethodInfo_System_Boolean__.md&amp;value=---%0Auid%3A%20HarmonyLib.AccessTools.FirstMethod(System.Type%2CSystem.Func%7BSystem.Reflection.MethodInfo%2CSystem.Boolean%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L689">View Source</a>
+    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L696">View Source</a>
   </span>
   <a id="HarmonyLib_AccessTools_FirstMethod_" data-uid="HarmonyLib.AccessTools.FirstMethod*"></a>
   <h4 id="HarmonyLib_AccessTools_FirstMethod_System_Type_System_Func_System_Reflection_MethodInfo_System_Boolean__" data-uid="HarmonyLib.AccessTools.FirstMethod(System.Type,System.Func{System.Reflection.MethodInfo,System.Boolean})">FirstMethod(Type, Func&lt;MethodInfo, Boolean&gt;)</h4>
@@ -1503,7 +1707,7 @@
     <a href="https://github.com/pardeike/Harmony/new/master/apiSpec/new?filename=HarmonyLib_AccessTools_FirstProperty_System_Type_System_Func_System_Reflection_PropertyInfo_System_Boolean__.md&amp;value=---%0Auid%3A%20HarmonyLib.AccessTools.FirstProperty(System.Type%2CSystem.Func%7BSystem.Reflection.PropertyInfo%2CSystem.Boolean%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L733">View Source</a>
+    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L740">View Source</a>
   </span>
   <a id="HarmonyLib_AccessTools_FirstProperty_" data-uid="HarmonyLib.AccessTools.FirstProperty*"></a>
   <h4 id="HarmonyLib_AccessTools_FirstProperty_System_Type_System_Func_System_Reflection_PropertyInfo_System_Boolean__" data-uid="HarmonyLib.AccessTools.FirstProperty(System.Type,System.Func{System.Reflection.PropertyInfo,System.Boolean})">FirstProperty(Type, Func&lt;PropertyInfo, Boolean&gt;)</h4>
@@ -1559,7 +1763,7 @@
     <a href="https://github.com/pardeike/Harmony/new/master/apiSpec/new?filename=HarmonyLib_AccessTools_GetDeclaredConstructors_System_Type_System_Nullable_System_Boolean__.md&amp;value=---%0Auid%3A%20HarmonyLib.AccessTools.GetDeclaredConstructors(System.Type%2CSystem.Nullable%7BSystem.Boolean%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L564">View Source</a>
+    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L571">View Source</a>
   </span>
   <a id="HarmonyLib_AccessTools_GetDeclaredConstructors_" data-uid="HarmonyLib.AccessTools.GetDeclaredConstructors*"></a>
   <h4 id="HarmonyLib_AccessTools_GetDeclaredConstructors_System_Type_System_Nullable_System_Boolean__" data-uid="HarmonyLib.AccessTools.GetDeclaredConstructors(System.Type,System.Nullable{System.Boolean})">GetDeclaredConstructors(Type, Nullable&lt;Boolean&gt;)</h4>
@@ -1615,7 +1819,7 @@
     <a href="https://github.com/pardeike/Harmony/new/master/apiSpec/new?filename=HarmonyLib_AccessTools_GetDeclaredFields_System_Type_.md&amp;value=---%0Auid%3A%20HarmonyLib.AccessTools.GetDeclaredFields(System.Type)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L612">View Source</a>
+    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L619">View Source</a>
   </span>
   <a id="HarmonyLib_AccessTools_GetDeclaredFields_" data-uid="HarmonyLib.AccessTools.GetDeclaredFields*"></a>
   <h4 id="HarmonyLib_AccessTools_GetDeclaredFields_System_Type_" data-uid="HarmonyLib.AccessTools.GetDeclaredFields(System.Type)">GetDeclaredFields(Type)</h4>
@@ -1665,7 +1869,7 @@
     <a href="https://github.com/pardeike/Harmony/new/master/apiSpec/new?filename=HarmonyLib_AccessTools_GetDeclaredMember__1___0_.md&amp;value=---%0Auid%3A%20HarmonyLib.AccessTools.GetDeclaredMember%60%601(%60%600)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L508">View Source</a>
+    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L515">View Source</a>
   </span>
   <a id="HarmonyLib_AccessTools_GetDeclaredMember_" data-uid="HarmonyLib.AccessTools.GetDeclaredMember*"></a>
   <h4 id="HarmonyLib_AccessTools_GetDeclaredMember__1___0_" data-uid="HarmonyLib.AccessTools.GetDeclaredMember``1(``0)">GetDeclaredMember&lt;T&gt;(T)</h4>
@@ -1731,7 +1935,7 @@
     <a href="https://github.com/pardeike/Harmony/new/master/apiSpec/new?filename=HarmonyLib_AccessTools_GetDeclaredMethods_System_Type_.md&amp;value=---%0Auid%3A%20HarmonyLib.AccessTools.GetDeclaredMethods(System.Type)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L582">View Source</a>
+    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L589">View Source</a>
   </span>
   <a id="HarmonyLib_AccessTools_GetDeclaredMethods_" data-uid="HarmonyLib.AccessTools.GetDeclaredMethods*"></a>
   <h4 id="HarmonyLib_AccessTools_GetDeclaredMethods_System_Type_" data-uid="HarmonyLib.AccessTools.GetDeclaredMethods(System.Type)">GetDeclaredMethods(Type)</h4>
@@ -1781,7 +1985,7 @@
     <a href="https://github.com/pardeike/Harmony/new/master/apiSpec/new?filename=HarmonyLib_AccessTools_GetDeclaredProperties_System_Type_.md&amp;value=---%0Auid%3A%20HarmonyLib.AccessTools.GetDeclaredProperties(System.Type)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L597">View Source</a>
+    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L604">View Source</a>
   </span>
   <a id="HarmonyLib_AccessTools_GetDeclaredProperties_" data-uid="HarmonyLib.AccessTools.GetDeclaredProperties*"></a>
   <h4 id="HarmonyLib_AccessTools_GetDeclaredProperties_System_Type_" data-uid="HarmonyLib.AccessTools.GetDeclaredProperties(System.Type)">GetDeclaredProperties(Type)</h4>
@@ -1831,7 +2035,7 @@
     <a href="https://github.com/pardeike/Harmony/new/master/apiSpec/new?filename=HarmonyLib_AccessTools_GetDefaultValue_System_Type_.md&amp;value=---%0Auid%3A%20HarmonyLib.AccessTools.GetDefaultValue(System.Type)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L995">View Source</a>
+    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L1646">View Source</a>
   </span>
   <a id="HarmonyLib_AccessTools_GetDefaultValue_" data-uid="HarmonyLib.AccessTools.GetDefaultValue*"></a>
   <h4 id="HarmonyLib_AccessTools_GetDefaultValue_System_Type_" data-uid="HarmonyLib.AccessTools.GetDefaultValue(System.Type)">GetDefaultValue(Type)</h4>
@@ -1881,7 +2085,7 @@
     <a href="https://github.com/pardeike/Harmony/new/master/apiSpec/new?filename=HarmonyLib_AccessTools_GetFieldNames_System_Object_.md&amp;value=---%0Auid%3A%20HarmonyLib.AccessTools.GetFieldNames(System.Object)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L433">View Source</a>
+    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L445">View Source</a>
   </span>
   <a id="HarmonyLib_AccessTools_GetFieldNames_" data-uid="HarmonyLib.AccessTools.GetFieldNames*"></a>
   <h4 id="HarmonyLib_AccessTools_GetFieldNames_System_Object_" data-uid="HarmonyLib.AccessTools.GetFieldNames(System.Object)">GetFieldNames(Object)</h4>
@@ -1931,7 +2135,7 @@
     <a href="https://github.com/pardeike/Harmony/new/master/apiSpec/new?filename=HarmonyLib_AccessTools_GetFieldNames_System_Type_.md&amp;value=---%0Auid%3A%20HarmonyLib.AccessTools.GetFieldNames(System.Type)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L418">View Source</a>
+    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L430">View Source</a>
   </span>
   <a id="HarmonyLib_AccessTools_GetFieldNames_" data-uid="HarmonyLib.AccessTools.GetFieldNames*"></a>
   <h4 id="HarmonyLib_AccessTools_GetFieldNames_System_Type_" data-uid="HarmonyLib.AccessTools.GetFieldNames(System.Type)">GetFieldNames(Type)</h4>
@@ -1981,7 +2185,7 @@
     <a href="https://github.com/pardeike/Harmony/new/master/apiSpec/new?filename=HarmonyLib_AccessTools_GetMethodNames_System_Object_.md&amp;value=---%0Auid%3A%20HarmonyLib.AccessTools.GetMethodNames(System.Object)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L403">View Source</a>
+    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L415">View Source</a>
   </span>
   <a id="HarmonyLib_AccessTools_GetMethodNames_" data-uid="HarmonyLib.AccessTools.GetMethodNames*"></a>
   <h4 id="HarmonyLib_AccessTools_GetMethodNames_System_Object_" data-uid="HarmonyLib.AccessTools.GetMethodNames(System.Object)">GetMethodNames(Object)</h4>
@@ -2031,7 +2235,7 @@
     <a href="https://github.com/pardeike/Harmony/new/master/apiSpec/new?filename=HarmonyLib_AccessTools_GetMethodNames_System_Type_.md&amp;value=---%0Auid%3A%20HarmonyLib.AccessTools.GetMethodNames(System.Type)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L388">View Source</a>
+    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L400">View Source</a>
   </span>
   <a id="HarmonyLib_AccessTools_GetMethodNames_" data-uid="HarmonyLib.AccessTools.GetMethodNames*"></a>
   <h4 id="HarmonyLib_AccessTools_GetMethodNames_System_Type_" data-uid="HarmonyLib.AccessTools.GetMethodNames(System.Type)">GetMethodNames(Type)</h4>
@@ -2081,7 +2285,7 @@
     <a href="https://github.com/pardeike/Harmony/new/master/apiSpec/new?filename=HarmonyLib_AccessTools_GetOutsideCaller.md&amp;value=---%0Auid%3A%20HarmonyLib.AccessTools.GetOutsideCaller%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L943">View Source</a>
+    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L1583">View Source</a>
   </span>
   <a id="HarmonyLib_AccessTools_GetOutsideCaller_" data-uid="HarmonyLib.AccessTools.GetOutsideCaller*"></a>
   <h4 id="HarmonyLib_AccessTools_GetOutsideCaller" data-uid="HarmonyLib.AccessTools.GetOutsideCaller">GetOutsideCaller()</h4>
@@ -2113,7 +2317,7 @@
     <a href="https://github.com/pardeike/Harmony/new/master/apiSpec/new?filename=HarmonyLib_AccessTools_GetPropertyNames_System_Object_.md&amp;value=---%0Auid%3A%20HarmonyLib.AccessTools.GetPropertyNames(System.Object)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L463">View Source</a>
+    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L475">View Source</a>
   </span>
   <a id="HarmonyLib_AccessTools_GetPropertyNames_" data-uid="HarmonyLib.AccessTools.GetPropertyNames*"></a>
   <h4 id="HarmonyLib_AccessTools_GetPropertyNames_System_Object_" data-uid="HarmonyLib.AccessTools.GetPropertyNames(System.Object)">GetPropertyNames(Object)</h4>
@@ -2163,7 +2367,7 @@
     <a href="https://github.com/pardeike/Harmony/new/master/apiSpec/new?filename=HarmonyLib_AccessTools_GetPropertyNames_System_Type_.md&amp;value=---%0Auid%3A%20HarmonyLib.AccessTools.GetPropertyNames(System.Type)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L448">View Source</a>
+    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L460">View Source</a>
   </span>
   <a id="HarmonyLib_AccessTools_GetPropertyNames_" data-uid="HarmonyLib.AccessTools.GetPropertyNames*"></a>
   <h4 id="HarmonyLib_AccessTools_GetPropertyNames_System_Type_" data-uid="HarmonyLib.AccessTools.GetPropertyNames(System.Type)">GetPropertyNames(Type)</h4>
@@ -2213,7 +2417,7 @@
     <a href="https://github.com/pardeike/Harmony/new/master/apiSpec/new?filename=HarmonyLib_AccessTools_GetReturnedType_System_Reflection_MethodBase_.md&amp;value=---%0Auid%3A%20HarmonyLib.AccessTools.GetReturnedType(System.Reflection.MethodBase)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L627">View Source</a>
+    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L634">View Source</a>
   </span>
   <a id="HarmonyLib_AccessTools_GetReturnedType_" data-uid="HarmonyLib.AccessTools.GetReturnedType*"></a>
   <h4 id="HarmonyLib_AccessTools_GetReturnedType_System_Reflection_MethodBase_" data-uid="HarmonyLib.AccessTools.GetReturnedType(System.Reflection.MethodBase)">GetReturnedType(MethodBase)</h4>
@@ -2263,7 +2467,7 @@
     <a href="https://github.com/pardeike/Harmony/new/master/apiSpec/new?filename=HarmonyLib_AccessTools_GetTypes_System_Object___.md&amp;value=---%0Auid%3A%20HarmonyLib.AccessTools.GetTypes(System.Object%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L754">View Source</a>
+    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L761">View Source</a>
   </span>
   <a id="HarmonyLib_AccessTools_GetTypes_" data-uid="HarmonyLib.AccessTools.GetTypes*"></a>
   <h4 id="HarmonyLib_AccessTools_GetTypes_System_Object___" data-uid="HarmonyLib.AccessTools.GetTypes(System.Object[])">GetTypes(Object[])</h4>
@@ -2313,11 +2517,11 @@
     <a href="https://github.com/pardeike/Harmony/new/master/apiSpec/new?filename=HarmonyLib_AccessTools_GetTypesFromAssembly_System_Reflection_Assembly_.md&amp;value=---%0Auid%3A%20HarmonyLib.AccessTools.GetTypesFromAssembly(System.Reflection.Assembly)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L57">View Source</a>
+    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L66">View Source</a>
   </span>
   <a id="HarmonyLib_AccessTools_GetTypesFromAssembly_" data-uid="HarmonyLib.AccessTools.GetTypesFromAssembly*"></a>
   <h4 id="HarmonyLib_AccessTools_GetTypesFromAssembly_System_Reflection_Assembly_" data-uid="HarmonyLib.AccessTools.GetTypesFromAssembly(System.Reflection.Assembly)">GetTypesFromAssembly(Assembly)</h4>
-  <div class="markdown level1 summary"><p>Gets all type by name from a given assembly. This is a wrapper that respects different .NET versions</p>
+  <div class="markdown level1 summary"><p>Gets all successfully loaded types from a given assembly</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -2358,12 +2562,17 @@
       </tr>
     </tbody>
   </table>
+  <h5 id="HarmonyLib_AccessTools_GetTypesFromAssembly_System_Reflection_Assembly__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>This calls and returns <span class="xref">System.Reflection.Assembly.GetTypes</span>, while catching any thrown <span class="xref">System.Reflection.ReflectionTypeLoadException</span>.
+If such an exception is thrown, returns the successfully loaded types (<span class="xref">System.Reflection.ReflectionTypeLoadException.Types</span>,
+filtered for non-null values).</p>
+</div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
     <a href="https://github.com/pardeike/Harmony/new/master/apiSpec/new?filename=HarmonyLib_AccessTools_GetUnderlyingType_System_Reflection_MemberInfo_.md&amp;value=---%0Auid%3A%20HarmonyLib.AccessTools.GetUnderlyingType(System.Reflection.MemberInfo)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L478">View Source</a>
+    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L490">View Source</a>
   </span>
   <a id="HarmonyLib_AccessTools_GetUnderlyingType_" data-uid="HarmonyLib.AccessTools.GetUnderlyingType*"></a>
   <h4 id="HarmonyLib_AccessTools_GetUnderlyingType_System_Reflection_MemberInfo_" data-uid="HarmonyLib.AccessTools.GetUnderlyingType(System.Reflection.MemberInfo)">GetUnderlyingType(MemberInfo)</h4>
@@ -2410,10 +2619,85 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
+    <a href="https://github.com/pardeike/Harmony/new/master/apiSpec/new?filename=HarmonyLib_AccessTools_HarmonyDelegate__1_System_Object_.md&amp;value=---%0Auid%3A%20HarmonyLib.AccessTools.HarmonyDelegate%60%601(System.Object)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L1569">View Source</a>
+  </span>
+  <a id="HarmonyLib_AccessTools_HarmonyDelegate_" data-uid="HarmonyLib.AccessTools.HarmonyDelegate*"></a>
+  <h4 id="HarmonyLib_AccessTools_HarmonyDelegate__1_System_Object_" data-uid="HarmonyLib.AccessTools.HarmonyDelegate``1(System.Object)">HarmonyDelegate&lt;DelegateType&gt;(Object)</h4>
+  <div class="markdown level1 summary"><p>Creates a delegate for a given delegate definition, attributed with [<a class="xref" href="HarmonyLib.HarmonyDelegate.html">HarmonyDelegate</a>]</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static DelegateType HarmonyDelegate&lt;DelegateType&gt;(object instance = null)
+    where DelegateType : Delegate</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><span class="parametername">instance</span></td>
+        <td><p>Only applies for instance methods. If <code>null</code> (default), returned delegate is an open (a.k.a. unbound) instance delegate
+where an instance is supplied as the first argument to the delegate invocation; else, delegate is a closed (a.k.a. bound)
+instance delegate where the delegate invocation always applies to the given <code data-dev-comment-type="paramref" class="paramref">instance</code>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">DelegateType</span></td>
+        <td><p>A delegate of given <code data-dev-comment-type="typeparamref" class="typeparamref">DelegateType</code> to the method specified via [<a class="xref" href="HarmonyLib.HarmonyDelegate.html">HarmonyDelegate</a>]
+attributes on <code data-dev-comment-type="typeparamref" class="typeparamref">DelegateType</code></p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">DelegateType</span></td>
+        <td><p>The delegate Type, attributed with [<a class="xref" href="HarmonyLib.HarmonyDelegate.html">HarmonyDelegate</a>]</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="HarmonyLib_AccessTools_HarmonyDelegate__1_System_Object__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>This calls <a class="xref" href="HarmonyLib.AccessTools.html#HarmonyLib_AccessTools_MethodDelegate__1_System_Reflection_MethodInfo_System_Object_System_Boolean_">MethodDelegate&lt;DelegateType&gt;(MethodInfo, Object, Boolean)</a> with the <code>method</code> and <code>virtualCall</code> arguments
+determined from the [<a class="xref" href="HarmonyLib.HarmonyDelegate.html">HarmonyDelegate</a>] attributes on <code data-dev-comment-type="typeparamref" class="typeparamref">DelegateType</code>,
+and the given <code data-dev-comment-type="paramref" class="paramref">instance</code> (for closed instance delegates).</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
     <a href="https://github.com/pardeike/Harmony/new/master/apiSpec/new?filename=HarmonyLib_AccessTools_Inner_System_Type_System_String_.md&amp;value=---%0Auid%3A%20HarmonyLib.AccessTools.Inner(System.Type%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L645">View Source</a>
+    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L652">View Source</a>
   </span>
   <a id="HarmonyLib_AccessTools_Inner_" data-uid="HarmonyLib.AccessTools.Inner*"></a>
   <h4 id="HarmonyLib_AccessTools_Inner_System_Type_System_String_" data-uid="HarmonyLib.AccessTools.Inner(System.Type,System.String)">Inner(Type, String)</h4>
@@ -2469,7 +2753,7 @@
     <a href="https://github.com/pardeike/Harmony/new/master/apiSpec/new?filename=HarmonyLib_AccessTools_IsClass_System_Type_.md&amp;value=---%0Auid%3A%20HarmonyLib.AccessTools.IsClass(System.Type)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L1131">View Source</a>
+    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L1809">View Source</a>
   </span>
   <a id="HarmonyLib_AccessTools_IsClass_" data-uid="HarmonyLib.AccessTools.IsClass*"></a>
   <h4 id="HarmonyLib_AccessTools_IsClass_System_Type_" data-uid="HarmonyLib.AccessTools.IsClass(System.Type)">IsClass(Type)</h4>
@@ -2519,7 +2803,7 @@
     <a href="https://github.com/pardeike/Harmony/new/master/apiSpec/new?filename=HarmonyLib_AccessTools_IsDeclaredMember__1___0_.md&amp;value=---%0Auid%3A%20HarmonyLib.AccessTools.IsDeclaredMember%60%601(%60%600)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L499">View Source</a>
+    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L506">View Source</a>
   </span>
   <a id="HarmonyLib_AccessTools_IsDeclaredMember_" data-uid="HarmonyLib.AccessTools.IsDeclaredMember*"></a>
   <h4 id="HarmonyLib_AccessTools_IsDeclaredMember__1___0_" data-uid="HarmonyLib.AccessTools.IsDeclaredMember``1(``0)">IsDeclaredMember&lt;T&gt;(T)</h4>
@@ -2585,7 +2869,7 @@
     <a href="https://github.com/pardeike/Harmony/new/master/apiSpec/new?filename=HarmonyLib_AccessTools_IsFloatingPoint_System_Type_.md&amp;value=---%0Auid%3A%20HarmonyLib.AccessTools.IsFloatingPoint(System.Type)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L1171">View Source</a>
+    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L1849">View Source</a>
   </span>
   <a id="HarmonyLib_AccessTools_IsFloatingPoint_" data-uid="HarmonyLib.AccessTools.IsFloatingPoint*"></a>
   <h4 id="HarmonyLib_AccessTools_IsFloatingPoint_System_Type_" data-uid="HarmonyLib.AccessTools.IsFloatingPoint(System.Type)">IsFloatingPoint(Type)</h4>
@@ -2635,7 +2919,7 @@
     <a href="https://github.com/pardeike/Harmony/new/master/apiSpec/new?filename=HarmonyLib_AccessTools_IsInteger_System_Type_.md&amp;value=---%0Auid%3A%20HarmonyLib.AccessTools.IsInteger(System.Type)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L1149">View Source</a>
+    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L1827">View Source</a>
   </span>
   <a id="HarmonyLib_AccessTools_IsInteger_" data-uid="HarmonyLib.AccessTools.IsInteger*"></a>
   <h4 id="HarmonyLib_AccessTools_IsInteger_System_Type_" data-uid="HarmonyLib.AccessTools.IsInteger(System.Type)">IsInteger(Type)</h4>
@@ -2685,7 +2969,7 @@
     <a href="https://github.com/pardeike/Harmony/new/master/apiSpec/new?filename=HarmonyLib_AccessTools_IsNumber_System_Type_.md&amp;value=---%0Auid%3A%20HarmonyLib.AccessTools.IsNumber(System.Type)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L1188">View Source</a>
+    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L1866">View Source</a>
   </span>
   <a id="HarmonyLib_AccessTools_IsNumber_" data-uid="HarmonyLib.AccessTools.IsNumber*"></a>
   <h4 id="HarmonyLib_AccessTools_IsNumber_System_Type_" data-uid="HarmonyLib.AccessTools.IsNumber(System.Type)">IsNumber(Type)</h4>
@@ -2735,7 +3019,7 @@
     <a href="https://github.com/pardeike/Harmony/new/master/apiSpec/new?filename=HarmonyLib_AccessTools_IsOfNullableType__1___0_.md&amp;value=---%0Auid%3A%20HarmonyLib.AccessTools.IsOfNullableType%60%601(%60%600)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L1208">View Source</a>
+    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L1886">View Source</a>
   </span>
   <a id="HarmonyLib_AccessTools_IsOfNullableType_" data-uid="HarmonyLib.AccessTools.IsOfNullableType*"></a>
   <h4 id="HarmonyLib_AccessTools_IsOfNullableType__1___0_" data-uid="HarmonyLib.AccessTools.IsOfNullableType``1(``0)">IsOfNullableType&lt;T&gt;(T)</h4>
@@ -2798,10 +3082,60 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
+    <a href="https://github.com/pardeike/Harmony/new/master/apiSpec/new?filename=HarmonyLib_AccessTools_IsStatic_System_Reflection_MemberInfo_.md&amp;value=---%0Auid%3A%20HarmonyLib.AccessTools.IsStatic(System.Reflection.MemberInfo)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L1896">View Source</a>
+  </span>
+  <a id="HarmonyLib_AccessTools_IsStatic_" data-uid="HarmonyLib.AccessTools.IsStatic*"></a>
+  <h4 id="HarmonyLib_AccessTools_IsStatic_System_Reflection_MemberInfo_" data-uid="HarmonyLib.AccessTools.IsStatic(System.Reflection.MemberInfo)">IsStatic(MemberInfo)</h4>
+  <div class="markdown level1 summary"><p>Tests whether a type or member is static, as defined in C#</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool IsStatic(MemberInfo member)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Reflection.MemberInfo</span></td>
+        <td><span class="parametername">member</span></td>
+        <td><p>The type or member</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>True if the type or member is static</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
     <a href="https://github.com/pardeike/Harmony/new/master/apiSpec/new?filename=HarmonyLib_AccessTools_IsStruct_System_Type_.md&amp;value=---%0Auid%3A%20HarmonyLib.AccessTools.IsStruct(System.Type)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L1122">View Source</a>
+    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L1800">View Source</a>
   </span>
   <a id="HarmonyLib_AccessTools_IsStruct_" data-uid="HarmonyLib.AccessTools.IsStruct*"></a>
   <h4 id="HarmonyLib_AccessTools_IsStruct_System_Type_" data-uid="HarmonyLib.AccessTools.IsStruct(System.Type)">IsStruct(Type)</h4>
@@ -2851,7 +3185,7 @@
     <a href="https://github.com/pardeike/Harmony/new/master/apiSpec/new?filename=HarmonyLib_AccessTools_IsValue_System_Type_.md&amp;value=---%0Auid%3A%20HarmonyLib.AccessTools.IsValue(System.Type)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L1140">View Source</a>
+    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L1818">View Source</a>
   </span>
   <a id="HarmonyLib_AccessTools_IsValue_" data-uid="HarmonyLib.AccessTools.IsValue*"></a>
   <h4 id="HarmonyLib_AccessTools_IsValue_System_Type_" data-uid="HarmonyLib.AccessTools.IsValue(System.Type)">IsValue(Type)</h4>
@@ -2901,7 +3235,7 @@
     <a href="https://github.com/pardeike/Harmony/new/master/apiSpec/new?filename=HarmonyLib_AccessTools_IsVoid_System_Type_.md&amp;value=---%0Auid%3A%20HarmonyLib.AccessTools.IsVoid(System.Type)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L1197">View Source</a>
+    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L1875">View Source</a>
   </span>
   <a id="HarmonyLib_AccessTools_IsVoid_" data-uid="HarmonyLib.AccessTools.IsVoid*"></a>
   <h4 id="HarmonyLib_AccessTools_IsVoid_System_Type_" data-uid="HarmonyLib.AccessTools.IsVoid(System.Type)">IsVoid(Type)</h4>
@@ -2951,7 +3285,7 @@
     <a href="https://github.com/pardeike/Harmony/new/master/apiSpec/new?filename=HarmonyLib_AccessTools_MakeDeepCopy_System_Object_System_Type_System_Func_System_String_HarmonyLib_Traverse_HarmonyLib_Traverse_System_Object__System_String_.md&amp;value=---%0Auid%3A%20HarmonyLib.AccessTools.MakeDeepCopy(System.Object%2CSystem.Type%2CSystem.Func%7BSystem.String%2CHarmonyLib.Traverse%2CHarmonyLib.Traverse%2CSystem.Object%7D%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L1052">View Source</a>
+    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L1710">View Source</a>
   </span>
   <a id="HarmonyLib_AccessTools_MakeDeepCopy_" data-uid="HarmonyLib.AccessTools.MakeDeepCopy*"></a>
   <h4 id="HarmonyLib_AccessTools_MakeDeepCopy_System_Object_System_Type_System_Func_System_String_HarmonyLib_Traverse_HarmonyLib_Traverse_System_Object__System_String_" data-uid="HarmonyLib.AccessTools.MakeDeepCopy(System.Object,System.Type,System.Func{System.String,HarmonyLib.Traverse,HarmonyLib.Traverse,System.Object},System.String)">MakeDeepCopy(Object, Type, Func&lt;String, Traverse, Traverse, Object&gt;, String)</h4>
@@ -3019,7 +3353,7 @@
     <a href="https://github.com/pardeike/Harmony/new/master/apiSpec/new?filename=HarmonyLib_AccessTools_MakeDeepCopy__1_System_Object_.md&amp;value=---%0Auid%3A%20HarmonyLib.AccessTools.MakeDeepCopy%60%601(System.Object)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L1028">View Source</a>
+    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L1686">View Source</a>
   </span>
   <a id="HarmonyLib_AccessTools_MakeDeepCopy_" data-uid="HarmonyLib.AccessTools.MakeDeepCopy*"></a>
   <h4 id="HarmonyLib_AccessTools_MakeDeepCopy__1_System_Object_" data-uid="HarmonyLib.AccessTools.MakeDeepCopy``1(System.Object)">MakeDeepCopy&lt;T&gt;(Object)</h4>
@@ -3086,7 +3420,7 @@
     <a href="https://github.com/pardeike/Harmony/new/master/apiSpec/new?filename=HarmonyLib_AccessTools_MakeDeepCopy__1_System_Object___0__System_Func_System_String_HarmonyLib_Traverse_HarmonyLib_Traverse_System_Object__System_String_.md&amp;value=---%0Auid%3A%20HarmonyLib.AccessTools.MakeDeepCopy%60%601(System.Object%2C%60%600%40%2CSystem.Func%7BSystem.String%2CHarmonyLib.Traverse%2CHarmonyLib.Traverse%2CSystem.Object%7D%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L1040">View Source</a>
+    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L1698">View Source</a>
   </span>
   <a id="HarmonyLib_AccessTools_MakeDeepCopy_" data-uid="HarmonyLib.AccessTools.MakeDeepCopy*"></a>
   <h4 id="HarmonyLib_AccessTools_MakeDeepCopy__1_System_Object___0__System_Func_System_String_HarmonyLib_Traverse_HarmonyLib_Traverse_System_Object__System_String_" data-uid="HarmonyLib.AccessTools.MakeDeepCopy``1(System.Object,``0@,System.Func{System.String,HarmonyLib.Traverse,HarmonyLib.Traverse,System.Object},System.String)">MakeDeepCopy&lt;T&gt;(Object, out T, Func&lt;String, Traverse, Traverse, Object&gt;, String)</h4>
@@ -3154,7 +3488,7 @@
     <a href="https://github.com/pardeike/Harmony/new/master/apiSpec/new?filename=HarmonyLib_AccessTools_Method_System_String_System_Type___System_Type___.md&amp;value=---%0Auid%3A%20HarmonyLib.AccessTools.Method(System.String%2CSystem.Type%5B%5D%2CSystem.Type%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L368">View Source</a>
+    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L380">View Source</a>
   </span>
   <a id="HarmonyLib_AccessTools_Method_" data-uid="HarmonyLib.AccessTools.Method*"></a>
   <h4 id="HarmonyLib_AccessTools_Method_System_String_System_Type___System_Type___" data-uid="HarmonyLib.AccessTools.Method(System.String,System.Type[],System.Type[])">Method(String, Type[], Type[])</h4>
@@ -3178,7 +3512,7 @@
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">typeColonMethodname</span></td>
-        <td><p>The full name like <code>Namespace.Type1.Type2:MethodName</code> of the type where the method is declared</p>
+        <td><p>The target method in the form <code>TypeFullName:MethodName</code>, where the type name matches a form recognized by <a href="https://docs.microsoft.com/en-us/dotnet/api/system.type.gettype">Type.GetType</a> like <code>Some.Namespace.Type</code>.</p>
 </td>
       </tr>
       <tr>
@@ -3216,7 +3550,7 @@
     <a href="https://github.com/pardeike/Harmony/new/master/apiSpec/new?filename=HarmonyLib_AccessTools_Method_System_Type_System_String_System_Type___System_Type___.md&amp;value=---%0Auid%3A%20HarmonyLib.AccessTools.Method(System.Type%2CSystem.String%2CSystem.Type%5B%5D%2CSystem.Type%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L314">View Source</a>
+    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L327">View Source</a>
   </span>
   <a id="HarmonyLib_AccessTools_Method_" data-uid="HarmonyLib.AccessTools.Method*"></a>
   <h4 id="HarmonyLib_AccessTools_Method_System_Type_System_String_System_Type___System_Type___" data-uid="HarmonyLib.AccessTools.Method(System.Type,System.String,System.Type[],System.Type[])">Method(Type, String, Type[], Type[])</h4>
@@ -3281,10 +3615,104 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
+    <a href="https://github.com/pardeike/Harmony/new/master/apiSpec/new?filename=HarmonyLib_AccessTools_MethodDelegate__1_System_Reflection_MethodInfo_System_Object_System_Boolean_.md&amp;value=---%0Auid%3A%20HarmonyLib.AccessTools.MethodDelegate%60%601(System.Reflection.MethodInfo%2CSystem.Object%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L1421">View Source</a>
+  </span>
+  <a id="HarmonyLib_AccessTools_MethodDelegate_" data-uid="HarmonyLib.AccessTools.MethodDelegate*"></a>
+  <h4 id="HarmonyLib_AccessTools_MethodDelegate__1_System_Reflection_MethodInfo_System_Object_System_Boolean_" data-uid="HarmonyLib.AccessTools.MethodDelegate``1(System.Reflection.MethodInfo,System.Object,System.Boolean)">MethodDelegate&lt;DelegateType&gt;(MethodInfo, Object, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Creates a delegate to a given method</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static DelegateType MethodDelegate&lt;DelegateType&gt;(MethodInfo method, object instance = null, bool virtualCall = true)
+    where DelegateType : Delegate</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Reflection.MethodInfo</span></td>
+        <td><span class="parametername">method</span></td>
+        <td><p>The method to create a delegate from.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><span class="parametername">instance</span></td>
+        <td><p>Only applies for instance methods. If <code>null</code> (default), returned delegate is an open (a.k.a. unbound) instance delegate
+where an instance is supplied as the first argument to the delegate invocation; else, delegate is a closed (a.k.a. bound)
+instance delegate where the delegate invocation always applies to the given <code data-dev-comment-type="paramref" class="paramref">instance</code>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">virtualCall</span></td>
+        <td><p>Only applies for instance methods. If <code>true</code> (default) and <code data-dev-comment-type="paramref" class="paramref">method</code> is virtual, invocation of the delegate
+calls the instance method virtually (the instance type's most-derived/overriden implementation of the method is called);
+else, invocation of the delegate calls the exact specified <code data-dev-comment-type="paramref" class="paramref">method</code> (this is useful for calling base class methods)
+Note: if <code>false</code> and <code data-dev-comment-type="paramref" class="paramref">method</code> is an interface method, an ArgumentException is thrown.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">DelegateType</span></td>
+        <td><p>A delegate of given <code data-dev-comment-type="typeparamref" class="typeparamref">DelegateType</code> to given <code data-dev-comment-type="paramref" class="paramref">method</code></p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">DelegateType</span></td>
+        <td><p>The delegate Type</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="HarmonyLib_AccessTools_MethodDelegate__1_System_Reflection_MethodInfo_System_Object_System_Boolean__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>
+Delegate invocation is more performant and more convenient to use than <span class="xref">System.Reflection.MethodBase.Invoke(System.Object,System.Object[])</span>
+at a one-time setup cost.
+</p>
+<p>
+Works for both type of static and instance methods, both open and closed (a.k.a. unbound and bound) instance methods,
+and both class and struct methods.
+</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
     <a href="https://github.com/pardeike/Harmony/new/master/apiSpec/new?filename=HarmonyLib_AccessTools_Property_System_Type_System_String_.md&amp;value=---%0Auid%3A%20HarmonyLib.AccessTools.Property(System.Type%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L227">View Source</a>
+    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L240">View Source</a>
   </span>
   <a id="HarmonyLib_AccessTools_Property_" data-uid="HarmonyLib.AccessTools.Property*"></a>
   <h4 id="HarmonyLib_AccessTools_Property_System_Type_System_String_" data-uid="HarmonyLib.AccessTools.Property(System.Type,System.String)">Property(Type, String)</h4>
@@ -3340,7 +3768,7 @@
     <a href="https://github.com/pardeike/Harmony/new/master/apiSpec/new?filename=HarmonyLib_AccessTools_PropertyGetter_System_Type_System_String_.md&amp;value=---%0Auid%3A%20HarmonyLib.AccessTools.PropertyGetter(System.Type%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L252">View Source</a>
+    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L265">View Source</a>
   </span>
   <a id="HarmonyLib_AccessTools_PropertyGetter_" data-uid="HarmonyLib.AccessTools.PropertyGetter*"></a>
   <h4 id="HarmonyLib_AccessTools_PropertyGetter_System_Type_System_String_" data-uid="HarmonyLib.AccessTools.PropertyGetter(System.Type,System.String)">PropertyGetter(Type, String)</h4>
@@ -3396,7 +3824,7 @@
     <a href="https://github.com/pardeike/Harmony/new/master/apiSpec/new?filename=HarmonyLib_AccessTools_PropertySetter_System_Type_System_String_.md&amp;value=---%0Auid%3A%20HarmonyLib.AccessTools.PropertySetter(System.Type%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L262">View Source</a>
+    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L275">View Source</a>
   </span>
   <a id="HarmonyLib_AccessTools_PropertySetter_" data-uid="HarmonyLib.AccessTools.PropertySetter*"></a>
   <h4 id="HarmonyLib_AccessTools_PropertySetter_System_Type_System_String_" data-uid="HarmonyLib.AccessTools.PropertySetter(System.Type,System.String)">PropertySetter(Type, String)</h4>
@@ -3452,7 +3880,7 @@
     <a href="https://github.com/pardeike/Harmony/new/master/apiSpec/new?filename=HarmonyLib_AccessTools_RethrowException_System_Exception_.md&amp;value=---%0Auid%3A%20HarmonyLib.AccessTools.RethrowException(System.Exception)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L964">View Source</a>
+    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L1604">View Source</a>
   </span>
   <a id="HarmonyLib_AccessTools_RethrowException_" data-uid="HarmonyLib.AccessTools.RethrowException*"></a>
   <h4 id="HarmonyLib_AccessTools_RethrowException_System_Exception_" data-uid="HarmonyLib.AccessTools.RethrowException(System.Exception)">RethrowException(Exception)</h4>
@@ -3486,7 +3914,7 @@
     <a href="https://github.com/pardeike/Harmony/new/master/apiSpec/new?filename=HarmonyLib_AccessTools_StaticFieldRefAccess__1_System_Reflection_FieldInfo_.md&amp;value=---%0Auid%3A%20HarmonyLib.AccessTools.StaticFieldRefAccess%60%601(System.Reflection.FieldInfo)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L923">View Source</a>
+    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L1318">View Source</a>
   </span>
   <a id="HarmonyLib_AccessTools_StaticFieldRefAccess_" data-uid="HarmonyLib.AccessTools.StaticFieldRefAccess*"></a>
   <h4 id="HarmonyLib_AccessTools_StaticFieldRefAccess__1_System_Reflection_FieldInfo_" data-uid="HarmonyLib.AccessTools.StaticFieldRefAccess``1(System.Reflection.FieldInfo)">StaticFieldRefAccess&lt;F&gt;(FieldInfo)</h4>
@@ -3526,7 +3954,7 @@
     <tbody>
       <tr>
         <td><a class="xref" href="HarmonyLib.AccessTools.FieldRef-1.html">AccessTools.FieldRef</a>&lt;F&gt;</td>
-        <td><p>A read and writable <a class="xref" href="HarmonyLib.AccessTools.FieldRef-1.html">AccessTools.FieldRef&lt;F&gt;</a> delegate</p>
+        <td><p>A readable/assignable <a class="xref" href="HarmonyLib.AccessTools.FieldRef-1.html">AccessTools.FieldRef&lt;F&gt;</a> delegate</p>
 </td>
       </tr>
     </tbody>
@@ -3542,7 +3970,8 @@
     <tbody>
       <tr>
         <td><span class="parametername">F</span></td>
-        <td><p>The type of the field</p>
+        <td><p>The type of the field; or if the field's type is a reference type (a class or interface, NOT a struct or other value type),
+a type that <span class="xref">System.Type.IsAssignableFrom(System.Type)</span> the field's type</p>
 </td>
       </tr>
     </tbody>
@@ -3552,7 +3981,7 @@
     <a href="https://github.com/pardeike/Harmony/new/master/apiSpec/new?filename=HarmonyLib_AccessTools_StaticFieldRefAccess__1_System_Type_System_String_.md&amp;value=---%0Auid%3A%20HarmonyLib.AccessTools.StaticFieldRefAccess%60%601(System.Type%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L876">View Source</a>
+    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L1268">View Source</a>
   </span>
   <a id="HarmonyLib_AccessTools_StaticFieldRefAccess_" data-uid="HarmonyLib.AccessTools.StaticFieldRefAccess*"></a>
   <h4 id="HarmonyLib_AccessTools_StaticFieldRefAccess__1_System_Type_System_String_" data-uid="HarmonyLib.AccessTools.StaticFieldRefAccess``1(System.Type,System.String)">StaticFieldRefAccess&lt;F&gt;(Type, String)</h4>
@@ -3576,7 +4005,7 @@
       <tr>
         <td><span class="xref">System.Type</span></td>
         <td><span class="parametername">type</span></td>
-        <td><p>The class/type</p>
+        <td><p>The type (can be class or struct) the field is defined in</p>
 </td>
       </tr>
       <tr>
@@ -3598,7 +4027,7 @@
     <tbody>
       <tr>
         <td><span class="xref">F</span></td>
-        <td><p>An readable/assignable object representing the static field</p>
+        <td><p>A readable/assignable reference to the field</p>
 </td>
       </tr>
     </tbody>
@@ -3614,7 +4043,8 @@
     <tbody>
       <tr>
         <td><span class="parametername">F</span></td>
-        <td><p>The type of the field</p>
+        <td><p>The type of the field; or if the field's type is a reference type (a class or interface, NOT a struct or other value type),
+a type that <span class="xref">System.Type.IsAssignableFrom(System.Type)</span> the field's type</p>
 </td>
       </tr>
     </tbody>
@@ -3624,7 +4054,7 @@
     <a href="https://github.com/pardeike/Harmony/new/master/apiSpec/new?filename=HarmonyLib_AccessTools_StaticFieldRefAccess__2_System_Reflection_FieldInfo_.md&amp;value=---%0Auid%3A%20HarmonyLib.AccessTools.StaticFieldRefAccess%60%602(System.Reflection.FieldInfo)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L899">View Source</a>
+    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L1296">View Source</a>
   </span>
   <a id="HarmonyLib_AccessTools_StaticFieldRefAccess_" data-uid="HarmonyLib.AccessTools.StaticFieldRefAccess*"></a>
   <h4 id="HarmonyLib_AccessTools_StaticFieldRefAccess__2_System_Reflection_FieldInfo_" data-uid="HarmonyLib.AccessTools.StaticFieldRefAccess``2(System.Reflection.FieldInfo)">StaticFieldRefAccess&lt;T, F&gt;(FieldInfo)</h4>
@@ -3664,7 +4094,7 @@
     <tbody>
       <tr>
         <td><span class="xref">F</span></td>
-        <td><p>An readable/assignable object representing the static field</p>
+        <td><p>A readable/assignable reference to the field</p>
 </td>
       </tr>
     </tbody>
@@ -3680,22 +4110,27 @@
     <tbody>
       <tr>
         <td><span class="parametername">T</span></td>
-        <td><p>The class the field is defined in or &quot;object&quot; if type cannot be accessed at compile time</p>
+        <td><p>An arbitrary type (by convention, the type the field is defined in)</p>
 </td>
       </tr>
       <tr>
         <td><span class="parametername">F</span></td>
-        <td><p>The type of the field</p>
+        <td><p>The type of the field; or if the field's type is a reference type (a class or interface, NOT a struct or other value type),
+a type that <span class="xref">System.Type.IsAssignableFrom(System.Type)</span> the field's type</p>
 </td>
       </tr>
     </tbody>
   </table>
+  <h5 id="HarmonyLib_AccessTools_StaticFieldRefAccess__2_System_Reflection_FieldInfo__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>The type parameter <code data-dev-comment-type="typeparamref" class="typeparamref">T</code> is only used in exception messaging and to distinguish between this method overload
+and the <a class="xref" href="HarmonyLib.AccessTools.html#HarmonyLib_AccessTools_StaticFieldRefAccess__1_System_Reflection_FieldInfo_">StaticFieldRefAccess&lt;F&gt;(FieldInfo)</a> overload (which returns a <a class="xref" href="HarmonyLib.AccessTools.FieldRef-1.html">AccessTools.FieldRef&lt;F&gt;</a> rather than a reference).</p>
+</div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
     <a href="https://github.com/pardeike/Harmony/new/master/apiSpec/new?filename=HarmonyLib_AccessTools_StaticFieldRefAccess__2_System_String_.md&amp;value=---%0Auid%3A%20HarmonyLib.AccessTools.StaticFieldRefAccess%60%602(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L865">View Source</a>
+    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L1254">View Source</a>
   </span>
   <a id="HarmonyLib_AccessTools_StaticFieldRefAccess_" data-uid="HarmonyLib.AccessTools.StaticFieldRefAccess*"></a>
   <h4 id="HarmonyLib_AccessTools_StaticFieldRefAccess__2_System_String_" data-uid="HarmonyLib.AccessTools.StaticFieldRefAccess``2(System.String)">StaticFieldRefAccess&lt;T, F&gt;(String)</h4>
@@ -3735,7 +4170,7 @@
     <tbody>
       <tr>
         <td><span class="xref">F</span></td>
-        <td><p>An readable/assignable object representing the static field</p>
+        <td><p>A readable/assignable reference to the field</p>
 </td>
       </tr>
     </tbody>
@@ -3751,12 +4186,337 @@
     <tbody>
       <tr>
         <td><span class="parametername">T</span></td>
-        <td><p>The class the field is defined in or &quot;object&quot; if type cannot be accessed at compile time</p>
+        <td><p>The type (can be class or struct) the field is defined in</p>
 </td>
       </tr>
       <tr>
         <td><span class="parametername">F</span></td>
-        <td><p>The type of the field</p>
+        <td><p>The type of the field; or if the field's type is a reference type (a class or interface, NOT a struct or other value type),
+a type that <span class="xref">System.Type.IsAssignableFrom(System.Type)</span> the field's type</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/pardeike/Harmony/new/master/apiSpec/new?filename=HarmonyLib_AccessTools_StructFieldRefAccess__2___0__System_Reflection_FieldInfo_.md&amp;value=---%0Auid%3A%20HarmonyLib.AccessTools.StructFieldRefAccess%60%602(%60%600%40%2CSystem.Reflection.FieldInfo)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L1206">View Source</a>
+  </span>
+  <a id="HarmonyLib_AccessTools_StructFieldRefAccess_" data-uid="HarmonyLib.AccessTools.StructFieldRefAccess*"></a>
+  <h4 id="HarmonyLib_AccessTools_StructFieldRefAccess__2___0__System_Reflection_FieldInfo_" data-uid="HarmonyLib.AccessTools.StructFieldRefAccess``2(``0@,System.Reflection.FieldInfo)">StructFieldRefAccess&lt;T, F&gt;(ref T, FieldInfo)</h4>
+  <div class="markdown level1 summary"><p>Creates a field reference for an instance field of a struct</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static F StructFieldRefAccess&lt;T, F&gt;(ref T instance, FieldInfo fieldInfo)
+    where T : struct</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">instance</span></td>
+        <td><p>The instance</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Reflection.FieldInfo</span></td>
+        <td><span class="parametername">fieldInfo</span></td>
+        <td><p>The field</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">F</span></td>
+        <td><p>A readable/assignable reference to the field</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>The struct that defines the instance field</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="parametername">F</span></td>
+        <td><p>The type of the field; or if the field's type is a reference type (a class or interface, NOT a struct or other value type),
+a type that <span class="xref">System.Type.IsAssignableFrom(System.Type)</span> the field's type</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="HarmonyLib_AccessTools_StructFieldRefAccess__2___0__System_Reflection_FieldInfo__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>
+This method is meant for one-off access to a field&apos;s value for a single instance and where the field has already been obtained.
+If you need to access a field&apos;s value for potentially multiple instances, use <a class="xref" href="HarmonyLib.AccessTools.html#HarmonyLib_AccessTools_StructFieldRefAccess__2_System_Reflection_FieldInfo_">StructFieldRefAccess&lt;T, F&gt;(FieldInfo)</a> instead.
+<code>StructFieldRefAccess&lt;T, F>(ref instance, fieldInfo)</code> is functionally equivalent to <code>StructFieldRefAccess&lt;T, F>(fieldInfo)(ref instance)</code>.
+</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/pardeike/Harmony/new/master/apiSpec/new?filename=HarmonyLib_AccessTools_StructFieldRefAccess__2___0__System_String_.md&amp;value=---%0Auid%3A%20HarmonyLib.AccessTools.StructFieldRefAccess%60%602(%60%600%40%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L1145">View Source</a>
+  </span>
+  <a id="HarmonyLib_AccessTools_StructFieldRefAccess_" data-uid="HarmonyLib.AccessTools.StructFieldRefAccess*"></a>
+  <h4 id="HarmonyLib_AccessTools_StructFieldRefAccess__2___0__System_String_" data-uid="HarmonyLib.AccessTools.StructFieldRefAccess``2(``0@,System.String)">StructFieldRefAccess&lt;T, F&gt;(ref T, String)</h4>
+  <div class="markdown level1 summary"><p>Creates an instance field reference for a specific instance of a struct</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static F StructFieldRefAccess&lt;T, F&gt;(ref T instance, string fieldName)
+    where T : struct</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">instance</span></td>
+        <td><p>The instance</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">fieldName</span></td>
+        <td><p>The name of the field</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">F</span></td>
+        <td><p>A readable/assignable reference to the field</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>The struct that defines the instance field</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="parametername">F</span></td>
+        <td><p>The type of the field; or if the field's type is a reference type (a class or interface, NOT a struct or other value type),
+a type that <span class="xref">System.Type.IsAssignableFrom(System.Type)</span> the field's type</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="HarmonyLib_AccessTools_StructFieldRefAccess__2___0__System_String__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>
+This method is meant for one-off access to a field&apos;s value for a single instance.
+If you need to access a field&apos;s value for potentially multiple instances, use <a class="xref" href="HarmonyLib.AccessTools.html#HarmonyLib_AccessTools_StructFieldRefAccess__2_System_String_">StructFieldRefAccess&lt;T, F&gt;(String)</a> instead.
+<code>StructFieldRefAccess&lt;T, F>(ref instance, fieldName)</code> is functionally equivalent to <code>StructFieldRefAccess&lt;T, F>(fieldName)(ref instance)</code>.
+</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/pardeike/Harmony/new/master/apiSpec/new?filename=HarmonyLib_AccessTools_StructFieldRefAccess__2_System_Reflection_FieldInfo_.md&amp;value=---%0Auid%3A%20HarmonyLib.AccessTools.StructFieldRefAccess%60%602(System.Reflection.FieldInfo)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L1174">View Source</a>
+  </span>
+  <a id="HarmonyLib_AccessTools_StructFieldRefAccess_" data-uid="HarmonyLib.AccessTools.StructFieldRefAccess*"></a>
+  <h4 id="HarmonyLib_AccessTools_StructFieldRefAccess__2_System_Reflection_FieldInfo_" data-uid="HarmonyLib.AccessTools.StructFieldRefAccess``2(System.Reflection.FieldInfo)">StructFieldRefAccess&lt;T, F&gt;(FieldInfo)</h4>
+  <div class="markdown level1 summary"><p>Creates a field reference delegate for an instance field of a struct</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static AccessTools.StructFieldRef&lt;T, F&gt; StructFieldRefAccess&lt;T, F&gt;(FieldInfo fieldInfo)
+    where T : struct</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Reflection.FieldInfo</span></td>
+        <td><span class="parametername">fieldInfo</span></td>
+        <td><p>The field</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="HarmonyLib.AccessTools.StructFieldRef-2.html">AccessTools.StructFieldRef</a>&lt;T, F&gt;</td>
+        <td><p>A readable/assignable <a class="xref" href="HarmonyLib.AccessTools.StructFieldRef-2.html">AccessTools.StructFieldRef&lt;T, F&gt;</a> delegate</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>The struct that defines the instance field</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="parametername">F</span></td>
+        <td><p>The type of the field; or if the field's type is a reference type (a class or interface, NOT a struct or other value type),
+a type that <span class="xref">System.Type.IsAssignableFrom(System.Type)</span> the field's type</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="HarmonyLib_AccessTools_StructFieldRefAccess__2_System_Reflection_FieldInfo__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>
+This method is meant for cases where the field has already been obtained, avoiding the field searching cost in
+e.g. <a class="xref" href="HarmonyLib.AccessTools.html#HarmonyLib_AccessTools_StructFieldRefAccess__2_System_String_">StructFieldRefAccess&lt;T, F&gt;(String)</a>.
+</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/pardeike/Harmony/new/master/apiSpec/new?filename=HarmonyLib_AccessTools_StructFieldRefAccess__2_System_String_.md&amp;value=---%0Auid%3A%20HarmonyLib.AccessTools.StructFieldRefAccess%60%602(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L1114">View Source</a>
+  </span>
+  <a id="HarmonyLib_AccessTools_StructFieldRefAccess_" data-uid="HarmonyLib.AccessTools.StructFieldRefAccess*"></a>
+  <h4 id="HarmonyLib_AccessTools_StructFieldRefAccess__2_System_String_" data-uid="HarmonyLib.AccessTools.StructFieldRefAccess``2(System.String)">StructFieldRefAccess&lt;T, F&gt;(String)</h4>
+  <div class="markdown level1 summary"><p>Creates a field reference delegate for an instance field of a struct</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static AccessTools.StructFieldRef&lt;T, F&gt; StructFieldRefAccess&lt;T, F&gt;(string fieldName)
+    where T : struct</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">fieldName</span></td>
+        <td><p>The name of the field</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="HarmonyLib.AccessTools.StructFieldRef-2.html">AccessTools.StructFieldRef</a>&lt;T, F&gt;</td>
+        <td><p>A readable/assignable <a class="xref" href="HarmonyLib.AccessTools.StructFieldRef-2.html">AccessTools.StructFieldRef&lt;T, F&gt;</a> delegate</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>The struct that defines the instance field</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="parametername">F</span></td>
+        <td><p>The type of the field; or if the field's type is a reference type (a class or interface, NOT a struct or other value type),
+a type that <span class="xref">System.Type.IsAssignableFrom(System.Type)</span> the field's type</p>
 </td>
       </tr>
     </tbody>
@@ -3766,7 +4526,7 @@
     <a href="https://github.com/pardeike/Harmony/new/master/apiSpec/new?filename=HarmonyLib_AccessTools_ThrowMissingMemberException_System_Type_System_String___.md&amp;value=---%0Auid%3A%20HarmonyLib.AccessTools.ThrowMissingMemberException(System.Type%2CSystem.String%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L984">View Source</a>
+    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L1635">View Source</a>
   </span>
   <a id="HarmonyLib_AccessTools_ThrowMissingMemberException_" data-uid="HarmonyLib.AccessTools.ThrowMissingMemberException*"></a>
   <h4 id="HarmonyLib_AccessTools_ThrowMissingMemberException_System_Type_System_String___" data-uid="HarmonyLib.AccessTools.ThrowMissingMemberException(System.Type,System.String[])">ThrowMissingMemberException(Type, String[])</h4>
@@ -3806,7 +4566,7 @@
     <a href="https://github.com/pardeike/Harmony/new/master/apiSpec/new?filename=HarmonyLib_AccessTools_TypeByName_System_String_.md&amp;value=---%0Auid%3A%20HarmonyLib.AccessTools.TypeByName(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L36">View Source</a>
+    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L40">View Source</a>
   </span>
   <a id="HarmonyLib_AccessTools_TypeByName_" data-uid="HarmonyLib.AccessTools.TypeByName*"></a>
   <h4 id="HarmonyLib_AccessTools_TypeByName_System_String_" data-uid="HarmonyLib.AccessTools.TypeByName(System.String)">TypeByName(String)</h4>
@@ -3862,12 +4622,13 @@
                     <a href="https://github.com/pardeike/Harmony/new/master/apiSpec/new?filename=HarmonyLib_AccessTools.md&amp;value=---%0Auid%3A%20HarmonyLib.AccessTools%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L15" class="contribution-link">View Source</a>
+                    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L17" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+                <h5>In This Article</h5>
+                <div></div>
               </nav>
             </div>
           </div>

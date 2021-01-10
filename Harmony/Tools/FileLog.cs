@@ -8,19 +8,35 @@ using System.Text;
 namespace HarmonyLib
 {
 	/// <summary>A file log for debugging</summary>
-	/// 
+	///
 	public static class FileLog
 	{
+		private static readonly object fileLock = new object();
+
+		static FileLog()
+		{
+			var customPath = Environment.GetEnvironmentVariable("HARMONY_LOG_FILE");
+			if (string.IsNullOrEmpty(customPath) == false)
+			{
+				logPath = customPath;
+				return;
+			}
+
+			var desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+			_ = Directory.CreateDirectory(desktopPath);
+			logPath = Path.Combine(desktopPath, "harmony.log.txt");
+		}
+
 		/// <summary>Full pathname of the log file, defaults to a file called <c>harmony.log.txt</c> on your Desktop</summary>
-		/// 
-		public static string logPath = $"{Environment.GetFolderPath(Environment.SpecialFolder.Desktop)}{Path.DirectorySeparatorChar}harmony.log.txt";
+		///
+		public static string logPath;
 
 		/// <summary>The indent character. The default is <c>tab</c></summary>
-		/// 
+		///
 		public static char indentChar = '\t';
 
 		/// <summary>The current indent level</summary>
-		/// 
+		///
 		public static int indentLevel = 0;
 
 		static List<string> buffer = new List<string>();
@@ -35,7 +51,10 @@ namespace HarmonyLib
 		///
 		public static void ChangeIndent(int delta)
 		{
-			indentLevel = Math.Max(0, indentLevel + delta);
+			lock (fileLock)
+			{
+				indentLevel = Math.Max(0, indentLevel + delta);
+			}
 		}
 
 		/// <summary>Log a string in a buffered way. Use this method only if you are sure that FlushBuffer will be called
@@ -44,7 +63,7 @@ namespace HarmonyLib
 		///
 		public static void LogBuffered(string str)
 		{
-			lock (logPath)
+			lock (fileLock)
 			{
 				buffer.Add(IndentString() + str);
 			}
@@ -56,7 +75,7 @@ namespace HarmonyLib
 		///
 		public static void LogBuffered(List<string> strings)
 		{
-			lock (logPath)
+			lock (fileLock)
 			{
 				buffer.AddRange(strings);
 			}
@@ -68,7 +87,7 @@ namespace HarmonyLib
 		///
 		public static List<string> GetBuffer(bool clear)
 		{
-			lock (logPath)
+			lock (fileLock)
 			{
 				var result = buffer;
 				if (clear)
@@ -82,17 +101,17 @@ namespace HarmonyLib
 		///
 		public static void SetBuffer(List<string> buffer)
 		{
-			lock (logPath)
+			lock (fileLock)
 			{
 				FileLog.buffer = buffer;
 			}
 		}
 
 		/// <summary>Flushes the log buffer to disk (use in combination with LogBuffered)</summary>
-		/// 
+		///
 		public static void FlushBuffer()
 		{
-			lock (logPath)
+			lock (fileLock)
 			{
 				if (buffer.Count > 0)
 				{
@@ -111,20 +130,18 @@ namespace HarmonyLib
 		///
 		public static void Log(string str)
 		{
-			lock (logPath)
+			lock (fileLock)
 			{
-				using (var writer = File.AppendText(logPath))
-				{
-					writer.WriteLine(IndentString() + str);
-				}
+				using var writer = File.AppendText(logPath);
+				writer.WriteLine(IndentString() + str);
 			}
 		}
 
 		/// <summary>Resets and deletes the log</summary>
-		/// 
+		///
 		public static void Reset()
 		{
-			lock (logPath)
+			lock (fileLock)
 			{
 				var path = $"{Environment.GetFolderPath(Environment.SpecialFolder.Desktop)}{Path.DirectorySeparatorChar}harmony.log.txt";
 				File.Delete(path);
@@ -137,14 +154,14 @@ namespace HarmonyLib
 		///
 		public static unsafe void LogBytes(long ptr, int len)
 		{
-			lock (logPath)
+			lock (fileLock)
 			{
 				var p = (byte*)ptr;
 				var s = "";
 				for (var i = 1; i <= len; i++)
 				{
 					if (s.Length == 0) s = "#  ";
-					s += $"{(*p).ToString("X2")} ";
+					s += $"{*p:X2} ";
 					if (i > 1 || len == 1)
 					{
 						if (i % 8 == 0 || i == len)

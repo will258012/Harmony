@@ -30,7 +30,7 @@ namespace HarmonyLib
 			try
 			{
 				var envDebug = Environment.GetEnvironmentVariable("HARMONY_DEBUG");
-				if (envDebug != null && envDebug.Length > 0)
+				if (envDebug is object && envDebug.Length > 0)
 				{
 					envDebug = envDebug.Trim();
 					DEBUG = envDebug == "1" || bool.Parse(envDebug);
@@ -45,16 +45,18 @@ namespace HarmonyLib
 				var assembly = typeof(Harmony).Assembly;
 				var version = assembly.GetName().Version;
 				var location = assembly.Location;
+				var environment = Environment.Version.ToString();
+				var platform = Environment.OSVersion.Platform.ToString();
 				if (string.IsNullOrEmpty(location)) location = new Uri(assembly.CodeBase).LocalPath;
-				FileLog.Log($"### Harmony id={id}, version={version}, location={location}");
+				FileLog.Log($"### Harmony id={id}, version={version}, location={location}, env/clr={environment}, platform={platform}");
 				var callingMethod = AccessTools.GetOutsideCaller();
-				if (callingMethod.DeclaringType != null)
+				if (callingMethod.DeclaringType is object)
 				{
 					var callingAssembly = callingMethod.DeclaringType.Assembly;
 					location = callingAssembly.Location;
 					if (string.IsNullOrEmpty(location)) location = new Uri(callingAssembly.CodeBase).LocalPath;
 					FileLog.Log($"### Started from {callingMethod.FullDescription()}, location {location}");
-					FileLog.Log($"### At {DateTime.Now.ToString("yyyy-MM-dd hh.mm.ss")}");
+					FileLog.Log($"### At {DateTime.Now:yyyy-MM-dd hh.mm.ss}");
 				}
 			}
 
@@ -103,7 +105,7 @@ namespace HarmonyLib
 		/// 
 		public void PatchAll(Assembly assembly)
 		{
-			assembly.GetTypes().Do(type => CreateClassProcessor(type).Patch());
+			AccessTools.GetTypesFromAssembly(assembly).Do(type => CreateClassProcessor(type).Patch());
 		}
 
 		/// <summary>Creates patches by manually specifying the methods</summary>
@@ -141,7 +143,7 @@ namespace HarmonyLib
 		///
 		public void UnpatchAll(string harmonyID = null)
 		{
-			bool IDCheck(Patch patchInfo) => harmonyID == null || patchInfo.owner == harmonyID;
+			bool IDCheck(Patch patchInfo) => harmonyID is null || patchInfo.owner == harmonyID;
 
 			var originals = GetAllPatchedMethods().ToList(); // keep as is to avoid "Collection was modified"
 			foreach (var original in originals)

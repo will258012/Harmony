@@ -41,7 +41,7 @@ namespace HarmonyLib
 		internal List<MethodInfo> Sort(MethodBase original)
 		{
 			// Check if cache exists and the method was used before.
-			if (sortedPatchArray != null) return sortedPatchArray.Select(x => x.GetMethod(original)).ToList();
+			if (sortedPatchArray is object) return sortedPatchArray.Select(x => x.GetMethod(original)).ToList();
 
 			// Initialize internal structures used for sorting.
 			handledPatches = new HashSet<PatchSortingWrapper>();
@@ -90,9 +90,9 @@ namespace HarmonyLib
 		/// <returns>true if equal</returns>
 		internal bool ComparePatchLists(Patch[] patches)
 		{
-			if (sortedPatchArray == null) _ = Sort(null);
-			return patches != null && sortedPatchArray.Length == patches.Length &&
-					 sortedPatchArray.All(x => patches.Contains(x, new PatchDetailedComparer()));
+			if (sortedPatchArray is null) _ = Sort(null);
+			return patches is object && sortedPatchArray.Length == patches.Length
+				&& sortedPatchArray.All(x => patches.Contains(x, new PatchDetailedComparer()));
 		}
 
 		/// <summary>Removes one unresolved dependency from the least important patch.</summary>
@@ -236,11 +236,11 @@ namespace HarmonyLib
 		{
 			public bool Equals(Patch x, Patch y)
 			{
-				return y != null && x != null && x.owner == y.owner && x.PatchMethod == y.PatchMethod && x.index == y.index &&
-						 x.priority == y.priority
-						 && x.before.Length == y.before.Length && x.after.Length == y.after.Length &&
+				return y is object && x is object && x.owner == y.owner && x.PatchMethod == y.PatchMethod && x.index == y.index
+					&& x.priority == y.priority
+					&& x.before.Length == y.before.Length && x.after.Length == y.after.Length
 #pragma warning disable RECS0030
-						 x.before.All(y.before.Contains) && x.after.All(y.after.Contains);
+					&& x.before.All(y.before.Contains) && x.after.All(y.after.Contains);
 #pragma warning restore RECS0030
 			}
 

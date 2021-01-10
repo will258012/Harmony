@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Delegate AccessTools.FieldRef&lt;F&gt;
    ">
-    <meta name="generator" content="docfx 2.52.0.0">
+    <meta name="generator" content="docfx 2.56.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -73,7 +73,7 @@
   
   <h1 id="HarmonyLib_AccessTools_FieldRef_1" data-uid="HarmonyLib.AccessTools.FieldRef`1" class="text-break">Delegate AccessTools.FieldRef&lt;F&gt;
   </h1>
-  <div class="markdown level0 summary"><p>A read/writable reference delegate to a static field</p>
+  <div class="markdown level0 summary"><p>A readable/assignable reference delegate to a static field</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <h6><strong>Namespace</strong>: <a class="xref" href="HarmonyLib.html">HarmonyLib</a></h6>
@@ -93,7 +93,7 @@
     <tbody>
       <tr>
         <td><span class="xref">F</span></td>
-        <td><p>An readable/assignable object representing the static field</p>
+        <td><p>A readable/assignable reference to the field</p>
 </td>
       </tr>
     </tbody>
@@ -109,7 +109,8 @@
     <tbody>
       <tr>
         <td><span class="parametername">F</span></td>
-        <td><p>The type of the field</p>
+        <td><p>The type of the field; or if the field's type is a reference type (a class or interface, NOT a struct or other value type),
+a type that <span class="xref">System.Type.IsAssignableFrom(System.Type)</span> the field's type</p>
 </td>
       </tr>
     </tbody>
@@ -125,12 +126,13 @@
                     <a href="https://github.com/pardeike/Harmony/new/master/apiSpec/new?filename=HarmonyLib_AccessTools_FieldRef_1.md&amp;value=---%0Auid%3A%20HarmonyLib.AccessTools.FieldRef%601%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L916" class="contribution-link">View Source</a>
+                    <a href="https://github.com/pardeike/Harmony/blob/master/Harmony/Tools/AccessTools.cs/#L1243" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+                <h5>In This Article</h5>
+                <div></div>
               </nav>
             </div>
           </div>

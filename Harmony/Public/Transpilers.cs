@@ -10,7 +10,7 @@ namespace HarmonyLib
 	/// 
 	public static class Transpilers
 	{
-		/// <summary>A transpiler that replaces all occurrences of a given method with another one</summary>
+		/// <summary>A transpiler that replaces all occurrences of a given method with another one using the same signature</summary>
 		/// <param name="instructions">The enumeration of <see cref="CodeInstruction"/> to act on</param>
 		/// <param name="from">Method or constructor to search for</param>
 		/// <param name="to">Method or constructor to replace with</param>
@@ -18,9 +18,9 @@ namespace HarmonyLib
 		///
 		public static IEnumerable<CodeInstruction> MethodReplacer(this IEnumerable<CodeInstruction> instructions, MethodBase from, MethodBase to)
 		{
-			if (from == null)
+			if (from is null)
 				throw new ArgumentException("Unexpected null argument", nameof(from));
-			if (to == null)
+			if (to is null)
 				throw new ArgumentException("Unexpected null argument", nameof(to));
 
 			foreach (var instruction in instructions)
@@ -43,9 +43,9 @@ namespace HarmonyLib
 		///
 		public static IEnumerable<CodeInstruction> Manipulator(this IEnumerable<CodeInstruction> instructions, Func<CodeInstruction, bool> predicate, Action<CodeInstruction> action)
 		{
-			if (predicate == null)
+			if (predicate is null)
 				throw new ArgumentNullException(nameof(predicate));
-			if (action == null)
+			if (action is null)
 				throw new ArgumentNullException(nameof(action));
 
 			return instructions.Select(instruction =>

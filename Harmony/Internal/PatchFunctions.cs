@@ -8,119 +8,6 @@ namespace HarmonyLib
 	/// <summary>Patch function helpers</summary>
 	internal static class PatchFunctions
 	{
-		/// <summary>Adds a prefix</summary>
-		/// <param name="patchInfo">The patch info</param>
-		/// <param name="owner">The owner (Harmony ID)</param>
-		/// <param name="info">The annotation info</param>
-		///
-		internal static void AddPrefix(PatchInfo patchInfo, string owner, HarmonyMethod info)
-		{
-			if (info == null || info.method == null) return;
-
-			var priority = info.priority == -1 ? Priority.Normal : info.priority;
-			var before = info.before ?? new string[0];
-			var after = info.after ?? new string[0];
-			var debug = info.debug ?? false;
-
-			patchInfo.AddPrefix(info.method, owner, priority, before, after, debug);
-		}
-
-		/// <summary>Removes a prefix</summary>
-		/// <param name="patchInfo">The patch info</param>
-		/// <param name="owner">The owner (Harmony ID)</param>
-		///
-		internal static void RemovePrefix(PatchInfo patchInfo, string owner)
-		{
-			patchInfo.RemovePrefix(owner);
-		}
-
-		/// <summary>Adds a postfix</summary>
-		/// <param name="patchInfo">The patch info</param>
-		/// <param name="owner">The owner (Harmony ID)</param>
-		/// <param name="info">The annotation info</param>
-		///
-		internal static void AddPostfix(PatchInfo patchInfo, string owner, HarmonyMethod info)
-		{
-			if (info == null || info.method == null) return;
-
-			var priority = info.priority == -1 ? Priority.Normal : info.priority;
-			var before = info.before ?? new string[0];
-			var after = info.after ?? new string[0];
-			var debug = info.debug ?? false;
-
-			patchInfo.AddPostfix(info.method, owner, priority, before, after, debug);
-		}
-
-		/// <summary>Removes a postfix</summary>
-		/// <param name="patchInfo">The patch info</param>
-		/// <param name="owner">The owner (Harmony ID)</param>
-		///
-		internal static void RemovePostfix(PatchInfo patchInfo, string owner)
-		{
-			patchInfo.RemovePostfix(owner);
-		}
-
-		/// <summary>Adds a transpiler</summary>
-		/// <param name="patchInfo">The patch info</param>
-		/// <param name="owner">The owner (Harmony ID)</param>
-		/// <param name="info">The annotation info</param>
-		///
-		internal static void AddTranspiler(PatchInfo patchInfo, string owner, HarmonyMethod info)
-		{
-			if (info == null || info.method == null) return;
-
-			var priority = info.priority == -1 ? Priority.Normal : info.priority;
-			var before = info.before ?? new string[0];
-			var after = info.after ?? new string[0];
-			var debug = info.debug ?? false;
-
-			patchInfo.AddTranspiler(info.method, owner, priority, before, after, debug);
-		}
-
-		/// <summary>Removes a transpiler</summary>
-		/// <param name="patchInfo">The patch info</param>
-		/// <param name="owner">The owner (Harmony ID)</param>
-		///
-		internal static void RemoveTranspiler(PatchInfo patchInfo, string owner)
-		{
-			patchInfo.RemoveTranspiler(owner);
-		}
-
-		/// <summary>Adds a finalizer</summary>
-		/// <param name="patchInfo">The patch info</param>
-		/// <param name="owner">The owner (Harmony ID)</param>
-		/// <param name="info">The annotation info</param>
-		///
-		internal static void AddFinalizer(PatchInfo patchInfo, string owner, HarmonyMethod info)
-		{
-			if (info == null || info.method == null) return;
-
-			var priority = info.priority == -1 ? Priority.Normal : info.priority;
-			var before = info.before ?? new string[0];
-			var after = info.after ?? new string[0];
-			var debug = info.debug ?? false;
-
-			patchInfo.AddFinalizer(info.method, owner, priority, before, after, debug);
-		}
-
-		/// <summary>Removes a finalizer</summary>
-		/// <param name="patchInfo">The patch info</param>
-		/// <param name="owner">The owner (Harmony ID)</param>
-		///
-		internal static void RemoveFinalizer(PatchInfo patchInfo, string owner)
-		{
-			patchInfo.RemoveFinalizer(owner);
-		}
-
-		/// <summary>Removes a patch method</summary>
-		/// <param name="patchInfo">The patch info</param>
-		/// <param name="patch">The patch method</param>
-		///
-		internal static void RemovePatch(PatchInfo patchInfo, MethodInfo patch)
-		{
-			patchInfo.RemovePatch(patch);
-		}
-
 		/// <summary>Sorts patch methods by their priority rules</summary>
 		/// <param name="original">The original method</param>
 		/// <param name="patches">Patches to sort</param>
@@ -148,7 +35,7 @@ namespace HarmonyLib
 
 			var patcher = new MethodPatcher(original, null, sortedPrefixes, sortedPostfixes, sortedTranspilers, sortedFinalizers, debug);
 			var replacement = patcher.CreateReplacement(out var finalInstructions);
-			if (replacement == null) throw new MissingMethodException($"Cannot create replacement for {original.FullDescription()}");
+			if (replacement is null) throw new MissingMethodException($"Cannot create replacement for {original.FullDescription()}");
 
 			try
 			{
@@ -163,9 +50,9 @@ namespace HarmonyLib
 
 		internal static MethodInfo ReversePatch(HarmonyMethod standin, MethodBase original, MethodInfo postTranspiler)
 		{
-			if (standin == null)
+			if (standin is null)
 				throw new ArgumentNullException(nameof(standin));
-			if (standin.method == null)
+			if (standin.method is null)
 				throw new ArgumentNullException($"{nameof(standin)}.{nameof(standin.method)}");
 
 			var debug = (standin.debug ?? false) || Harmony.DEBUG;
@@ -176,17 +63,17 @@ namespace HarmonyLib
 				var info = Harmony.GetPatchInfo(original);
 				transpilers.AddRange(GetSortedPatchMethods(original, info.Transpilers.ToArray(), debug));
 			}
-			if (postTranspiler != null) transpilers.Add(postTranspiler);
+			if (postTranspiler is object) transpilers.Add(postTranspiler);
 
 			var empty = new List<MethodInfo>();
 			var patcher = new MethodPatcher(standin.method, original, empty, empty, transpilers, empty, debug);
 			var replacement = patcher.CreateReplacement(out var finalInstructions);
-			if (replacement == null) throw new MissingMethodException($"Cannot create replacement for {standin.method.FullDescription()}");
+			if (replacement is null) throw new MissingMethodException($"Cannot create replacement for {standin.method.FullDescription()}");
 
 			try
 			{
 				var errorString = Memory.DetourMethod(standin.method, replacement);
-				if (errorString != null)
+				if (errorString is object)
 					throw new FormatException($"Method {standin.method.FullDescription()} cannot be patched. Reason: {errorString}");
 			}
 			catch (Exception ex)

@@ -4,7 +4,7 @@ using HarmonyLibTests.Assets.Methods;
 using NUnit.Framework;
 using System;
 
-namespace HarmonyLibTests
+namespace HarmonyLibTests.Patching
 {
 	[TestFixture]
 	public class Specials : TestLogger
@@ -41,7 +41,6 @@ namespace HarmonyLibTests
 		}
 		*/
 
-		// TODO: this test might crash in certain environments
 		[Test]
 		public void Test_Patch_ConcreteClass()
 		{
@@ -65,10 +64,11 @@ namespace HarmonyLibTests
 			TestTools.Log($"Running patched ConcreteClass_Patch done");
 		}
 
-		// TODO: this test might crash in certain environments
 		[Test, NonParallelizable]
 		public void Test_Patch_Returning_Structs([Values(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20)] int n, [Values("I", "S")] string type)
 		{
+			StructReturnBuffer.ResetCaches();
+
 			var name = $"{type}M{n:D2}";
 
 			var patchClass = typeof(ReturningStructs_Patch);
@@ -80,7 +80,8 @@ namespace HarmonyLibTests
 			var instance = new Harmony("returning-structs");
 			Assert.NotNull(instance);
 
-			var cls = typeof(ReturningStructs);
+			var cls = AccessTools.TypeByName($"HarmonyLibTests.Assets.Methods.ReturningStructs_{type}{n:D2}");
+			Assert.NotNull(cls, "type");
 			var method = AccessTools.DeclaredMethod(cls, name);
 			Assert.NotNull(method, "method");
 
@@ -96,7 +97,7 @@ namespace HarmonyLibTests
 			}
 			TestTools.Log($"Test_Returning_Structs: patching {name} done");
 
-			var clsInstance = new ReturningStructs();
+			var clsInstance = Activator.CreateInstance(cls);
 			try
 			{
 				TestTools.Log($"Test_Returning_Structs: running patched {name}");
@@ -141,7 +142,7 @@ namespace HarmonyLibTests
 		[Test]
 		public void Test_PatchExceptionWithCleanup1()
 		{
-			if (AccessTools.IsMonoRuntime == false)
+			if (AccessTools.IsMonoRuntime is false)
 				return; // Assert.Ignore("Only mono allows for detailed IL exceptions. Test ignored.");
 
 			var patchClass = typeof(DeadEndCode_Patch2);
@@ -183,7 +184,7 @@ namespace HarmonyLibTests
 		[Test]
 		public void Test_PatchExceptionWithCleanup2()
 		{
-			if (AccessTools.IsMonoRuntime == false)
+			if (AccessTools.IsMonoRuntime is false)
 				return; // Assert.Ignore("Only mono allows for detailed IL exceptions. Test ignored.");
 
 			var patchClass = typeof(DeadEndCode_Patch3);
@@ -210,7 +211,7 @@ namespace HarmonyLibTests
 		[Test]
 		public void Test_PatchExceptionWithCleanup3()
 		{
-			if (AccessTools.IsMonoRuntime == false)
+			if (AccessTools.IsMonoRuntime is false)
 				return; // Assert.Ignore("Only mono allows for detailed IL exceptions. Test ignored.");
 
 			var patchClass = typeof(DeadEndCode_Patch4);

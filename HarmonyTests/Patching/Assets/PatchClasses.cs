@@ -1,12 +1,11 @@
 extern alias mmc;
-
 using HarmonyLib;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Reflection.Emit;
 using System.Runtime.CompilerServices;
-using System.Collections;
 
 namespace HarmonyLibTests.Assets
 {
@@ -152,7 +151,7 @@ namespace HarmonyLibTests.Assets
 			}
 			log += ",end";
 			return;
-		ending:
+			ending:
 			log += ",fail";
 		}
 	}
@@ -297,7 +296,7 @@ namespace HarmonyLibTests.Assets
 		public static IEnumerable<CodeInstruction> Transpiler(ILGenerator il, IEnumerable<CodeInstruction> instructions)
 		{
 			var f_state1 = typeof(Class7).GetField("state1");
-			if (f_state1 == null) throw new NullReferenceException();
+			if (f_state1 is null) throw new NullReferenceException();
 
 			var f_a = typeof(TestStruct).GetField("a");
 			var f_b = typeof(TestStruct).GetField("b");
@@ -528,7 +527,7 @@ namespace HarmonyLibTests.Assets
 		public static bool prefixed = false;
 
 #if NETCOREAPP2_0
-		public static bool Prefix(ref string __result,  int dummy)
+		public static bool Prefix(ref string __result, int dummy)
 		{
 			__result = "patched";
 			prefixed = true;
@@ -1044,6 +1043,182 @@ namespace HarmonyLibTests.Assets
 		}
 	}
 
+	public class Class19
+	{
+		static readonly int[] test = { 123 };
+
+		[MethodImpl(MethodImplOptions.NoInlining)]
+		public static ref int Method19()
+		{
+			return ref test[0];
+		}
+	}
+
+	[HarmonyPatch(typeof(Class19))]
+	[HarmonyPatch(nameof(Class19.Method19))]
+	public static class Class19Patch
+	{
+		public static void Postfix(ref int __result)
+		{
+			__result = 456;
+		}
+	}
+
+	public class Class20
+	{
+		public struct Struct20
+		{
+			public int value;
+		}
+
+		[MethodImpl(MethodImplOptions.NoInlining)]
+		public static Struct20 Method20()
+		{
+			return new Struct20 { value = 123 };
+		}
+	}
+
+	[HarmonyPatch(typeof(Class20))]
+	[HarmonyPatch(nameof(Class20.Method20))]
+	public static class Class20Patch
+	{
+		public static object theResult;
+
+		public static void Postfix(object __result)
+		{
+			theResult = __result;
+		}
+	}
+
+	public class Class21
+	{
+		public struct Struct21
+		{
+			public int value;
+		}
+
+		[MethodImpl(MethodImplOptions.NoInlining)]
+		public static Struct21 Method21()
+		{
+			return new Struct21 { value = 123 };
+		}
+	}
+
+	[HarmonyPatch(typeof(Class21))]
+	[HarmonyPatch(nameof(Class21.Method21))]
+	public static class Class21Patch
+	{
+		public static void Postfix(ref object __result)
+		{
+			__result = new Class21.Struct21 { value = 456 };
+		}
+	}
+
+	public class InjectDelegateBaseClass
+	{
+		public string pre;
+		public string post;
+
+		internal virtual string SomeMethod(ref string s, int n)
+		{
+			return pre + s + ":" + n + post;
+		}
+	}
+
+	public class InjectDelegateClass : InjectDelegateBaseClass
+	{
+		public string result = "";
+
+		internal override string SomeMethod(ref string s, int n)
+		{
+			return $"[{base.SomeMethod(ref s, n)}]";
+		}
+
+		[MethodImpl(MethodImplOptions.NoInlining)]
+		public void Method(int n)
+		{
+			var s = "test";
+			result = SomeMethod(ref s, 123);
+		}
+	}
+
+	[HarmonyPatch(typeof(InjectDelegateClass), "Method")]
+	public class InjectDelegateClassPatch
+	{
+		[HarmonyDelegate(typeof(InjectDelegateBaseClass), "SomeMethod", MethodDispatchType.Call)]
+		public delegate string TestDelegate(ref string s, int n);
+
+		[HarmonyDelegate(typeof(InjectDelegateBaseClass), "SomeMethod", MethodDispatchType.VirtualCall)]
+		public delegate string TestVirtualDelegate(ref string s, int n);
+
+		public static string result = "";
+
+		public static bool Prefix(TestDelegate baseSomeMethod, TestVirtualDelegate virtualBaseSomeMethod, ref int n)
+		{
+			n = 456;
+			var s = "patch";
+			result = baseSomeMethod(ref s, n) + " | " + virtualBaseSomeMethod(ref s, n);
+			return false;
+		}
+	}
+
+	public static class InjectDelegateStaticClass
+	{
+		internal static string SomeMethod(int n)
+		{
+			return $"[{n}]";
+		}
+
+		[MethodImpl(MethodImplOptions.NoInlining)]
+		public static string Method(int n)
+		{
+			return SomeMethod(n + 1000);
+		}
+	}
+
+	[HarmonyPatch(typeof(InjectDelegateStaticClass), "Method")]
+	public class InjectDelegateStaticClassPatch
+	{
+		[HarmonyDelegate(typeof(InjectDelegateStaticClass), "SomeMethod")]
+		public delegate string TestDelegate(int n);
+
+		public static bool Prefix(TestDelegate someMethod, ref string __result)
+		{
+			__result = someMethod(123) + "/" + someMethod(456);
+			return false;
+		}
+	}
+
+	public struct InjectDelegateStruct
+	{
+		public string pre;
+		public string post;
+
+		internal string SomeMethod(int n)
+		{
+			return pre + n + post;
+		}
+
+		[MethodImpl(MethodImplOptions.NoInlining)]
+		public string Method(int n)
+		{
+			return SomeMethod(n + 1000);
+		}
+	}
+
+	[HarmonyPatch(typeof(InjectDelegateStruct), "Method")]
+	public class InjectDelegateStructPatch
+	{
+		[HarmonyDelegate(typeof(InjectDelegateStruct), "SomeMethod")]
+		public delegate string TestDelegate(int n);
+
+		public static bool Prefix(TestDelegate someMethod, ref string __result)
+		{
+			__result = someMethod(123) + "/" + someMethod(456);
+			return false;
+		}
+	}
+
 	// disabled - see test case
 	/*
 	public class ClassExceptionFilter
@@ -1054,7 +1229,7 @@ namespace HarmonyLibTests.Assets
 			var result = 0;
 			try
 			{
-				if (exception != null)
+				if (exception is object)
 					throw exception;
 			}
 			catch (Exception e) when (e.Message == "test")

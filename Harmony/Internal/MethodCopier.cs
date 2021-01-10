@@ -17,10 +17,15 @@ namespace HarmonyLib
 
 		internal MethodCopier(MethodBase fromMethod, ILGenerator toILGenerator, LocalBuilder[] existingVariables = null)
 		{
-			if (fromMethod == null) throw new ArgumentNullException(nameof(fromMethod));
+			if (fromMethod is null) throw new ArgumentNullException(nameof(fromMethod));
 			reader = new MethodBodyReader(fromMethod, toILGenerator);
 			reader.DeclareVariables(existingVariables);
 			reader.ReadInstructions();
+		}
+
+		internal void SetDebugging(bool debug)
+		{
+			reader.SetDebugging(debug);
 		}
 
 		internal void SetArgumentShift(bool useShift)
@@ -33,16 +38,16 @@ namespace HarmonyLib
 			transpilers.Add(transpiler);
 		}
 
-		internal void Finalize(Emitter emitter, List<Label> endLabels, out bool hasReturnCode)
+		internal List<CodeInstruction> Finalize(Emitter emitter, List<Label> endLabels, out bool hasReturnCode)
 		{
-			reader.FinalizeILCodes(emitter, transpilers, endLabels, out hasReturnCode);
+			return reader.FinalizeILCodes(emitter, transpilers, endLabels, out hasReturnCode);
 		}
 
 		internal static List<CodeInstruction> GetInstructions(ILGenerator generator, MethodBase method, int maxTranspilers)
 		{
-			if (generator == null)
+			if (generator is null)
 				throw new ArgumentNullException(nameof(generator));
-			if (method == null)
+			if (method is null)
 				throw new ArgumentNullException(nameof(method));
 
 			var originalVariables = MethodPatcher.DeclareLocalVariables(generator, method);
@@ -51,17 +56,14 @@ namespace HarmonyLib
 			copier.SetArgumentShift(useStructReturnBuffer);
 
 			var info = Harmony.GetPatchInfo(method);
-			if (info != null)
+			if (info is object)
 			{
 				var sortedTranspilers = PatchFunctions.GetSortedPatchMethods(method, info.Transpilers.ToArray(), false);
 				for (var i = 0; i < maxTranspilers && i < sortedTranspilers.Count; i++)
 					copier.AddTranspiler(sortedTranspilers[i]);
 			}
 
-			var endLabels = new List<Label>();
-			var emitter = new Emitter(generator, false);
-			copier.Finalize(emitter, endLabels, out var hasReturnCode);
-			return emitter.GetInstructions().OrderBy(pair => pair.Key).Select(pair => pair.Value).ToList();
+			return copier.Finalize(null, null, out var _);
 		}
 	}
 
@@ -69,6 +71,7 @@ namespace HarmonyLib
 	{
 		readonly ILGenerator generator;
 		readonly MethodBase method;
+		bool debug = false;
 		bool argumentShift = false;
 
 		readonly Module module;
@@ -85,7 +88,7 @@ namespace HarmonyLib
 
 		internal static List<ILInstruction> GetInstructions(ILGenerator generator, MethodBase method)
 		{
-			if (method == null) throw new ArgumentNullException(nameof(method));
+			if (method is null) throw new ArgumentNullException(nameof(method));
 			var reader = new MethodBodyReader(method, generator);
 			reader.DeclareVariables(null);
 			reader.ReadInstructions();
@@ -107,7 +110,7 @@ namespace HarmonyLib
 			else
 			{
 				var bytes = body.GetILAsByteArray();
-				if (bytes == null)
+				if (bytes is null)
 					throw new ArgumentException("Can not get IL bytes of method " + method.FullDescription());
 				ilBytes = new ByteBuffer(bytes);
 				ilInstructions = new List<ILInstruction>((bytes.Length + 1) / 2);
@@ -115,7 +118,7 @@ namespace HarmonyLib
 
 			var type = method.DeclaringType;
 
-			if (type != null && type.IsGenericType)
+			if (type is object && type.IsGenericType)
 			{
 				try { typeArguments = type.GetGenericArguments(); }
 				catch { typeArguments = null; }
@@ -133,6 +136,11 @@ namespace HarmonyLib
 
 			localVariables = body?.LocalVariables?.ToList() ?? new List<LocalVariableInfo>();
 			exceptions = body?.ExceptionHandlingClauses ?? new List<ExceptionHandlingClause>();
+		}
+
+		internal void SetDebugging(bool debug)
+		{
+			this.debug = debug;
 		}
 
 		internal void SetArgumentShift(bool argumentShift)
@@ -156,8 +164,8 @@ namespace HarmonyLib
 
 		internal void DeclareVariables(LocalBuilder[] existingVariables)
 		{
-			if (generator == null) return;
-			if (existingVariables != null)
+			if (generator is null) return;
+			if (existingVariables is object)
 				variables = existingVariables;
 			else
 				variables = localVariables.Select(lvi => generator.DeclareLocal(lvi.LocalType, lvi.IsPinned)).ToArray();
@@ -253,10 +261,10 @@ namespace HarmonyLib
 			{ OpCodes.Blt_Un_S, OpCodes.Blt_Un }
 		};
 
-		internal void FinalizeILCodes(Emitter emitter, List<MethodInfo> transpilers, List<Label> endLabels, out bool hasReturnCode)
+		internal List<CodeInstruction> FinalizeILCodes(Emitter emitter, List<MethodInfo> transpilers, List<Label> endLabels, out bool hasReturnCode)
 		{
 			hasReturnCode = false;
-			if (generator == null) return;
+			if (generator is null) return null;
 
 			// pass1 - define labels and add them to instructions that are target of a jump
 			//
@@ -267,7 +275,7 @@ namespace HarmonyLib
 					case OperandType.InlineSwitch:
 					{
 						var targets = ilInstruction.operand as ILInstruction[];
-						if (targets != null)
+						if (targets is object)
 						{
 							var labels = new List<Label>();
 							foreach (var target in targets)
@@ -285,7 +293,7 @@ namespace HarmonyLib
 					case OperandType.InlineBrTarget:
 					{
 						var target = ilInstruction.operand as ILInstruction;
-						if (target != null)
+						if (target is object)
 						{
 							var label = generator.DefineLabel();
 							target.labels.Add(label);
@@ -302,13 +310,19 @@ namespace HarmonyLib
 			transpilers.Do(transpiler => codeTranspiler.Add(transpiler));
 			var codeInstructions = codeTranspiler.GetResult(generator, method);
 
+			if (emitter is null)
+				return codeInstructions;
+
 			emitter.LogComment("start original");
 
 			// pass3 - log out all new local variables
 			//
-			var savedLog = FileLog.GetBuffer(true);
-			emitter.LogAllLocalVariables();
-			FileLog.LogBuffered(savedLog);
+			if (debug)
+			{
+				var savedLog = FileLog.GetBuffer(true);
+				emitter.LogAllLocalVariables();
+				FileLog.LogBuffered(savedLog);
+			}
 
 			// pass4 - check for any RET
 			//
@@ -319,7 +333,7 @@ namespace HarmonyLib
 			while (true)
 			{
 				var lastInstruction = codeInstructions.LastOrDefault();
-				if (lastInstruction == null || lastInstruction.opcode != OpCodes.Ret) break;
+				if (lastInstruction is null || lastInstruction.opcode != OpCodes.Ret) break;
 
 				// remember any existing labels
 				endLabels.AddRange(lastInstruction.labels);
@@ -329,7 +343,6 @@ namespace HarmonyLib
 
 			// pass6 - mark labels and exceptions and emit codes
 			//
-			var idx = 0;
 			codeInstructions.Do(codeInstruction =>
 			{
 				// mark all labels
@@ -367,21 +380,21 @@ namespace HarmonyLib
 
 					case OperandType.InlineSig:
 						var cecilGenerator = generator.GetProxiedShim<CecilILGenerator>();
-						if (cecilGenerator == null)
+						if (cecilGenerator is null)
 						{
 							// Right now InlineSignatures can only be emitted using MonoMod.Common and its CecilILGenerator.
 							// That is because DynamicMethod's original ILGenerator is very restrictive about the calli opcode.
 							throw new NotSupportedException();
 						}
-						if (operand == null) throw new Exception($"Wrong null argument: {codeInstruction}");
-						if ((operand is ICallSiteGenerator) == false) throw new Exception($"Wrong Emit argument type {operand.GetType()} in {codeInstruction}");
+						if (operand is null) throw new Exception($"Wrong null argument: {codeInstruction}");
+						if ((operand is ICallSiteGenerator) is false) throw new Exception($"Wrong Emit argument type {operand.GetType()} in {codeInstruction}");
 						emitter.AddInstruction(code, operand);
 						emitter.LogIL(code, operand);
 						cecilGenerator.Emit(code, (ICallSiteGenerator)operand);
 						break;
 
 					default:
-						if (operand == null) throw new Exception($"Wrong null argument: {codeInstruction}");
+						if (operand is null) throw new Exception($"Wrong null argument: {codeInstruction}");
 						emitter.AddInstruction(code, operand);
 						emitter.LogIL(code, operand);
 						_ = generator.DynEmit(code, operand);
@@ -389,11 +402,10 @@ namespace HarmonyLib
 				}
 
 				codeInstruction.blocks.Do(block => emitter.MarkBlockAfter(block));
-
-				idx++;
 			});
 
 			emitter.LogComment("end original");
+			return codeInstructions;
 		}
 
 		// interpret member info value
@@ -579,7 +591,7 @@ namespace HarmonyLib
 					if (TargetsLocalVariable(instruction.opcode))
 					{
 						var lvi = GetLocalVariable(idx);
-						if (lvi == null)
+						if (lvi is null)
 							instruction.argument = idx;
 						else
 						{
@@ -601,7 +613,7 @@ namespace HarmonyLib
 					if (TargetsLocalVariable(instruction.opcode))
 					{
 						var lvi = GetLocalVariable(idx);
-						if (lvi == null)
+						if (lvi is null)
 							instruction.argument = idx;
 						else
 						{
@@ -652,7 +664,7 @@ namespace HarmonyLib
 					min = mid + 1;
 			}
 
-			throw new Exception($"Cannot find instruction for {offset.ToString("X4")}");
+			throw new Exception($"Cannot find instruction for {offset:X4}");
 		}
 
 		static bool TargetsLocalVariable(OpCode opcode)

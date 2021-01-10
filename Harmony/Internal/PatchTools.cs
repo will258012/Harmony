@@ -8,10 +8,16 @@ namespace HarmonyLib
 {
 	internal static class PatchTools
 	{
-		static readonly Dictionary<object, object> objectReferences = new Dictionary<object, object>();
+		// Note: Even though this Dictionary is only stored to and never read from, it still needs to be thread-safe:
+		// https://stackoverflow.com/a/33153868
+		// ThreadStatic has pitfalls (see RememberObject below), but since we must support net35, it's the best available option.
+		[ThreadStatic]
+		static Dictionary<object, object> objectReferences;
 
 		internal static void RememberObject(object key, object value)
 		{
+			// ThreadStatic fields are only initialized for one thread, so ensure it's initialized for current thread.
+			objectReferences ??= new Dictionary<object, object>();
 			objectReferences[key] = value;
 		}
 
@@ -19,7 +25,7 @@ namespace HarmonyLib
 		{
 			var method = patchType.GetMethods(AccessTools.all)
 				.FirstOrDefault(m => m.GetCustomAttributes(true).Any(a => a.GetType().FullName == attributeName));
-			if (method == null)
+			if (method is null)
 			{
 				// not-found is common and normal case, don't use AccessTools which will generate not-found warnings
 				var methodName = attributeName.Replace("HarmonyLib.Harmony", "");
@@ -40,10 +46,9 @@ namespace HarmonyLib
 
 		internal static List<AttributePatch> GetPatchMethods(Type type)
 		{
-			var harmonyPatchName = typeof(HarmonyPatch).FullName;
 			return AccessTools.GetDeclaredMethods(type)
 				.Select(method => AttributePatch.Create(method))
-				.Where(attributePatch => attributePatch != null)
+				.Where(attributePatch => attributePatch is object)
 				.ToList();
 		}
 
@@ -54,17 +59,17 @@ namespace HarmonyLib
 				switch (attr.methodType)
 				{
 					case MethodType.Normal:
-						if (attr.methodName == null)
+						if (attr.methodName is null)
 							return null;
 						return AccessTools.DeclaredMethod(attr.declaringType, attr.methodName, attr.argumentTypes);
 
 					case MethodType.Getter:
-						if (attr.methodName == null)
+						if (attr.methodName is null)
 							return null;
 						return AccessTools.DeclaredProperty(attr.declaringType, attr.methodName).GetGetMethod(true);
 
 					case MethodType.Setter:
-						if (attr.methodName == null)
+						if (attr.methodName is null)
 							return null;
 						return AccessTools.DeclaredProperty(attr.declaringType, attr.methodName).GetSetMethod(true);
 
