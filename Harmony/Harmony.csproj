@@ -3,13 +3,13 @@
 	<PropertyGroup>
 		<TargetFrameworks>net35;net45;net472;net48;netcoreapp3.0;netcoreapp3.1</TargetFrameworks>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-		<Product>Harmony</Product>
+		<Product>CitiesHarmony.Harmony</Product>
 		<Company>Andreas Pardeike</Company>
 		<Copyright>Copyright © 2016</Copyright>
 		<Description>A general non-destructive patch library for .NET and Mono modules</Description>
 		<PackageId>Lib.Harmony</PackageId>
 		<Authors>Andreas Pardeike</Authors>
-		<AssemblyName>0Harmony</AssemblyName>
+		<AssemblyName>CitiesHarmony.Harmony</AssemblyName>
 		<SignAssembly>true</SignAssembly>
 		<Version>2.0.4.0</Version>
 		<PackageLicenseFile>LICENSE</PackageLicenseFile>
