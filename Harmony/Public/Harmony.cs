@@ -1,3 +1,4 @@
+using MonoMod.Utils;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -47,14 +48,20 @@ namespace HarmonyLib
 				var location = assembly.Location;
 				var environment = Environment.Version.ToString();
 				var platform = Environment.OSVersion.Platform.ToString();
+#if !NET5_0
 				if (string.IsNullOrEmpty(location)) location = new Uri(assembly.CodeBase).LocalPath;
-				FileLog.Log($"### Harmony id={id}, version={version}, location={location}, env/clr={environment}, platform={platform}");
+#endif
+				var ptr_runtime = IntPtr.Size;
+				var ptr_env = PlatformHelper.Current;
+				FileLog.Log($"### Harmony id={id}, version={version}, location={location}, env/clr={environment}, platform={platform}, ptrsize:runtime/env={ptr_runtime}/{ptr_env}");
 				var callingMethod = AccessTools.GetOutsideCaller();
 				if (callingMethod.DeclaringType is object)
 				{
 					var callingAssembly = callingMethod.DeclaringType.Assembly;
 					location = callingAssembly.Location;
+#if !NET5_0
 					if (string.IsNullOrEmpty(location)) location = new Uri(callingAssembly.CodeBase).LocalPath;
+#endif
 					FileLog.Log($"### Started from {callingMethod.FullDescription()}, location {location}");
 					FileLog.Log($"### At {DateTime.Now:yyyy-MM-dd hh.mm.ss}");
 				}
@@ -64,6 +71,7 @@ namespace HarmonyLib
 		}
 
 		/// <summary>Searches the current assembly for Harmony annotations and uses them to create patches</summary>
+		/// <remarks>This method can fail to use the correct assembly when being inlined. It calls StackTrace.GetFrame(1) which can point to the wrong method/assembly. If you are unsure or run into problems, use <code>PatchAll(Assembly.GetExecutingAssembly())</code> instead.</remarks>
 		/// 
 		public void PatchAll()
 		{
@@ -217,6 +225,26 @@ namespace HarmonyLib
 		public static IEnumerable<MethodBase> GetAllPatchedMethods()
 		{
 			return PatchProcessor.GetAllPatchedMethods();
+		}
+
+		/// <summary>Gets the original method from a given replacement method</summary>
+		/// <param name="replacement">A replacement method, for example from a stacktrace</param>
+		/// <returns>The original method/constructor or <c>null</c> if not found</returns>
+		///
+		public static MethodBase GetOriginalMethod(MethodInfo replacement)
+		{
+			if (replacement == null) throw new ArgumentNullException(nameof(replacement));
+			return HarmonySharedState.GetOriginal(replacement);
+		}
+
+		/// <summary>Tries to get the method from a stackframe including dynamic replacement methods</summary>
+		/// <param name="frame">The <see cref="StackFrame"/></param>
+		/// <returns>For normal frames, <c>frame.GetMethod()</c> is returned. For frames containing patched methods, the replacement method is returned or <c>null</c> if no method can be found</returns>
+		///
+		public static MethodBase GetMethodFromStackframe(StackFrame frame)
+		{
+			if (frame == null) throw new ArgumentNullException(nameof(frame));
+			return HarmonySharedState.FindReplacement(frame) ?? frame.GetMethod();
 		}
 
 		/// <summary>Gets Harmony version for all active Harmony instances</summary>

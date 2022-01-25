@@ -8,7 +8,7 @@
     <title>Annotations </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Annotations ">
-    <meta name="generator" content="docfx 2.56.4.0">
+    <meta name="generator" content="docfx 2.58.9.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -76,7 +76,7 @@
 <pre><code class="lang-csharp" name="example">using HarmonyLib;
 
 [HarmonyPatch(typeof(SomeTypeHere))]
-[HarmonyPatch(&quot;SomeMethodName&quot;)]
+[HarmonyPatch(&quot;SomeMethodName&quot;)] // if possible use nameof() here
 class MyPatches
 {
     static void Postfix(/*...*/)
@@ -183,7 +183,7 @@ class MyPatches
 <pre><code class="lang-csharp" name="example">[HarmonyPatch] // make sure Harmony inspects the class
 class MyPatches
 {
-    IEnumerable&lt;MethodBase&gt; TargetMethods()
+    static IEnumerable&lt;MethodBase&gt; TargetMethods()
     {
         return AccessTools.GetTypesFromAssembly(someAssembly)
             .SelectMany(type =&gt; type.GetMethods())
@@ -192,9 +192,13 @@ class MyPatches
     }
 
     // prefix all methods in someAssembly with a non-void return type and beginning with &quot;Player&quot;
-    static void Prefix(MethodBase __originalMethod)
+    static void Prefix(object[] __args, MethodBase __originalMethod)
     {
-        // use __originalMethod to decide what to do
+        // use dynamic code to handle all method calls
+        var parameters = __originalMethod.GetParameters();
+        FileLog.Log($&quot;Method {__originalMethod.FullDescription()}:&quot;);
+        for (var i = 0; i &lt; __args.Length; i++)
+            FileLog.Log($&quot;{parameters[i].Name} of type {parameters[i].ParameterType} is {__args[i]}&quot;);
     }
 }
 </code></pre><h3 id="combining-annotations">Combining annotations</h3>

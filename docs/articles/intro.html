@@ -8,7 +8,7 @@
     <title>Introduction </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Introduction ">
-    <meta name="generator" content="docfx 2.56.4.0">
+    <meta name="generator" content="docfx 2.58.9.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -76,7 +76,7 @@
 <h3 id="bootstrapping-and-injection">Bootstrapping and Injection</h3>
 <p>Harmony does not provide you with a way to run your own code within an application that is not designed to execute foreign code. You need a way to inject at least the few lines that start the Harmony patching and this is usually done with a loader. Here are some common examples of loaders (incomplete):</p>
 <ul>
-<li><a href="https://github.com/NeighTools/UnityDoorstop">Unity Doorstep</a></li>
+<li><a href="https://github.com/NeighTools/UnityDoorstop">Unity Doorstop</a></li>
 <li><a href="https://github.com/BepInEx/BepInEx">BepInEx</a></li>
 <li><a href="https://github.com/avail/UnityAssemblyInjector">UnityAssemblyInjector</a></li>
 <li><a href="https://github.com/wledfor2/MonoJunkie">MonoJunkie</a></li>
@@ -167,7 +167,7 @@ public class MyPatcher
 }
 
 [HarmonyPatch(typeof(SomeGameClass))]
-[HarmonyPatch(&quot;DoSomething&quot;)]
+[HarmonyPatch(&quot;DoSomething&quot;)] // if possible use nameof() here
 class Patch01
 {
     static AccessTools.FieldRef&lt;SomeGameClass, bool&gt; isRunningRef =
@@ -203,8 +203,7 @@ public class MyPatcher
     {
         var harmony = new Harmony(&quot;com.example.patch&quot;);
 
-        //
-        var mOriginal = AccessTools.Method(typeof(SomeGameClass), &quot;DoSomething&quot;);
+        var mOriginal = AccessTools.Method(typeof(SomeGameClass), &quot;DoSomething&quot;); // if possible use nameof() here
         var mPrefix = SymbolExtensions.GetMethodInfo(() =&gt; MyPrefix());
         var mPostfix = SymbolExtensions.GetMethodInfo(() =&gt; MyPostfix());
         // in general, add null checks here (new HarmonyMethod() does it for you too)

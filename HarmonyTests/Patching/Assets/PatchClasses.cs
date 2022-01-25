@@ -3,6 +3,7 @@ using HarmonyLib;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 using System.Reflection.Emit;
 using System.Runtime.CompilerServices;
@@ -158,10 +159,8 @@ namespace HarmonyLibTests.Assets
 
 	public class Class4
 	{
-#pragma warning disable IDE0060
 		[MethodImpl(MethodImplOptions.NoInlining)]
 		public void Method4(object sender)
-#pragma warning restore IDE0060
 		{
 			_ = DateTime.Now;
 			Class4Patch.originalExecuted = true;
@@ -174,9 +173,7 @@ namespace HarmonyLibTests.Assets
 		public static object senderValue = null;
 		public static bool originalExecuted = false;
 
-#pragma warning disable IDE0060
 		public static bool Prefix(Class4 __instance, object sender)
-#pragma warning restore IDE0060
 		{
 			prefixed = true;
 			senderValue = sender;
@@ -193,10 +190,8 @@ namespace HarmonyLibTests.Assets
 
 	public class Class5
 	{
-#pragma warning disable IDE0060
 		[MethodImpl(MethodImplOptions.NoInlining)]
 		public void Method5(object xxxyyy)
-#pragma warning restore IDE0060
 		{
 			_ = DateTime.Now;
 		}
@@ -208,17 +203,13 @@ namespace HarmonyLibTests.Assets
 		public static bool postfixed = false;
 
 		[HarmonyArgument("xxxyyy", "bar")]
-#pragma warning disable IDE0060
 		public static void Prefix(object bar)
-#pragma warning restore IDE0060
 		{
 			prefixed = true;
 		}
 
 		public static void Postfix(
-#pragma warning disable IDE0060
 			[HarmonyArgument("xxxyyy")] object bar
-#pragma warning restore IDE0060
 		)
 		{
 			postfixed = true;
@@ -377,11 +368,8 @@ namespace HarmonyLibTests.Assets
 			__state = null;
 		}
 
-#pragma warning disable IDE0060
 		public static void Postfix(object __state)
-#pragma warning restore IDE0060
 		{
-
 		}
 	}
 
@@ -430,10 +418,25 @@ namespace HarmonyLibTests.Assets
 	{
 		public string s;
 
+		/*
+		 * TODO: This hangs MonoMod Common and we use a different version
+		 * until the problem is fixed
+		 * 
 		[MethodImpl(MethodImplOptions.NoInlining)]
 		public void TestMethod(string val)
 		{
 			s = val;
+		}*/
+
+		public void TestMethod(string val)
+		{
+			try
+			{
+				s = val;
+			}
+			catch
+			{
+			}
 		}
 	}
 
@@ -1114,6 +1117,35 @@ namespace HarmonyLibTests.Assets
 		}
 	}
 
+	public class Class22
+	{
+		public static bool? bool1 = null;
+		public static bool? bool2 = null;
+
+		[MethodImpl(MethodImplOptions.NoInlining)]
+		public static void Method22()
+		{
+			try
+			{
+			}
+			catch
+			{
+				throw;
+			}
+		}
+
+		public static bool Prefix1(bool __runOriginal)
+		{
+			bool1 = __runOriginal;
+			return false;
+		}
+
+		public static void Prefix2(bool __runOriginal)
+		{
+			bool2 = __runOriginal;
+		}
+	}
+
 	public class InjectDelegateBaseClass
 	{
 		public string pre;
@@ -1216,6 +1248,42 @@ namespace HarmonyLibTests.Assets
 		{
 			__result = someMethod(123) + "/" + someMethod(456);
 			return false;
+		}
+	}
+
+	public class BulkPatchClass
+	{
+		[MethodImpl(MethodImplOptions.NoInlining)]
+		public string Method1()
+		{
+			return "TEST1";
+		}
+
+		[MethodImpl(MethodImplOptions.NoInlining)]
+		public string Method2()
+		{
+			return "TEST2";
+		}
+	}
+
+	[HarmonyPatch(typeof(BulkPatchClass))]
+	[HarmonyPatchAll]
+	public class BulkPatchClassPatch
+	{
+		public static int transpileCount = 0;
+
+		static string Fix(string result)
+		{
+			return result + "+";
+		}
+
+		static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions, MethodBase original)
+		{
+			transpileCount++;
+			var list = instructions.ToList();
+			if (original.IsConstructor is false)
+				list.Insert(list.Count - 1, CodeInstruction.Call(() => Fix("")));
+			return list.AsEnumerable();
 		}
 	}
 

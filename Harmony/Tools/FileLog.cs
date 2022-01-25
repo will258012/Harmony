@@ -16,7 +16,7 @@ namespace HarmonyLib
 		static FileLog()
 		{
 			var customPath = Environment.GetEnvironmentVariable("HARMONY_LOG_FILE");
-			if (string.IsNullOrEmpty(customPath) == false)
+			if (string.IsNullOrEmpty(customPath) is false)
 			{
 				logPath = customPath;
 				return;
@@ -179,9 +179,7 @@ namespace HarmonyLib
 				Marshal.Copy((IntPtr)ptr, arr, 0, len);
 				var md5Hash = MD5.Create();
 				var hash = md5Hash.ComputeHash(arr);
-#pragma warning disable XS0001
 				var sBuilder = new StringBuilder();
-#pragma warning restore XS0001
 				for (var i = 0; i < hash.Length; i++)
 					_ = sBuilder.Append(hash[i].ToString("X2"));
 				Log($"HASH: {sBuilder}");

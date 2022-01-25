@@ -33,6 +33,13 @@ namespace HarmonyLib
 		// Note: This should a be const, but changing from static (readonly) to const breaks binary compatibility.
 		public static readonly BindingFlags allDeclared = all | BindingFlags.DeclaredOnly;
 
+		/// <summary>Enumerates all assemblies in the current app domain, excluding visual studio assemblies</summary>
+		/// <returns>An enumeration of <see cref="Assembly"/></returns>
+		public static IEnumerable<Assembly> AllAssemblies()
+		{
+			return AppDomain.CurrentDomain.GetAssemblies().Where(a => a.FullName.StartsWith("Microsoft.VisualStudio") is false);
+		}
+
 		/// <summary>Gets a type by name. Prefers a full name with namespace but falls back to the first type matching the name otherwise</summary>
 		/// <param name="name">The name</param>
 		/// <returns>A type or null if not found</returns>
@@ -40,15 +47,10 @@ namespace HarmonyLib
 		public static Type TypeByName(string name)
 		{
 			var type = Type.GetType(name, false);
-			var assemblies = AppDomain.CurrentDomain.GetAssemblies().Where(a => a.FullName.StartsWith("Microsoft.VisualStudio") is false);
 			if (type is null)
-				type = assemblies
-					.SelectMany(a => GetTypesFromAssembly(a))
-					.FirstOrDefault(t => t.FullName == name);
+				type = AllTypes().FirstOrDefault(t => t.FullName == name);
 			if (type is null)
-				type = assemblies
-					.SelectMany(a => GetTypesFromAssembly(a))
-					.FirstOrDefault(t => t.Name == name);
+				type = AllTypes().FirstOrDefault(t => t.Name == name);
 			if (type is null && Harmony.DEBUG)
 				FileLog.Log($"AccessTools.TypeByName: Could not find type named {name}");
 			return type;
@@ -75,6 +77,13 @@ namespace HarmonyLib
 					FileLog.Log($"AccessTools.GetTypesFromAssembly: assembly {assembly} => {ex}");
 				return ex.Types.Where(type => type is object).ToArray();
 			}
+		}
+
+		/// <summary>Enumerates all successfully loaded types in the current app domain, excluding visual studio assemblies</summary>
+		/// <returns>An enumeration of all <see cref="Type"/> in all assemblies, excluding visual studio assemblies</returns>
+		public static IEnumerable<Type> AllTypes()
+		{
+			return AllAssemblies().SelectMany(a => GetTypesFromAssembly(a));
 		}
 
 		/// <summary>Applies a function going up the type hierarchy and stops at the first non-<c>null</c> result</summary>
@@ -788,7 +797,8 @@ namespace HarmonyLib
 		/// </typeparam>
 		/// <typeparam name="F">
 		/// The type of the field; or if the field's type is a reference type (a class or interface, NOT a struct or other value type),
-		/// a type that <see cref="Type.IsAssignableFrom(Type)">is assignable from</see> the field's type
+		/// a type that <see cref="Type.IsAssignableFrom(Type)">is assignable from</see> that type; or if the field's type is an enum type,
+		/// either that type or the underlying integral type of that enum type
 		/// </typeparam>
 		/// <param name="instance">The runtime instance to access the field (ignored and can be omitted for static fields)</param>
 		/// <returns>A readable/assignable reference to the field</returns>
@@ -811,11 +821,13 @@ namespace HarmonyLib
 		/// are allowed for this delegate, and the instance passed to such a delegate is ignored, this hardly matters.
 		/// </para>
 		/// <para>
-		/// Similarly, <typeparamref name="F"/> is not required to be the field's field type, unless that type is a value type.
+		/// Similarly, <typeparamref name="F"/> is not required to be the field's field type, unless that type is a non-enum value type.
 		/// It can be a parent class (including <c>object</c>) or implemented interface of the field's field type. It cannot be a derived class.
 		/// This variance is not allowed for value types, since that would require boxing/unboxing, which is not allowed for ref values.
+		/// Special case for enum types: <typeparamref name="F"/> can also be the underlying integral type of the enum type.
 		/// Specifically, for reference types, <typeparamref name="F"/> must be <see cref="Type.IsAssignableFrom(Type)">assignable from</see>
-		/// the field's field type; and for value types, <typeparamref name="F"/> must be exactly the field's field type.
+		/// the field's field type; for non-enum value types, <typeparamref name="F"/> must be exactly the field's field type; for enum types,
+		/// <typeparamref name="F"/> must be either the field's field type or the underyling integral type of that field type.
 		/// </para>
 		/// <para>
 		/// This delegate supports static fields, even those defined in structs, for legacy reasons.
@@ -824,13 +836,14 @@ namespace HarmonyLib
 		/// </para>
 		/// </remarks>
 		///
-		public delegate ref F FieldRef<T, F>(T instance = default);
+		public delegate ref F FieldRef<in T, F>(T instance = default);
 
 		/// <summary>Creates a field reference delegate for an instance field of a class</summary>
 		/// <typeparam name="T">The class that defines the instance field, or derived class of this type</typeparam>
 		/// <typeparam name="F">
 		/// The type of the field; or if the field's type is a reference type (a class or interface, NOT a struct or other value type),
-		/// a type that <see cref="Type.IsAssignableFrom(Type)">is assignable from</see> the field's type
+		/// a type that <see cref="Type.IsAssignableFrom(Type)">is assignable from</see> that type; or if the field's type is an enum type,
+		/// either that type or the underlying integral type of that enum type
 		/// </typeparam>
 		/// <param name="fieldName">The name of the field</param>
 		/// <returns>A readable/assignable <see cref="FieldRef{T,F}"/> delegate</returns>
@@ -862,7 +875,8 @@ namespace HarmonyLib
 		/// <typeparam name="T">The class that defines the instance field, or derived class of this type</typeparam>
 		/// <typeparam name="F">
 		/// The type of the field; or if the field's type is a reference type (a class or interface, NOT a struct or other value type),
-		/// a type that <see cref="Type.IsAssignableFrom(Type)">is assignable from</see> the field's type
+		/// a type that <see cref="Type.IsAssignableFrom(Type)">is assignable from</see> that type; or if the field's type is an enum type,
+		/// either that type or the underlying integral type of that enum type
 		/// </typeparam>
 		/// <param name="instance">The instance</param>
 		/// <param name="fieldName">The name of the field</param>
@@ -901,7 +915,8 @@ namespace HarmonyLib
 		/// <summary>Creates a field reference delegate for an instance field of a class or static field (NOT an instance field of a struct)</summary>
 		/// <typeparam name="F">
 		/// The type of the field; or if the field's type is a reference type (a class or interface, NOT a struct or other value type),
-		/// a type that <see cref="Type.IsAssignableFrom(Type)">is assignable from</see> the field's type
+		/// a type that <see cref="Type.IsAssignableFrom(Type)">is assignable from</see> that type; or if the field's type is an enum type,
+		/// either that type or the underlying integral type of that enum type
 		/// </typeparam>
 		/// <param name="type">
 		/// The type that defines the field, or derived class of this type; must not be a struct type unless the field is static
@@ -957,7 +972,8 @@ namespace HarmonyLib
 		/// </typeparam>
 		/// <typeparam name="F">
 		/// The type of the field; or if the field's type is a reference type (a class or interface, NOT a struct or other value type),
-		/// a type that <see cref="Type.IsAssignableFrom(Type)">is assignable from</see> the field's type
+		/// a type that <see cref="Type.IsAssignableFrom(Type)">is assignable from</see> that type; or if the field's type is an enum type,
+		/// either that type or the underlying integral type of that enum type
 		/// </typeparam>
 		/// <param name="fieldInfo">The field</param>
 		/// <returns>A readable/assignable <see cref="FieldRef{T,F}"/> delegate</returns>
@@ -1012,7 +1028,8 @@ namespace HarmonyLib
 		/// </typeparam>
 		/// <typeparam name="F">
 		/// The type of the field; or if the field's type is a reference type (a class or interface, NOT a struct or other value type),
-		/// a type that <see cref="Type.IsAssignableFrom(Type)">is assignable from</see> the field's type
+		/// a type that <see cref="Type.IsAssignableFrom(Type)">is assignable from</see> that type; or if the field's type is an enum type,
+		/// either that type or the underlying integral type of that enum type
 		/// </typeparam>
 		/// <param name="instance">The instance</param>
 		/// <param name="fieldInfo">The field</param>
@@ -1095,7 +1112,8 @@ namespace HarmonyLib
 		/// <typeparam name="T">The struct that defines the instance field</typeparam>
 		/// <typeparam name="F">
 		/// The type of the field; or if the field's type is a reference type (a class or interface, NOT a struct or other value type),
-		/// a type that <see cref="Type.IsAssignableFrom(Type)">is assignable from</see> the field's type
+		/// a type that <see cref="Type.IsAssignableFrom(Type)">is assignable from</see> that type; or if the field's type is an enum type,
+		/// either that type or the underlying integral type of that enum type
 		/// </typeparam>
 		/// <param name="instance">A reference to the runtime instance to access the field</param>
 		/// <returns>A readable/assignable reference to the field</returns>
@@ -1106,7 +1124,8 @@ namespace HarmonyLib
 		/// <typeparam name="T">The struct that defines the instance field</typeparam>
 		/// <typeparam name="F">
 		/// The type of the field; or if the field's type is a reference type (a class or interface, NOT a struct or other value type),
-		/// a type that <see cref="Type.IsAssignableFrom(Type)">is assignable from</see> the field's type
+		/// a type that <see cref="Type.IsAssignableFrom(Type)">is assignable from</see> that type; or if the field's type is an enum type,
+		/// either that type or the underlying integral type of that enum type
 		/// </typeparam>
 		/// <param name="fieldName">The name of the field</param>
 		/// <returns>A readable/assignable <see cref="StructFieldRef{T,F}"/> delegate</returns>
@@ -1129,7 +1148,8 @@ namespace HarmonyLib
 		/// <typeparam name="T">The struct that defines the instance field</typeparam>
 		/// <typeparam name="F">
 		/// The type of the field; or if the field's type is a reference type (a class or interface, NOT a struct or other value type),
-		/// a type that <see cref="Type.IsAssignableFrom(Type)">is assignable from</see> the field's type
+		/// a type that <see cref="Type.IsAssignableFrom(Type)">is assignable from</see> that type; or if the field's type is an enum type,
+		/// either that type or the underlying integral type of that enum type
 		/// </typeparam>
 		/// <param name="instance">The instance</param>
 		/// <param name="fieldName">The name of the field</param>
@@ -1160,7 +1180,8 @@ namespace HarmonyLib
 		/// <typeparam name="T">The struct that defines the instance field</typeparam>
 		/// <typeparam name="F">
 		/// The type of the field; or if the field's type is a reference type (a class or interface, NOT a struct or other value type),
-		/// a type that <see cref="Type.IsAssignableFrom(Type)">is assignable from</see> the field's type
+		/// a type that <see cref="Type.IsAssignableFrom(Type)">is assignable from</see> that type; or if the field's type is an enum type,
+		/// either that type or the underlying integral type of that enum type
 		/// </typeparam>
 		/// <param name="fieldInfo">The field</param>
 		/// <returns>A readable/assignable <see cref="StructFieldRef{T,F}"/> delegate</returns>
@@ -1190,7 +1211,8 @@ namespace HarmonyLib
 		/// <typeparam name="T">The struct that defines the instance field</typeparam>
 		/// <typeparam name="F">
 		/// The type of the field; or if the field's type is a reference type (a class or interface, NOT a struct or other value type),
-		/// a type that <see cref="Type.IsAssignableFrom(Type)">is assignable from</see> the field's type
+		/// a type that <see cref="Type.IsAssignableFrom(Type)">is assignable from</see> that type; or if the field's type is an enum type,
+		/// either that type or the underlying integral type of that enum type
 		/// </typeparam>
 		/// <param name="instance">The instance</param>
 		/// <param name="fieldInfo">The field</param>
@@ -1236,7 +1258,8 @@ namespace HarmonyLib
 		/// <summary>A readable/assignable reference delegate to a static field</summary>
 		/// <typeparam name="F">
 		/// The type of the field; or if the field's type is a reference type (a class or interface, NOT a struct or other value type),
-		/// a type that <see cref="Type.IsAssignableFrom(Type)">is assignable from</see> the field's type
+		/// a type that <see cref="Type.IsAssignableFrom(Type)">is assignable from</see> that type; or if the field's type is an enum type,
+		/// either that type or the underlying integral type of that enum type
 		/// </typeparam>
 		/// <returns>A readable/assignable reference to the field</returns>
 		///
@@ -1246,7 +1269,8 @@ namespace HarmonyLib
 		/// <typeparam name="T">The type (can be class or struct) the field is defined in</typeparam>
 		/// <typeparam name="F">
 		/// The type of the field; or if the field's type is a reference type (a class or interface, NOT a struct or other value type),
-		/// a type that <see cref="Type.IsAssignableFrom(Type)">is assignable from</see> the field's type
+		/// a type that <see cref="Type.IsAssignableFrom(Type)">is assignable from</see> that type; or if the field's type is an enum type,
+		/// either that type or the underlying integral type of that enum type
 		/// </typeparam>
 		/// <param name="fieldName">The name of the field</param>
 		/// <returns>A readable/assignable reference to the field</returns>
@@ -1259,7 +1283,8 @@ namespace HarmonyLib
 		/// <summary>Creates a static field reference</summary>
 		/// <typeparam name="F">
 		/// The type of the field; or if the field's type is a reference type (a class or interface, NOT a struct or other value type),
-		/// a type that <see cref="Type.IsAssignableFrom(Type)">is assignable from</see> the field's type
+		/// a type that <see cref="Type.IsAssignableFrom(Type)">is assignable from</see> that type; or if the field's type is an enum type,
+		/// either that type or the underlying integral type of that enum type
 		/// </typeparam>
 		/// <param name="type">The type (can be class or struct) the field is defined in</param>
 		/// <param name="fieldName">The name of the field</param>
@@ -1284,7 +1309,8 @@ namespace HarmonyLib
 		/// <typeparam name="T">An arbitrary type (by convention, the type the field is defined in)</typeparam>
 		/// <typeparam name="F">
 		/// The type of the field; or if the field's type is a reference type (a class or interface, NOT a struct or other value type),
-		/// a type that <see cref="Type.IsAssignableFrom(Type)">is assignable from</see> the field's type
+		/// a type that <see cref="Type.IsAssignableFrom(Type)">is assignable from</see> that type; or if the field's type is an enum type,
+		/// either that type or the underlying integral type of that enum type
 		/// </typeparam>
 		/// <param name="fieldInfo">The field</param>
 		/// <returns>A readable/assignable reference to the field</returns>
@@ -1310,7 +1336,8 @@ namespace HarmonyLib
 		/// <summary>Creates a static field reference delegate</summary>
 		/// <typeparam name="F">
 		/// The type of the field; or if the field's type is a reference type (a class or interface, NOT a struct or other value type),
-		/// a type that <see cref="Type.IsAssignableFrom(Type)">is assignable from</see> the field's type
+		/// a type that <see cref="Type.IsAssignableFrom(Type)">is assignable from</see> that type; or if the field's type is an enum type,
+		/// either that type or the underlying integral type of that enum type
 		/// </typeparam>
 		/// <param name="fieldInfo">The field</param>
 		/// <returns>A readable/assignable <see cref="FieldRef{F}"/> delegate</returns>
@@ -1378,16 +1405,25 @@ namespace HarmonyLib
 
 		static void ValidateFieldType<F>(FieldInfo fieldInfo)
 		{
+			var returnType = typeof(F);
 			var fieldType = fieldInfo.FieldType;
-			if (fieldType.IsValueType)
+			if (returnType == fieldType)
+				return;
+			if (fieldType.IsEnum)
+			{
+				var underlyingType = Enum.GetUnderlyingType(fieldType);
+				if (returnType != underlyingType)
+					throw new ArgumentException("FieldRefAccess return type must be the same as FieldType or " +
+						$"FieldType's underlying integral type ({underlyingType}) for enum types");
+			}
+			else if (fieldType.IsValueType)
 			{
 				// Boxing/unboxing is not allowed for ref values of value types.
-				if (typeof(F) != fieldType)
-					throw new ArgumentException("FieldRefAccess return type must be the same as FieldType for value types");
+				throw new ArgumentException("FieldRefAccess return type must be the same as FieldType for value types");
 			}
 			else
 			{
-				if (typeof(F).IsAssignableFrom(fieldType) is false)
+				if (returnType.IsAssignableFrom(fieldType) is false)
 					throw new ArgumentException("FieldRefAccess return type must be assignable from FieldType for reference types");
 			}
 		}
@@ -1661,10 +1697,24 @@ namespace HarmonyLib
 		{
 			if (type is null)
 				throw new ArgumentNullException(nameof(type));
-			var ctor = type.GetConstructor(BindingFlags.Public | BindingFlags.Instance, null, CallingConventions.Any, new Type[0], null);
+			var ctor = type.GetConstructor(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance, binder: null,
+				CallingConventions.Any, new Type[0], modifiers: null);
 			if (ctor is object)
-				return Activator.CreateInstance(type);
+				return ctor.Invoke(null);
 			return FormatterServices.GetUninitializedObject(type);
+		}
+
+		/// <summary>Creates an (possibly uninitialized) instance of a given type</summary>
+		/// <typeparam name="T">The class/type</typeparam>
+		/// <returns>The new instance</returns>
+		///
+		public static T CreateInstance<T>()
+		{
+			var instance = CreateInstance(typeof(T));
+			// Not using `as` operator since it only works with reference types.
+			if (instance is T typedInstance)
+				return typedInstance;
+			return default;
 		}
 
 		/// <summary>
@@ -1672,10 +1722,14 @@ namespace HarmonyLib
 		/// </summary>
 		static readonly Dictionary<Type, FastInvokeHandler> addHandlerCache = new Dictionary<Type, FastInvokeHandler>();
 
-		static readonly ReaderWriterLockSlim addHandlerCacheLock = new ReaderWriterLockSlim(LockRecursionPolicy.NoRecursion);
+#if NET35
+		static readonly ReaderWriterLock addHandlerCacheLock = new ReaderWriterLock();
+#else
+		static readonly ReaderWriterLockSlim addHandlerCacheLock = new ReaderWriterLockSlim(LockRecursionPolicy.SupportsRecursion);
+#endif
 
 		/// <summary>Makes a deep copy of any object</summary>
-		/// <typeparam name="T">The type of the instance that should be created</typeparam>
+		/// <typeparam name="T">The type of the instance that should be created; for legacy reasons, this must be a class or interface</typeparam>
 		/// <param name="source">The original object</param>
 		/// <returns>A copy of the original object but of type T</returns>
 		///
@@ -1719,7 +1773,11 @@ namespace HarmonyLib
 
 			if (type.IsGenericType && resultType.IsGenericType)
 			{
+#if NET35
+				addHandlerCacheLock.AcquireReaderLock(200);
+#else
 				addHandlerCacheLock.EnterUpgradeableReadLock();
+#endif
 				try
 				{
 					if (!addHandlerCache.TryGetValue(resultType, out var addInvoker))
@@ -1729,14 +1787,23 @@ namespace HarmonyLib
 						{
 							addInvoker = MethodInvoker.GetHandler(addOperation);
 						}
+#if NET35
+						addHandlerCacheLock.UpgradeToWriterLock(200);
+						addHandlerCacheLock.AcquireWriterLock(200);
+#else
 						addHandlerCacheLock.EnterWriteLock();
+#endif
 						try
 						{
 							addHandlerCache[resultType] = addInvoker;
 						}
 						finally
 						{
+#if NET35
+							addHandlerCacheLock.ReleaseWriterLock();
+#else
 							addHandlerCacheLock.ExitWriteLock();
+#endif
 						}
 					}
 					if (addInvoker != null)
@@ -1756,7 +1823,11 @@ namespace HarmonyLib
 				}
 				finally
 				{
+#if NET35
+					addHandlerCacheLock.ReleaseReaderLock();
+#else
 					addHandlerCacheLock.ExitUpgradeableReadLock();
+#endif
 				}
 			}
 

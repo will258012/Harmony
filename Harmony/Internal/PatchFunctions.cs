@@ -48,12 +48,32 @@ namespace HarmonyLib
 			return replacement;
 		}
 
+		internal static void UpdateRecompiledMethod(MethodBase original, IntPtr codeStart, PatchInfo patchInfo)
+		{
+			try
+			{
+				var sortedPrefixes = GetSortedPatchMethods(original, patchInfo.prefixes, false);
+				var sortedPostfixes = GetSortedPatchMethods(original, patchInfo.postfixes, false);
+				var sortedTranspilers = GetSortedPatchMethods(original, patchInfo.transpilers, false);
+				var sortedFinalizers = GetSortedPatchMethods(original, patchInfo.finalizers, false);
+
+				var patcher = new MethodPatcher(original, null, sortedPrefixes, sortedPostfixes, sortedTranspilers, sortedFinalizers, false);
+				var replacement = patcher.CreateReplacement(out var finalInstructions);
+				if (replacement is null) throw new MissingMethodException($"Cannot create replacement for {original.FullDescription()}");
+
+				Memory.DetourCompiledMethod(codeStart, replacement);
+			}
+			catch
+			{
+			}
+		}
+
 		internal static MethodInfo ReversePatch(HarmonyMethod standin, MethodBase original, MethodInfo postTranspiler)
 		{
 			if (standin is null)
 				throw new ArgumentNullException(nameof(standin));
 			if (standin.method is null)
-				throw new ArgumentNullException($"{nameof(standin)}.{nameof(standin.method)}");
+				throw new ArgumentNullException(nameof(standin), $"{nameof(standin)}.{nameof(standin.method)} is NULL");
 
 			var debug = (standin.debug ?? false) || Harmony.DEBUG;
 

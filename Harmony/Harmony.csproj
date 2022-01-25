@@ -20,8 +20,8 @@
 		<PackageProjectUrl>https://github.com/boformer/CitiesHarmony</PackageProjectUrl>
 		<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
 		<PackageTags>Harmony,Mono,Patch,Patching,Runtime,Detour,Detours,Aspect,Aspects</PackageTags>
-		<AssemblyVersion>2.0.4.0</AssemblyVersion>
-		<FileVersion>2.0.4.0</FileVersion>
+		<AssemblyVersion>2.2.0.0</AssemblyVersion>
+		<FileVersion>2.2.0.0</FileVersion>
 		<PackageIcon>HarmonyLogo.png</PackageIcon>
 		<PackageIconUrl>https://raw.githubusercontent.com/boformer/Harmony/master/HarmonyLogo.png</PackageIconUrl>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
@@ -30,7 +30,23 @@
 		<LangVersion>8.0</LangVersion>
 		<DefaultItemExcludes>$(DefaultItemExcludes);Documentation/**</DefaultItemExcludes>
 		<DevelopmentDependency>True</DevelopmentDependency>
+		<CheckEolTargetFramework>false</CheckEolTargetFramework>
+		<NoWarn>$(NoWarn);SYSLIB0011</NoWarn>
 	</PropertyGroup>
+
+	<!-- In .NET 5.0 Binary Formatters are off by default.  Support is added for .NET 5.0+ for fallback JSON Serialization -->
+	<Choose>
+		<When Condition="'$(TargetFramework)' == 'net5.0'">
+			<PropertyGroup>
+				<IsNET5OrGreater>true</IsNET5OrGreater>
+			</PropertyGroup>
+		</When>
+		<Otherwise>
+			<PropertyGroup>
+				<IsNET5OrGreater>false</IsNET5OrGreater>
+			</PropertyGroup>
+		</Otherwise>
+	</Choose>
 
 	<Choose>
 		<!--
@@ -99,22 +115,32 @@
 		<DebugSymbols>false</DebugSymbols>
 	</PropertyGroup>
 
+	<PropertyGroup Condition="$(IsNET5OrGreater)">
+		<DefineConstants>$(DefineConstants);NET50_OR_GREATER</DefineConstants>
+	</PropertyGroup>
+
 	<ItemGroup>
 		<!-- https://dev.azure.com/MonoMod/MonoMod/_packaging?_a=feed&feed=DevBuilds -->
-		<PackageReference Include="MonoMod.Common" Version="20.5.31.1">
+		<PackageReference Include="MonoMod.Common" Version="$(MonoModCommonVersion)">
 			<PrivateAssets Condition="$(ILRepackInternalize)">all</PrivateAssets>
 		</PackageReference>
 
 		<!-- Reference assemblies are needed for non-Windows .NET Framework targeting builds. -->
-		<PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.0" PrivateAssets="all" />
-		<PackageReference Include="jnm2.ReferenceAssemblies.net35" Version="1.0.1" PrivateAssets="all" Condition="'$(TargetFramework)'=='net35'" />
+		<PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.2" PrivateAssets="all" />
 
 		<!--
 		See ILRepack config above.
 		Version 2.1.15+ currently doesn't work on Linux and macOS (results in "Current platform not supported. Unable to find .NET Framework root"),
-		so using version 2.1.14.
+		WE MUST USE VERSION 2.1.14 HERE FOR NOW!
 		-->
 		<PackageReference Include="ILRepack.Lib.MSBuild" Version="2.1.14" PrivateAssets="all" />
+	</ItemGroup>
+
+	<ItemGroup Condition="$(IsNET5OrGreater)">
+		<PackageReference Include="System.Text.Json" Version="5.0.2" />
+	</ItemGroup>
+	<ItemGroup Condition="!$(IsNET5OrGreater)">
+		<Compile Remove="**\*.net5.cs" />
 	</ItemGroup>
 
 	<!--

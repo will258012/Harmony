@@ -46,6 +46,13 @@ namespace HarmonyLib
 			return WriteJump(originalCodeStart, patchCodeStart);
 		}
 
+		internal static void DetourCompiledMethod(IntPtr originalCodeStart, MethodBase replacement)
+		{
+			var patchCodeStart = GetMethodStart(replacement, out var exception);
+			if (patchCodeStart != 0 && exception == null)
+				_ = WriteJump((long)originalCodeStart, patchCodeStart);
+		}
+
 		internal static void DetourMethodAndPersist(MethodBase original, MethodBase replacement)
 		{
 			var errorString = DetourMethod(original, replacement);
@@ -93,7 +100,9 @@ namespace HarmonyLib
 
 			var methodDef = new DynamicMethodDefinition($"PadMethod-{Guid.NewGuid()}", typeof(void), new Type[0]);
 			methodDef.GetILGenerator().Emit(OpCodes.Ret);
-			_ = GetMethodStart(methodDef.Generate(), out var _); // trigger allocation/generation of jitted assembler
+
+			// invoke the method so that it generates a trampoline that will later get overridden by the detour code
+			_ = methodDef.Generate().Invoke(null, null);
 		}
 
 		/// <summary>Writes a jump to memory</summary>
