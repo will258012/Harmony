@@ -20,8 +20,8 @@
 		<PackageProjectUrl>https://github.com/boformer/CitiesHarmony</PackageProjectUrl>
 		<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
 		<PackageTags>Harmony,Mono,Patch,Patching,Runtime,Detour,Detours,Aspect,Aspects</PackageTags>
-		<AssemblyVersion>2.2.0.0</AssemblyVersion>
-		<FileVersion>2.2.0.0</FileVersion>
+		<AssemblyVersion>2.0.4.0</AssemblyVersion>
+		<FileVersion>2.0.4.0</FileVersion>
 		<PackageIcon>HarmonyLogo.png</PackageIcon>
 		<PackageIconUrl>https://raw.githubusercontent.com/boformer/Harmony/master/HarmonyLogo.png</PackageIconUrl>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
