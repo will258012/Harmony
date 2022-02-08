@@ -15,7 +15,7 @@
 		<AssemblyName>CitiesHarmony.Harmony</AssemblyName>
 		<SignAssembly>true</SignAssembly>
 		<Version>2.0.4.0</Version>
-		<PackageVersion>2.2.0.0-rc</PackageVersion>
+		<PackageVersion>2.2.0.0</PackageVersion>
 		<PackageLicenseFile>LICENSE</PackageLicenseFile>
 		<PackageProjectUrl>https://github.com/boformer/CitiesHarmony</PackageProjectUrl>
 		<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
