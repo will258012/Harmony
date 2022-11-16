@@ -37,7 +37,7 @@ namespace HarmonyLib
 		internal static AssemblyBuilder DefineDynamicAssembly(string name)
 		{
 			var assemblyName = new AssemblyName(name);
-#if NETCOREAPP2_0 || NETCOREAPP3_0 || NETCOREAPP3_1 || NETSTANDARD2_0 || NET5_0
+#if NETCOREAPP2_0 || NETCOREAPP3_0 || NETCOREAPP3_1 || NETSTANDARD2_0 || NET50_OR_GREATER
 			return AssemblyBuilder.DefineDynamicAssembly(assemblyName, AssemblyBuilderAccess.Run);
 #else
 			return AppDomain.CurrentDomain.DefineDynamicAssembly(assemblyName, AssemblyBuilderAccess.Run);
@@ -80,6 +80,12 @@ namespace HarmonyLib
 						return AccessTools.GetDeclaredConstructors(attr.declaringType)
 							.Where(c => c.IsStatic)
 							.FirstOrDefault();
+
+					case MethodType.Enumerator:
+						if (attr.methodName is null)
+							return null;
+						var method = AccessTools.DeclaredMethod(attr.declaringType, attr.methodName, attr.argumentTypes);
+						return AccessTools.EnumeratorMoveNext(method);
 				}
 			}
 			catch (AmbiguousMatchException ex)

@@ -24,6 +24,13 @@ namespace HarmonyLib
 #pragma warning restore CS0169
 		}
 
+		internal unsafe struct SomeStruct_NetLinux
+		{
+#pragma warning disable CS0169
+			public fixed byte headerBytes[17];
+#pragma warning restore CS0169
+		}
+
 		internal struct SomeStruct_Mono
 		{
 #pragma warning disable CS0169
@@ -36,6 +43,14 @@ namespace HarmonyLib
 
 		[MethodImpl(MethodImplOptions.NoInlining)]
 		internal SomeStruct_Net GetStruct_Net(IntPtr x, IntPtr y)
+		{
+			_ = x;
+			_ = y;
+			throw new Exception("This method should've been detoured!");
+		}
+
+		[MethodImpl(MethodImplOptions.NoInlining)]
+		internal SomeStruct_NetLinux GetStruct_NetLinux(IntPtr x, IntPtr y)
 		{
 			_ = x;
 			_ = y;
@@ -81,7 +96,7 @@ namespace HarmonyLib
 
 	internal class StructReturnBuffer
 	{
-		static readonly Dictionary<Type, int> sizes = new Dictionary<Type, int>();
+		static readonly Dictionary<Type, int> sizes = new();
 
 		static int SizeOf(Type type)
 		{
@@ -95,7 +110,7 @@ namespace HarmonyLib
 			}
 		}
 
-		static readonly HashSet<int> specialSizes = new HashSet<int> { 1, 2, 4, 8 };
+		static readonly HashSet<int> specialSizes = new() { 1, 2, 4, 8 };
 		internal static bool NeedsFix(MethodBase method)
 		{
 			var returnType = AccessTools.GetReturnedType(method);
@@ -104,15 +119,17 @@ namespace HarmonyLib
 			if (AccessTools.IsMonoRuntime && method.IsStatic is false) return false;
 
 			var size = SizeOf(returnType);
+			if (Tools.isWindows == false && size <= 16)
+				return false;
 			if (specialSizes.Contains(size))
 				return false;
 			return HasStructReturnBuffer();
 		}
 
 		internal static bool hasTestResult_Mono;
-		static readonly object hasTestResult_Mono_lock = new object();
+		static readonly object hasTestResult_Mono_lock = new();
 		internal static bool hasTestResult_Net;
-		static readonly object hasTestResult_Net_lock = new object();
+		static readonly object hasTestResult_Net_lock = new();
 		static bool HasStructReturnBuffer()
 		{
 			if (AccessTools.IsMonoRuntime)
@@ -122,7 +139,6 @@ namespace HarmonyLib
 					if (hasTestResult_Mono is false)
 					{
 						Sandbox.hasStructReturnBuffer_Mono = false;
-						var self = new StructReturnBuffer();
 						var original = AccessTools.DeclaredMethod(typeof(Sandbox), nameof(Sandbox.GetStruct_Mono));
 						var replacement = AccessTools.DeclaredMethod(typeof(Sandbox), nameof(Sandbox.GetStructReplacement_Mono));
 						_ = Memory.DetourMethod(original, replacement);
@@ -138,11 +154,13 @@ namespace HarmonyLib
 				if (hasTestResult_Net is false)
 				{
 					Sandbox.hasStructReturnBuffer_Net = false;
-					var self = new StructReturnBuffer();
-					var original = AccessTools.DeclaredMethod(typeof(Sandbox), nameof(Sandbox.GetStruct_Net));
+					var original = AccessTools.DeclaredMethod(typeof(Sandbox), Tools.isWindows ? nameof(Sandbox.GetStruct_Net) : nameof(Sandbox.GetStruct_NetLinux));
 					var replacement = AccessTools.DeclaredMethod(typeof(Sandbox), nameof(Sandbox.GetStructReplacement_Net));
 					_ = Memory.DetourMethod(original, replacement);
-					_ = new Sandbox().GetStruct_Net(Sandbox.magicValue, Sandbox.magicValue);
+					if (Tools.isWindows)
+						_ = new Sandbox().GetStruct_Net(Sandbox.magicValue, Sandbox.magicValue);
+					else
+						_ = new Sandbox().GetStruct_NetLinux(Sandbox.magicValue, Sandbox.magicValue);
 					hasTestResult_Net = true;
 				}
 			}

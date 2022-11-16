@@ -1,4 +1,4 @@
-using HarmonyLib;
+﻿using HarmonyLib;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
@@ -22,9 +22,9 @@ namespace HarmonyLibTests.IL
 			this.v3 = v3;
 		}
 
-		public static Vec3 Zero => new Vec3(0, 0, 0);
+		public static Vec3 Zero => new(0, 0, 0);
 
-		override public string ToString()
+		public override string ToString()
 		{
 			return v1 + "," + v2 + "," + v3;
 		}
@@ -75,10 +75,10 @@ namespace HarmonyLibTests.IL
 		}
 	}
 
-	[TestFixture]
+	[TestFixture, NonParallelizable]
 	public class DynamicArgumentPatches : TestLogger
 	{
-		static readonly List<string> log = new List<string>();
+		static readonly List<string> log = new();
 
 		static bool General(string typeName, int token, object instance, object[] args)
 		{

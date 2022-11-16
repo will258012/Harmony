@@ -15,19 +15,19 @@
 		<AssemblyName>CitiesHarmony.Harmony</AssemblyName>
 		<SignAssembly>true</SignAssembly>
 		<Version>2.0.4.0</Version>
-		<PackageVersion>2.2.0.0</PackageVersion>
+		<PackageVersion>$(HarmonyVersion)</PackageVersion>
 		<PackageLicenseFile>LICENSE</PackageLicenseFile>
 		<PackageProjectUrl>https://github.com/boformer/CitiesHarmony</PackageProjectUrl>
 		<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
 		<PackageTags>Harmony,Mono,Patch,Patching,Runtime,Detour,Detours,Aspect,Aspects</PackageTags>
 		<AssemblyVersion>2.0.4.0</AssemblyVersion>
-		<FileVersion>2.2.0.0</FileVersion>
+		<FileVersion>$(HarmonyVersion)</FileVersion>
 		<PackageIcon>HarmonyLogo.png</PackageIcon>
 		<PackageIconUrl>https://raw.githubusercontent.com/boformer/Harmony/master/HarmonyLogo.png</PackageIconUrl>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 		<LogFile>obj/docfx-$(TargetFramework).log</LogFile>
 		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-		<LangVersion>8.0</LangVersion>
+		<LangVersion>preview</LangVersion>
 		<DefaultItemExcludes>$(DefaultItemExcludes);Documentation/**</DefaultItemExcludes>
 		<DevelopmentDependency>True</DevelopmentDependency>
 		<CheckEolTargetFramework>false</CheckEolTargetFramework>
@@ -36,7 +36,7 @@
 
 	<!-- In .NET 5.0 Binary Formatters are off by default.  Support is added for .NET 5.0+ for fallback JSON Serialization -->
 	<Choose>
-		<When Condition="'$(TargetFramework)' == 'net5.0'">
+		<When Condition="'$(TargetFramework)'=='net5.0' Or '$(TargetFramework)'=='net6.0'">
 			<PropertyGroup>
 				<IsNET5OrGreater>true</IsNET5OrGreater>
 			</PropertyGroup>
@@ -141,6 +141,8 @@
 	</ItemGroup>
 	<ItemGroup Condition="!$(IsNET5OrGreater)">
 		<Compile Remove="**\*.net5.cs" />
+		<Compile Remove="**\*.net6.cs" />
+		<Compile Remove="**\*.net7.cs" />
 	</ItemGroup>
 
 	<!--

@@ -1,4 +1,4 @@
-using HarmonyLib;
+﻿using HarmonyLib;
 using HarmonyLibTests.Assets;
 using NUnit.Framework;
 using System;
@@ -67,7 +67,7 @@ namespace HarmonyLibTests.Patching
 			}
 		}
 
-		public List<T> list = new List<T>();
+		public List<T> list = new();
 
 		[MethodImpl(MethodImplOptions.NoInlining)]
 		public MyEnumerator GetEnumerator()
@@ -97,7 +97,7 @@ namespace HarmonyLibTests.Patching
 		}
 	}
 
-	[TestFixture]
+	[TestFixture, NonParallelizable]
 	public class GenericsPatches : TestLogger
 	{
 		[Test]

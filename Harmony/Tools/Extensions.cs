@@ -165,32 +165,84 @@ namespace HarmonyLib
 	///
 	public static class CodeInstructionExtensions
 	{
-		static readonly HashSet<OpCode> loadVarCodes = new HashSet<OpCode>
+		static readonly HashSet<OpCode> loadVarCodes = new()
 		{
-			OpCodes.Ldloc_0, OpCodes.Ldloc_1, OpCodes.Ldloc_2, OpCodes.Ldloc_3,
-			OpCodes.Ldloc, OpCodes.Ldloca, OpCodes.Ldloc_S, OpCodes.Ldloca_S
+			OpCodes.Ldloc_0,
+			OpCodes.Ldloc_1,
+			OpCodes.Ldloc_2,
+			OpCodes.Ldloc_3,
+			OpCodes.Ldloc,
+			OpCodes.Ldloca,
+			OpCodes.Ldloc_S,
+			OpCodes.Ldloca_S
 		};
 
-		static readonly HashSet<OpCode> storeVarCodes = new HashSet<OpCode>
+		static readonly HashSet<OpCode> storeVarCodes = new()
 		{
-			OpCodes.Stloc_0, OpCodes.Stloc_1, OpCodes.Stloc_2, OpCodes.Stloc_3,
-			OpCodes.Stloc, OpCodes.Stloc_S
+			OpCodes.Stloc_0,
+			OpCodes.Stloc_1,
+			OpCodes.Stloc_2,
+			OpCodes.Stloc_3,
+			OpCodes.Stloc,
+			OpCodes.Stloc_S
 		};
 
-		static readonly HashSet<OpCode> branchCodes = new HashSet<OpCode>
+		static readonly HashSet<OpCode> branchCodes = new()
 		{
-			OpCodes.Br_S, OpCodes.Brfalse_S, OpCodes.Brtrue_S, OpCodes.Beq_S, OpCodes.Bge_S, OpCodes.Bgt_S,
-			OpCodes.Ble_S, OpCodes.Blt_S, OpCodes.Bne_Un_S, OpCodes.Bge_Un_S, OpCodes.Bgt_Un_S, OpCodes.Ble_Un_S,
-			OpCodes.Blt_Un_S, OpCodes.Br, OpCodes.Brfalse, OpCodes.Brtrue, OpCodes.Beq, OpCodes.Bge, OpCodes.Bgt,
-			OpCodes.Ble, OpCodes.Blt, OpCodes.Bne_Un, OpCodes.Bge_Un, OpCodes.Bgt_Un, OpCodes.Ble_Un, OpCodes.Blt_Un
+			OpCodes.Br_S,
+			OpCodes.Brfalse_S,
+			OpCodes.Brtrue_S,
+			OpCodes.Beq_S,
+			OpCodes.Bge_S,
+			OpCodes.Bgt_S,
+			OpCodes.Ble_S,
+			OpCodes.Blt_S,
+			OpCodes.Bne_Un_S,
+			OpCodes.Bge_Un_S,
+			OpCodes.Bgt_Un_S,
+			OpCodes.Ble_Un_S,
+			OpCodes.Blt_Un_S,
+			OpCodes.Br,
+			OpCodes.Brfalse,
+			OpCodes.Brtrue,
+			OpCodes.Beq,
+			OpCodes.Bge,
+			OpCodes.Bgt,
+			OpCodes.Ble,
+			OpCodes.Blt,
+			OpCodes.Bne_Un,
+			OpCodes.Bge_Un,
+			OpCodes.Bgt_Un,
+			OpCodes.Ble_Un,
+			OpCodes.Blt_Un
 		};
 
-		static readonly HashSet<OpCode> constantLoadingCodes = new HashSet<OpCode>
+		static readonly HashSet<OpCode> constantLoadingCodes = new()
 		{
-			OpCodes.Ldc_I4_M1, OpCodes.Ldc_I4_0, OpCodes.Ldc_I4_1, OpCodes.Ldc_I4_2, OpCodes.Ldc_I4_3,
-			OpCodes.Ldc_I4_4, OpCodes.Ldc_I4_5, OpCodes.Ldc_I4_6, OpCodes.Ldc_I4_7, OpCodes.Ldc_I4_8,
-			OpCodes.Ldc_I4, OpCodes.Ldc_I4_S, OpCodes.Ldc_I8, OpCodes.Ldc_R4, OpCodes.Ldc_R8
+			OpCodes.Ldc_I4_M1,
+			OpCodes.Ldc_I4_0,
+			OpCodes.Ldc_I4_1,
+			OpCodes.Ldc_I4_2,
+			OpCodes.Ldc_I4_3,
+			OpCodes.Ldc_I4_4,
+			OpCodes.Ldc_I4_5,
+			OpCodes.Ldc_I4_6,
+			OpCodes.Ldc_I4_7,
+			OpCodes.Ldc_I4_8,
+			OpCodes.Ldc_I4,
+			OpCodes.Ldc_I4_S,
+			OpCodes.Ldc_I8,
+			OpCodes.Ldc_R4,
+			OpCodes.Ldc_R8
 		};
+
+		/// <summary>Returns if an <see cref="OpCode"/> is initialized and valid</summary>
+		/// <param name="code">The <see cref="OpCode"/></param>
+		/// <returns></returns>
+		public static bool IsValid(this OpCode code)
+		{
+			return code.Size > 0;
+		}
 
 		/// <summary>Shortcut for testing whether the operand is equal to a non-null value</summary>
 		/// <param name="code">The <see cref="CodeInstruction"/></param>
@@ -388,6 +440,18 @@ namespace HarmonyLib
 			return code.LoadsConstant(Convert.ToInt64(e));
 		}
 
+		/// <summary>Tests if the code instruction loads a string constant</summary>
+		/// <param name="code">The <see cref="CodeInstruction"/></param>
+		/// <param name="str">The string</param>
+		/// <returns>True if the instruction loads the constant</returns>
+		///
+		public static bool LoadsConstant(this CodeInstruction code, string str)
+		{
+			if (code.opcode != OpCodes.Ldstr) return false;
+			var val = Convert.ToString(code.operand);
+			return val == str;
+		}
+
 		/// <summary>Tests if the code instruction loads a field</summary>
 		/// <param name="code">The <see cref="CodeInstruction"/></param>
 		/// <param name="field">The field</param>
@@ -446,9 +510,9 @@ namespace HarmonyLib
 			return labels;
 		}
 
-		/// <summary>Moves all labels from the code instruction to a different one</summary>
+		/// <summary>Moves all labels from the code instruction to another one</summary>
 		/// <param name="code">The <see cref="CodeInstruction"/> to move the labels from</param>
-		/// <param name="other">The <see cref="CodeInstruction"/> to move the labels to</param>
+		/// <param name="other">The other <see cref="CodeInstruction"/> to move the labels to</param>
 		/// <returns>The code instruction labels were moved from (now empty)</returns>
 		public static CodeInstruction MoveLabelsTo(this CodeInstruction code, CodeInstruction other)
 		{
@@ -456,9 +520,9 @@ namespace HarmonyLib
 			return code;
 		}
 
-		/// <summary>Moves all labels from a different code instruction to the current one</summary>
-		/// <param name="code">The <see cref="CodeInstruction"/> to move the labels from</param>
-		/// <param name="other">The <see cref="CodeInstruction"/> to move the labels to</param>
+		/// <summary>Moves all labels from another code instruction to the current one</summary>
+		/// <param name="code">The <see cref="CodeInstruction"/> to move the labels to</param>
+		/// <param name="other">The other <see cref="CodeInstruction"/> to move the labels from</param>
 		/// <returns>The code instruction that received the labels</returns>
 		public static CodeInstruction MoveLabelsFrom(this CodeInstruction code, CodeInstruction other)
 		{
@@ -495,9 +559,9 @@ namespace HarmonyLib
 			return blocks;
 		}
 
-		/// <summary>Moves all ExceptionBlocks from the code instruction to a different one</summary>
+		/// <summary>Moves all ExceptionBlocks from the code instruction to another one</summary>
 		/// <param name="code">The <see cref="CodeInstruction"/> to move the ExceptionBlocks from</param>
-		/// <param name="other">The <see cref="CodeInstruction"/> to move the ExceptionBlocks to</param>
+		/// <param name="other">The other <see cref="CodeInstruction"/> to move the ExceptionBlocks to</param>
 		/// <returns>The code instruction blocks were moved from (now empty)</returns>
 		public static CodeInstruction MoveBlocksTo(this CodeInstruction code, CodeInstruction other)
 		{
@@ -505,9 +569,9 @@ namespace HarmonyLib
 			return code;
 		}
 
-		/// <summary>Moves all ExceptionBlocks from a different code instruction to the current one</summary>
-		/// <param name="code">The <see cref="CodeInstruction"/> to move the ExceptionBlocks from</param>
-		/// <param name="other">The <see cref="CodeInstruction"/> to move the ExceptionBlocks to</param>
+		/// <summary>Moves all ExceptionBlocks from another code instruction to the current one</summary>
+		/// <param name="code">The <see cref="CodeInstruction"/> to move the ExceptionBlocks to</param>
+		/// <param name="other">The other <see cref="CodeInstruction"/> to move the ExceptionBlocks from</param>
 		/// <returns>The code instruction that received the blocks</returns>
 		public static CodeInstruction MoveBlocksFrom(this CodeInstruction code, CodeInstruction other)
 		{

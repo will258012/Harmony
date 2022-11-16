@@ -21,7 +21,7 @@ namespace HarmonyLibTests.Tools
 	// - the type of the field
 	// - type parameter F (which again may not match previous)
 	// particularly around differences between references types (classes and interfaces) and value types (structs, primitives, etc.).
-	[TestFixture]
+	[TestFixture, NonParallelizable]
 	public class TestFieldRefAccess : TestLogger
 	{
 		// The "A" here is to distinguish from NUnit's own TestCase, though the "ATestCase" naming is a neat side effect.
@@ -132,7 +132,7 @@ namespace HarmonyLibTests.Tools
 			public IncompatibleFieldTypeException(string message) : base(message) { }
 		}
 
-		static readonly Dictionary<Type, object> instancePrototypes = new Dictionary<Type, object>
+		static readonly Dictionary<Type, object> instancePrototypes = new()
 		{
 			[typeof(AccessToolsClass)] = new AccessToolsClass(),
 			[typeof(AccessToolsSubClass)] = new AccessToolsSubClass(),
@@ -682,10 +682,7 @@ namespace HarmonyLibTests.Tools
 				var field = AccessTools.Field(typeof(AccessToolsClass), "field5");
 				var expectedCaseToConstraint = expectedCaseToConstraint_ClassInstance;
 				// Type of field is AccessToolsClass.Inner, which is a private class.
-				static IInner TestValue()
-				{
-					return AccessToolsClass.NewInner(987);
-				}
+				static IInner TestValue() => AccessToolsClass.NewInner(987);
 				TestSuite_Class<AccessToolsClass, AccessToolsClass, IInner>(
 					field, TestValue(), expectedCaseToConstraint);
 				TestSuite_Class<IAccessToolsType, AccessToolsClass, IInner>(
@@ -757,10 +754,7 @@ namespace HarmonyLibTests.Tools
 				var expectedCaseToConstraint = expectedCaseToConstraint_ClassInstance;
 				// Type of field is AccessToolsClass.InnerStruct, which is a private struct.
 				// As it's a value type and references cannot be made to boxed value type instances, FieldRefValue will never work.
-				static IInner TestValue()
-				{
-					return AccessToolsClass.NewInnerStruct(-987);
-				}
+				static IInner TestValue() => AccessToolsClass.NewInnerStruct(-987);
 				TestSuite_Class<AccessToolsClass, AccessToolsClass, IInner>(
 					field, TestValue(), IncompatibleFieldType(expectedCaseToConstraint));
 				TestSuite_Struct<int, IInner>(

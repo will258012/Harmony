@@ -93,13 +93,16 @@ namespace HarmonyLib
 
 			Label? skipOriginalLabel = null;
 			LocalBuilder runOriginalVariable = null;
-			if (prefixes.Any(fix => PrefixAffectsOriginal(fix)))
+			var prefixAffectsOriginal = prefixes.Any(fix => PrefixAffectsOriginal(fix));
+			var anyFixHasRunOriginalVar = fixes.Any(fix => fix.GetParameters().Any(p => p.Name == RUN_ORIGINAL_VAR));
+			if (prefixAffectsOriginal || anyFixHasRunOriginalVar)
 			{
 				runOriginalVariable = DeclareLocalVariable(typeof(bool));
 				emitter.Emit(OpCodes.Ldc_I4_1);
 				emitter.Emit(OpCodes.Stloc, runOriginalVariable);
 
-				skipOriginalLabel = il.DefineLabel();
+				if (prefixAffectsOriginal)
+					skipOriginalLabel = il.DefineLabel();
 			}
 
 			fixes.ForEach(fix =>
@@ -146,17 +149,17 @@ namespace HarmonyLib
 
 			foreach (var label in endLabels)
 				emitter.MarkLabel(label);
-			if (resultVariable is object)
+			if (resultVariable is object && hasReturnCode)
 				emitter.Emit(OpCodes.Stloc, resultVariable);
 			if (skipOriginalLabel.HasValue)
 				emitter.MarkLabel(skipOriginalLabel.Value);
 
-			_ = AddPostfixes(privateVars, false);
+			_ = AddPostfixes(privateVars, runOriginalVariable, false);
 
-			if (resultVariable is object)
+			if (resultVariable is object && hasReturnCode)
 				emitter.Emit(OpCodes.Ldloc, resultVariable);
 
-			var needsToStorePassthroughResult = AddPostfixes(privateVars, true);
+			var needsToStorePassthroughResult = AddPostfixes(privateVars, runOriginalVariable, true);
 
 			var hasFinalizers = finalizers.Any();
 			if (hasFinalizers)
@@ -167,7 +170,7 @@ namespace HarmonyLib
 					emitter.Emit(OpCodes.Ldloc, resultVariable);
 				}
 
-				_ = AddFinalizers(privateVars, false);
+				_ = AddFinalizers(privateVars, runOriginalVariable, false);
 				emitter.Emit(OpCodes.Ldc_I4_1);
 				emitter.Emit(OpCodes.Stloc, finalizedVariable);
 				var noExceptionLabel1 = il.DefineLabel();
@@ -185,7 +188,7 @@ namespace HarmonyLib
 				var endFinalizerLabel = il.DefineLabel();
 				emitter.Emit(OpCodes.Brtrue, endFinalizerLabel);
 
-				var rethrowPossible = AddFinalizers(privateVars, true);
+				var rethrowPossible = AddFinalizers(privateVars, runOriginalVariable, true);
 
 				emitter.MarkLabel(endFinalizerLabel);
 
@@ -237,7 +240,7 @@ namespace HarmonyLib
 			if (original is null) throw new ArgumentNullException(nameof(original));
 			var useStructReturnBuffer = StructReturnBuffer.NeedsFix(original);
 
-			var patchName = $"{original.DeclaringType?.FullName}.{original.Name}{suffix}";
+			var patchName = $"{original.DeclaringType?.FullName ?? "GLOBALTYPE"}.{original.Name}{suffix}";
 			patchName = patchName.Replace("<>", "");
 
 			var parameters = original.GetParameters();
@@ -283,7 +286,7 @@ namespace HarmonyLib
 				if (parameterTypes.Count == method.Definition.Parameters.Count)
 					for (var i = 0; i < parameterTypes.Count; i++)
 						parameterStrings[i] += $" {method.Definition.Parameters[i].Name}";
-				FileLog.Log($"### Replacement: static {returnType.FullDescription()} {original.DeclaringType.FullName}::{patchName}({parameterStrings.Join()})");
+				FileLog.Log($"### Replacement: static {returnType.FullDescription()} {original.DeclaringType?.FullName ?? "GLOBALTYPE"}::{patchName}({parameterStrings.Join()})");
 			}
 
 			return method;
@@ -510,13 +513,13 @@ namespace HarmonyLib
 						// field access by index only works for declared fields
 						fieldInfo = AccessTools.DeclaredField(original.DeclaringType, int.Parse(fieldName));
 						if (fieldInfo is null)
-							throw new ArgumentException($"No field found at given index in class {original.DeclaringType.AssemblyQualifiedName}", fieldName);
+							throw new ArgumentException($"No field found at given index in class {original.DeclaringType?.AssemblyQualifiedName ?? "null"}", fieldName);
 					}
 					else
 					{
 						fieldInfo = AccessTools.Field(original.DeclaringType, fieldName);
 						if (fieldInfo is null)
-							throw new ArgumentException($"No such field defined in class {original.DeclaringType.AssemblyQualifiedName}", fieldName);
+							throw new ArgumentException($"No such field defined in class {original.DeclaringType?.AssemblyQualifiedName ?? "null"}", fieldName);
 					}
 
 					if (fieldInfo.IsStatic)
@@ -533,7 +536,7 @@ namespace HarmonyLib
 				if (patchParam.Name == STATE_VAR)
 				{
 					var ldlocCode = patchParam.ParameterType.IsByRef ? OpCodes.Ldloca : OpCodes.Ldloc;
-					if (variables.TryGetValue(patch.DeclaringType.AssemblyQualifiedName, out var stateVar))
+					if (variables.TryGetValue(patch.DeclaringType?.AssemblyQualifiedName ?? "null", out var stateVar))
 						emitter.Emit(ldlocCode, stateVar);
 					else
 						emitter.Emit(OpCodes.Ldnull);
@@ -606,7 +609,7 @@ namespace HarmonyLib
 								else
 								{
 									emitter.Emit(OpCodes.Ldarg_0);
-									if (originalType.IsValueType)
+									if (originalType != null && originalType.IsValueType)
 									{
 										emitter.Emit(OpCodes.Ldobj, originalType);
 										emitter.Emit(OpCodes.Box, originalType);
@@ -726,8 +729,8 @@ namespace HarmonyLib
 			prefixes
 				.Do(fix =>
 				{
-					if (original.HasMethodBody() is false)
-						throw new Exception("Methods without body cannot have prefixes. Use a transpiler instead.");
+					//if (original.HasMethodBody() is false)
+					//	throw new Exception("Methods without body cannot have prefixes. Use a transpiler instead.");
 
 					var skipLabel = PrefixAffectsOriginal(fix) ? il.DefineLabel() : (Label?)null;
 					if (skipLabel.HasValue)
@@ -771,18 +774,18 @@ namespace HarmonyLib
 				});
 		}
 
-		bool AddPostfixes(Dictionary<string, LocalBuilder> variables, bool passthroughPatches)
+		bool AddPostfixes(Dictionary<string, LocalBuilder> variables, LocalBuilder runOriginalVariable, bool passthroughPatches)
 		{
 			var result = false;
 			postfixes
 				.Where(fix => passthroughPatches == (fix.ReturnType != typeof(void)))
 				.Do(fix =>
 				{
-					if (original.HasMethodBody() is false)
-						throw new Exception("Methods without body cannot have postfixes. Use a transpiler instead.");
+					//if (original.HasMethodBody() is false)
+					//	throw new Exception("Methods without body cannot have postfixes. Use a transpiler instead.");
 
 					var tmpBoxVars = new List<KeyValuePair<LocalBuilder, Type>>();
-					EmitCallParameter(fix, variables, null, true, out var tmpObjectVar, tmpBoxVars);
+					EmitCallParameter(fix, variables, runOriginalVariable, true, out var tmpObjectVar, tmpBoxVars);
 					emitter.Emit(OpCodes.Call, fix);
 					if (fix.GetParameters().Any(p => p.Name == ARGS_ARRAY_VAR))
 						RestoreArgumentArray(variables);
@@ -818,20 +821,20 @@ namespace HarmonyLib
 			return result;
 		}
 
-		bool AddFinalizers(Dictionary<string, LocalBuilder> variables, bool catchExceptions)
+		bool AddFinalizers(Dictionary<string, LocalBuilder> variables, LocalBuilder runOriginalVariable, bool catchExceptions)
 		{
 			var rethrowPossible = true;
 			finalizers
 				.Do(fix =>
 				{
-					if (original.HasMethodBody() is false)
-						throw new Exception("Methods without body cannot have finalizers. Use a transpiler instead.");
+					//if (original.HasMethodBody() is false)
+					//	throw new Exception("Methods without body cannot have finalizers. Use a transpiler instead.");
 
 					if (catchExceptions)
 						emitter.MarkBlockBefore(new ExceptionBlock(ExceptionBlockType.BeginExceptionBlock), out var label);
 
 					var tmpBoxVars = new List<KeyValuePair<LocalBuilder, Type>>();
-					EmitCallParameter(fix, variables, null, false, out var tmpObjectVar, tmpBoxVars);
+					EmitCallParameter(fix, variables, runOriginalVariable, false, out var tmpObjectVar, tmpBoxVars);
 					emitter.Emit(OpCodes.Call, fix);
 					if (fix.GetParameters().Any(p => p.Name == ARGS_ARRAY_VAR))
 						RestoreArgumentArray(variables);

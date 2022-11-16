@@ -48,7 +48,7 @@ namespace HarmonyLib
 				var location = assembly.Location;
 				var environment = Environment.Version.ToString();
 				var platform = Environment.OSVersion.Platform.ToString();
-#if !NET5_0
+#if !NET50_OR_GREATER
 				if (string.IsNullOrEmpty(location)) location = new Uri(assembly.CodeBase).LocalPath;
 #endif
 				var ptr_runtime = IntPtr.Size;
@@ -59,7 +59,7 @@ namespace HarmonyLib
 				{
 					var callingAssembly = callingMethod.DeclaringType.Assembly;
 					location = callingAssembly.Location;
-#if !NET5_0
+#if !NET50_OR_GREATER
 					if (string.IsNullOrEmpty(location)) location = new Uri(callingAssembly.CodeBase).LocalPath;
 #endif
 					FileLog.Log($"### Started from {callingMethod.FullDescription()}, location {location}");
@@ -174,7 +174,7 @@ namespace HarmonyLib
 		/// <param name="type">The <see cref="HarmonyPatchType"/></param>
 		/// <param name="harmonyID">The optional Harmony ID to restrict unpatching to a specific Harmony instance</param>
 		///
-		public void Unpatch(MethodBase original, HarmonyPatchType type, string harmonyID = null)
+		public void Unpatch(MethodBase original, HarmonyPatchType type, string harmonyID = "*")
 		{
 			var processor = CreateProcessor(original);
 			_ = processor.Unpatch(type, harmonyID);
@@ -245,6 +245,17 @@ namespace HarmonyLib
 		{
 			if (frame == null) throw new ArgumentNullException(nameof(frame));
 			return HarmonySharedState.FindReplacement(frame) ?? frame.GetMethod();
+		}
+
+		/// <summary>Gets the original method from the stackframe and uses original if method is a dynamic replacement</summary>
+		/// <param name="frame">The <see cref="StackFrame"/></param>
+		/// <returns>The original method from that stackframe</returns>
+		public static MethodBase GetOriginalMethodFromStackframe(StackFrame frame)
+		{
+			var member = GetMethodFromStackframe(frame);
+			if (member is MethodInfo methodInfo)
+				member = GetOriginalMethod(methodInfo) ?? member;
+			return member;
 		}
 
 		/// <summary>Gets Harmony version for all active Harmony instances</summary>

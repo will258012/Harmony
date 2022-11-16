@@ -596,7 +596,7 @@ namespace HarmonyLibTests.Assets
 
 	public class Class13<T> : IEnumerable<T>
 	{
-		readonly List<T> store = new List<T>();
+		readonly List<T> store = new();
 
 		[MethodImpl(MethodImplOptions.NoInlining)]
 		public void Add(T item)
@@ -630,7 +630,7 @@ namespace HarmonyLibTests.Assets
 
 	public class Class14
 	{
-		public static List<string> state = new List<string>();
+		public static List<string> state = new();
 
 		[MethodImpl(MethodImplOptions.NoInlining)]
 		public bool Test(string s, KeyValuePair<string, int> p)
@@ -846,7 +846,7 @@ namespace HarmonyLibTests.Assets
 	[HarmonyPatch(nameof(Finalizer_Patch_Order_Class.Method))]
 	public class Finalizer_Patch_Order_Patch
 	{
-		public static List<string> events = new List<string>();
+		public static List<string> events = new();
 
 		public static List<string> GetEvents()
 		{
@@ -949,7 +949,7 @@ namespace HarmonyLibTests.Assets
 	[HarmonyPatch(nameof(Affecting_Original_Prefixes_Class.Method))]
 	public class Affecting_Original_Prefixes_Patch
 	{
-		public static List<string> events = new List<string>();
+		public static List<string> events = new();
 
 		public static List<string> GetEvents()
 		{
@@ -1117,10 +1117,13 @@ namespace HarmonyLibTests.Assets
 		}
 	}
 
+	[HarmonyPatch(typeof(Class22), nameof(Class22.Method22))]
 	public class Class22
 	{
-		public static bool? bool1 = null;
-		public static bool? bool2 = null;
+		public static bool? bool1;
+		public static bool? bool2;
+		public static bool? bool3;
+		public static bool? bool4;
 
 		[MethodImpl(MethodImplOptions.NoInlining)]
 		public static void Method22()
@@ -1134,13 +1137,108 @@ namespace HarmonyLibTests.Assets
 			}
 		}
 
+		[HarmonyPrefix]
 		public static bool Prefix1(bool __runOriginal)
 		{
 			bool1 = __runOriginal;
+			return true;
+		}
+
+		[HarmonyPrefix]
+		public static bool Prefix2(bool __runOriginal)
+		{
+			bool2 = __runOriginal;
 			return false;
 		}
 
-		public static void Prefix2(bool __runOriginal)
+		[HarmonyPrefix]
+		public static void Prefix3(bool __runOriginal)
+		{
+			bool3 = __runOriginal;
+		}
+
+		[HarmonyPostfix]
+		public static void Postfix(bool __runOriginal)
+		{
+			bool4 = __runOriginal;
+		}
+	}
+
+	[HarmonyPatch(typeof(Class22b), nameof(Class22b.Method22b))]
+	public class Class22b
+	{
+		public static bool prefixResult;
+		public static bool originalExecuted;
+		public static bool? runOriginalPre;
+		public static bool? runOriginalPost;
+
+		[MethodImpl(MethodImplOptions.NoInlining)]
+		public static void Method22b()
+		{
+			originalExecuted = true;
+			try { }
+			catch { throw; }
+		}
+
+		public static bool Prefix(bool __runOriginal)
+		{
+			runOriginalPre = __runOriginal;
+			return prefixResult;
+		}
+
+		public static void Postfix(bool __runOriginal)
+		{
+			runOriginalPost = __runOriginal;
+		}
+	}
+
+	[HarmonyPatch(typeof(Class23), nameof(Class23.Method23))]
+	public class Class23
+	{
+		public static bool? bool1;
+
+		[MethodImpl(MethodImplOptions.NoInlining)]
+		public static void Method23()
+		{
+			try
+			{
+			}
+			catch
+			{
+				throw;
+			}
+		}
+
+		public static void Postfix(bool __runOriginal)
+		{
+			bool1 = __runOriginal;
+		}
+	}
+
+	[HarmonyPatch(typeof(Class24), nameof(Class24.Method24))]
+	public class Class24
+	{
+		public static bool? bool1;
+		public static bool? bool2;
+
+		[MethodImpl(MethodImplOptions.NoInlining)]
+		public static void Method24()
+		{
+			try
+			{
+			}
+			catch
+			{
+				throw;
+			}
+		}
+
+		public static void Prefix(bool __runOriginal)
+		{
+			bool1 = __runOriginal;
+		}
+
+		public static void Postfix(bool __runOriginal)
 		{
 			bool2 = __runOriginal;
 		}

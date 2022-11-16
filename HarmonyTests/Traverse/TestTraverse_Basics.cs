@@ -1,4 +1,4 @@
-using HarmonyLib;
+﻿using HarmonyLib;
 using HarmonyLibTests.Assets;
 using NUnit.Framework;
 using System;
@@ -6,10 +6,10 @@ using System.Collections.Generic;
 
 namespace HarmonyLibTests.Tools
 {
-	[TestFixture]
+	[TestFixture, NonParallelizable]
 	public class TestTraverse_Basics : TestLogger
 	{
-		static readonly List<string> fieldNames = new List<string> { "_root", "_type", "_info", "_method", "_params" };
+		static readonly List<string> fieldNames = new() { "_root", "_type", "_info", "_method", "_params" };
 
 		// Basic integrity check for our test class and the field-testvalue relations
 		//

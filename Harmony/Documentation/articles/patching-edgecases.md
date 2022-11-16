@@ -72,3 +72,27 @@ public SomeType MyMethod()
 ```
 
 That method has no `RET` IL code in its body and if you try to patch it, Harmony will generate illegal IL. The only solution to this is to create a `Transpiler` that transpiles the method to a correct version by creating valid IL. This is also true for adding a Prefix or Postfix to that method. The way Harmony works, the replacement method needs to be valid to add calls to your patches to it.
+
+### Patching too early: MissingMethodException in Unity
+
+When patching too early, for example on the injected assemblys entry point, Unity will throw a `MissingMethodException: Attempted to access a missing method`.
+
+This situation occurs when the original method directly or indirectly calls an `external` UnityEngine method. 
+
+In the following example code, patching either `SomeMethod()` or `SomeOtherMethod()` will cause the exception:
+
+[!code-csharp[example](../examples/patching-edgecases.cs?name=early1)]
+
+`UnityEngine.Object.DontDestroyOnLoad()` is an external UnityEngine method:
+
+```csharp
+[MethodImpl(MethodImplOptions.InternalCall)]
+[GeneratedByOldBindingsGenerator]
+public static extern void DontDestroyOnLoad(Object target);
+```
+
+To prevent this issue, make sure UnityEngine has finished its startup phase (dynamically linking external methods to actual binary) before patching such methods.
+
+One way to do so is to execute patching only after Unity has loaded the first scene, for example by using the `SceneManager.sceneLoaded` event:
+
+[!code-csharp[example](../examples/patching-edgecases.cs?name=early2)]

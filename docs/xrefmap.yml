@@ -137,6 +137,12 @@ references:
   isSpec: "True"
   fullName: HarmonyLib.AccessTools.DeclaredConstructor
   nameWithType: AccessTools.DeclaredConstructor
+- uid: HarmonyLib.AccessTools.DeclaredField(System.String)
+  name: DeclaredField(String)
+  href: api/HarmonyLib.AccessTools.html#HarmonyLib_AccessTools_DeclaredField_System_String_
+  commentId: M:HarmonyLib.AccessTools.DeclaredField(System.String)
+  fullName: HarmonyLib.AccessTools.DeclaredField(System.String)
+  nameWithType: AccessTools.DeclaredField(String)
 - uid: HarmonyLib.AccessTools.DeclaredField(System.Type,System.Int32)
   name: DeclaredField(Type, Int32)
   href: api/HarmonyLib.AccessTools.html#HarmonyLib_AccessTools_DeclaredField_System_Type_System_Int32_
@@ -156,6 +162,15 @@ references:
   isSpec: "True"
   fullName: HarmonyLib.AccessTools.DeclaredField
   nameWithType: AccessTools.DeclaredField
+- uid: HarmonyLib.AccessTools.DeclaredMethod(System.String,System.Type[],System.Type[])
+  name: DeclaredMethod(String, Type[], Type[])
+  href: api/HarmonyLib.AccessTools.html#HarmonyLib_AccessTools_DeclaredMethod_System_String_System_Type___System_Type___
+  commentId: M:HarmonyLib.AccessTools.DeclaredMethod(System.String,System.Type[],System.Type[])
+  name.vb: DeclaredMethod(String, Type(), Type())
+  fullName: HarmonyLib.AccessTools.DeclaredMethod(System.String, System.Type[], System.Type[])
+  fullName.vb: HarmonyLib.AccessTools.DeclaredMethod(System.String, System.Type(), System.Type())
+  nameWithType: AccessTools.DeclaredMethod(String, Type[], Type[])
+  nameWithType.vb: AccessTools.DeclaredMethod(String, Type(), Type())
 - uid: HarmonyLib.AccessTools.DeclaredMethod(System.Type,System.String,System.Type[],System.Type[])
   name: DeclaredMethod(Type, String, Type[], Type[])
   href: api/HarmonyLib.AccessTools.html#HarmonyLib_AccessTools_DeclaredMethod_System_Type_System_String_System_Type___System_Type___
@@ -172,6 +187,12 @@ references:
   isSpec: "True"
   fullName: HarmonyLib.AccessTools.DeclaredMethod
   nameWithType: AccessTools.DeclaredMethod
+- uid: HarmonyLib.AccessTools.DeclaredProperty(System.String)
+  name: DeclaredProperty(String)
+  href: api/HarmonyLib.AccessTools.html#HarmonyLib_AccessTools_DeclaredProperty_System_String_
+  commentId: M:HarmonyLib.AccessTools.DeclaredProperty(System.String)
+  fullName: HarmonyLib.AccessTools.DeclaredProperty(System.String)
+  nameWithType: AccessTools.DeclaredProperty(String)
 - uid: HarmonyLib.AccessTools.DeclaredProperty(System.Type,System.String)
   name: DeclaredProperty(Type, String)
   href: api/HarmonyLib.AccessTools.html#HarmonyLib_AccessTools_DeclaredProperty_System_Type_System_String_
@@ -185,6 +206,12 @@ references:
   isSpec: "True"
   fullName: HarmonyLib.AccessTools.DeclaredProperty
   nameWithType: AccessTools.DeclaredProperty
+- uid: HarmonyLib.AccessTools.DeclaredPropertyGetter(System.String)
+  name: DeclaredPropertyGetter(String)
+  href: api/HarmonyLib.AccessTools.html#HarmonyLib_AccessTools_DeclaredPropertyGetter_System_String_
+  commentId: M:HarmonyLib.AccessTools.DeclaredPropertyGetter(System.String)
+  fullName: HarmonyLib.AccessTools.DeclaredPropertyGetter(System.String)
+  nameWithType: AccessTools.DeclaredPropertyGetter(String)
 - uid: HarmonyLib.AccessTools.DeclaredPropertyGetter(System.Type,System.String)
   name: DeclaredPropertyGetter(Type, String)
   href: api/HarmonyLib.AccessTools.html#HarmonyLib_AccessTools_DeclaredPropertyGetter_System_Type_System_String_
@@ -198,6 +225,12 @@ references:
   isSpec: "True"
   fullName: HarmonyLib.AccessTools.DeclaredPropertyGetter
   nameWithType: AccessTools.DeclaredPropertyGetter
+- uid: HarmonyLib.AccessTools.DeclaredPropertySetter(System.String)
+  name: DeclaredPropertySetter(String)
+  href: api/HarmonyLib.AccessTools.html#HarmonyLib_AccessTools_DeclaredPropertySetter_System_String_
+  commentId: M:HarmonyLib.AccessTools.DeclaredPropertySetter(System.String)
+  fullName: HarmonyLib.AccessTools.DeclaredPropertySetter(System.String)
+  nameWithType: AccessTools.DeclaredPropertySetter(String)
 - uid: HarmonyLib.AccessTools.DeclaredPropertySetter(System.Type,System.String)
   name: DeclaredPropertySetter(Type, String)
   href: api/HarmonyLib.AccessTools.html#HarmonyLib_AccessTools_DeclaredPropertySetter_System_Type_System_String_
@@ -211,6 +244,25 @@ references:
   isSpec: "True"
   fullName: HarmonyLib.AccessTools.DeclaredPropertySetter
   nameWithType: AccessTools.DeclaredPropertySetter
+- uid: HarmonyLib.AccessTools.EnumeratorMoveNext(System.Reflection.MethodBase)
+  name: EnumeratorMoveNext(MethodBase)
+  href: api/HarmonyLib.AccessTools.html#HarmonyLib_AccessTools_EnumeratorMoveNext_System_Reflection_MethodBase_
+  commentId: M:HarmonyLib.AccessTools.EnumeratorMoveNext(System.Reflection.MethodBase)
+  fullName: HarmonyLib.AccessTools.EnumeratorMoveNext(System.Reflection.MethodBase)
+  nameWithType: AccessTools.EnumeratorMoveNext(MethodBase)
+- uid: HarmonyLib.AccessTools.EnumeratorMoveNext*
+  name: EnumeratorMoveNext
+  href: api/HarmonyLib.AccessTools.html#HarmonyLib_AccessTools_EnumeratorMoveNext_
+  commentId: Overload:HarmonyLib.AccessTools.EnumeratorMoveNext
+  isSpec: "True"
+  fullName: HarmonyLib.AccessTools.EnumeratorMoveNext
+  nameWithType: AccessTools.EnumeratorMoveNext
+- uid: HarmonyLib.AccessTools.Field(System.String)
+  name: Field(String)
+  href: api/HarmonyLib.AccessTools.html#HarmonyLib_AccessTools_Field_System_String_
+  commentId: M:HarmonyLib.AccessTools.Field(System.String)
+  fullName: HarmonyLib.AccessTools.Field(System.String)
+  nameWithType: AccessTools.Field(String)
 - uid: HarmonyLib.AccessTools.Field(System.Type,System.String)
   name: Field(Type, String)
   href: api/HarmonyLib.AccessTools.html#HarmonyLib_AccessTools_Field_System_Type_System_String_
@@ -249,6 +301,15 @@ references:
   isSpec: "True"
   fullName: HarmonyLib.AccessTools.FieldRefAccess
   nameWithType: AccessTools.FieldRefAccess
+- uid: HarmonyLib.AccessTools.FieldRefAccess``1(System.String)
+  name: FieldRefAccess<F>(String)
+  href: api/HarmonyLib.AccessTools.html#HarmonyLib_AccessTools_FieldRefAccess__1_System_String_
+  commentId: M:HarmonyLib.AccessTools.FieldRefAccess``1(System.String)
+  name.vb: FieldRefAccess(Of F)(String)
+  fullName: HarmonyLib.AccessTools.FieldRefAccess<F>(System.String)
+  fullName.vb: HarmonyLib.AccessTools.FieldRefAccess(Of F)(System.String)
+  nameWithType: AccessTools.FieldRefAccess<F>(String)
+  nameWithType.vb: AccessTools.FieldRefAccess(Of F)(String)
 - uid: HarmonyLib.AccessTools.FieldRefAccess``1(System.Type,System.String)
   name: FieldRefAccess<F>(Type, String)
   href: api/HarmonyLib.AccessTools.html#HarmonyLib_AccessTools_FieldRefAccess__1_System_Type_System_String_
@@ -878,6 +939,21 @@ references:
   fullName.vb: HarmonyLib.AccessTools.MethodDelegate(Of DelegateType)(System.Reflection.MethodInfo, System.Object, System.Boolean)
   nameWithType: AccessTools.MethodDelegate<DelegateType>(MethodInfo, Object, Boolean)
   nameWithType.vb: AccessTools.MethodDelegate(Of DelegateType)(MethodInfo, Object, Boolean)
+- uid: HarmonyLib.AccessTools.MethodDelegate``1(System.String,System.Object,System.Boolean)
+  name: MethodDelegate<DelegateType>(String, Object, Boolean)
+  href: api/HarmonyLib.AccessTools.html#HarmonyLib_AccessTools_MethodDelegate__1_System_String_System_Object_System_Boolean_
+  commentId: M:HarmonyLib.AccessTools.MethodDelegate``1(System.String,System.Object,System.Boolean)
+  name.vb: MethodDelegate(Of DelegateType)(String, Object, Boolean)
+  fullName: HarmonyLib.AccessTools.MethodDelegate<DelegateType>(System.String, System.Object, System.Boolean)
+  fullName.vb: HarmonyLib.AccessTools.MethodDelegate(Of DelegateType)(System.String, System.Object, System.Boolean)
+  nameWithType: AccessTools.MethodDelegate<DelegateType>(String, Object, Boolean)
+  nameWithType.vb: AccessTools.MethodDelegate(Of DelegateType)(String, Object, Boolean)
+- uid: HarmonyLib.AccessTools.Property(System.String)
+  name: Property(String)
+  href: api/HarmonyLib.AccessTools.html#HarmonyLib_AccessTools_Property_System_String_
+  commentId: M:HarmonyLib.AccessTools.Property(System.String)
+  fullName: HarmonyLib.AccessTools.Property(System.String)
+  nameWithType: AccessTools.Property(String)
 - uid: HarmonyLib.AccessTools.Property(System.Type,System.String)
   name: Property(Type, String)
   href: api/HarmonyLib.AccessTools.html#HarmonyLib_AccessTools_Property_System_Type_System_String_
@@ -891,6 +967,12 @@ references:
   isSpec: "True"
   fullName: HarmonyLib.AccessTools.Property
   nameWithType: AccessTools.Property
+- uid: HarmonyLib.AccessTools.PropertyGetter(System.String)
+  name: PropertyGetter(String)
+  href: api/HarmonyLib.AccessTools.html#HarmonyLib_AccessTools_PropertyGetter_System_String_
+  commentId: M:HarmonyLib.AccessTools.PropertyGetter(System.String)
+  fullName: HarmonyLib.AccessTools.PropertyGetter(System.String)
+  nameWithType: AccessTools.PropertyGetter(String)
 - uid: HarmonyLib.AccessTools.PropertyGetter(System.Type,System.String)
   name: PropertyGetter(Type, String)
   href: api/HarmonyLib.AccessTools.html#HarmonyLib_AccessTools_PropertyGetter_System_Type_System_String_
@@ -904,6 +986,12 @@ references:
   isSpec: "True"
   fullName: HarmonyLib.AccessTools.PropertyGetter
   nameWithType: AccessTools.PropertyGetter
+- uid: HarmonyLib.AccessTools.PropertySetter(System.String)
+  name: PropertySetter(String)
+  href: api/HarmonyLib.AccessTools.html#HarmonyLib_AccessTools_PropertySetter_System_String_
+  commentId: M:HarmonyLib.AccessTools.PropertySetter(System.String)
+  fullName: HarmonyLib.AccessTools.PropertySetter(System.String)
+  nameWithType: AccessTools.PropertySetter(String)
 - uid: HarmonyLib.AccessTools.PropertySetter(System.Type,System.String)
   name: PropertySetter(Type, String)
   href: api/HarmonyLib.AccessTools.html#HarmonyLib_AccessTools_PropertySetter_System_Type_System_String_
@@ -946,6 +1034,15 @@ references:
   fullName.vb: HarmonyLib.AccessTools.StaticFieldRefAccess(Of F)(System.Reflection.FieldInfo)
   nameWithType: AccessTools.StaticFieldRefAccess<F>(FieldInfo)
   nameWithType.vb: AccessTools.StaticFieldRefAccess(Of F)(FieldInfo)
+- uid: HarmonyLib.AccessTools.StaticFieldRefAccess``1(System.String)
+  name: StaticFieldRefAccess<F>(String)
+  href: api/HarmonyLib.AccessTools.html#HarmonyLib_AccessTools_StaticFieldRefAccess__1_System_String_
+  commentId: M:HarmonyLib.AccessTools.StaticFieldRefAccess``1(System.String)
+  name.vb: StaticFieldRefAccess(Of F)(String)
+  fullName: HarmonyLib.AccessTools.StaticFieldRefAccess<F>(System.String)
+  fullName.vb: HarmonyLib.AccessTools.StaticFieldRefAccess(Of F)(System.String)
+  nameWithType: AccessTools.StaticFieldRefAccess<F>(String)
+  nameWithType.vb: AccessTools.StaticFieldRefAccess(Of F)(String)
 - uid: HarmonyLib.AccessTools.StaticFieldRefAccess``1(System.Type,System.String)
   name: StaticFieldRefAccess<F>(Type, String)
   href: api/HarmonyLib.AccessTools.html#HarmonyLib_AccessTools_StaticFieldRefAccess__1_System_Type_System_String_
@@ -1084,6 +1181,12 @@ references:
   commentId: F:HarmonyLib.ArgumentType.Ref
   fullName: HarmonyLib.ArgumentType.Ref
   nameWithType: ArgumentType.Ref
+- uid: HarmonyLib.Code
+  name: Code
+  href: api/HarmonyLib.Code.html
+  commentId: T:HarmonyLib.Code
+  fullName: HarmonyLib.Code
+  nameWithType: Code
 - uid: HarmonyLib.CodeInstruction
   name: CodeInstruction
   href: api/HarmonyLib.CodeInstruction.html
@@ -1173,6 +1276,22 @@ references:
   fullName.vb: HarmonyLib.CodeInstruction.Call(Of T, TResult)(System.Linq.Expressions.Expression(Of System.Func(Of T, TResult)))
   nameWithType: CodeInstruction.Call<T, TResult>(Expression<Func<T, TResult>>)
   nameWithType.vb: CodeInstruction.Call(Of T, TResult)(Expression(Of Func(Of T, TResult)))
+- uid: HarmonyLib.CodeInstruction.CallClosure*
+  name: CallClosure
+  href: api/HarmonyLib.CodeInstruction.html#HarmonyLib_CodeInstruction_CallClosure_
+  commentId: Overload:HarmonyLib.CodeInstruction.CallClosure
+  isSpec: "True"
+  fullName: HarmonyLib.CodeInstruction.CallClosure
+  nameWithType: CodeInstruction.CallClosure
+- uid: HarmonyLib.CodeInstruction.CallClosure``1(``0)
+  name: CallClosure<T>(T)
+  href: api/HarmonyLib.CodeInstruction.html#HarmonyLib_CodeInstruction_CallClosure__1___0_
+  commentId: M:HarmonyLib.CodeInstruction.CallClosure``1(``0)
+  name.vb: CallClosure(Of T)(T)
+  fullName: HarmonyLib.CodeInstruction.CallClosure<T>(T)
+  fullName.vb: HarmonyLib.CodeInstruction.CallClosure(Of T)(T)
+  nameWithType: CodeInstruction.CallClosure<T>(T)
+  nameWithType.vb: CodeInstruction.CallClosure(Of T)(T)
 - uid: HarmonyLib.CodeInstruction.Clone
   name: Clone()
   href: api/HarmonyLib.CodeInstruction.html#HarmonyLib_CodeInstruction_Clone
@@ -1403,6 +1522,19 @@ references:
   isSpec: "True"
   fullName: HarmonyLib.CodeInstructionExtensions.IsStloc
   nameWithType: CodeInstructionExtensions.IsStloc
+- uid: HarmonyLib.CodeInstructionExtensions.IsValid(System.Reflection.Emit.OpCode)
+  name: IsValid(OpCode)
+  href: api/HarmonyLib.CodeInstructionExtensions.html#HarmonyLib_CodeInstructionExtensions_IsValid_System_Reflection_Emit_OpCode_
+  commentId: M:HarmonyLib.CodeInstructionExtensions.IsValid(System.Reflection.Emit.OpCode)
+  fullName: HarmonyLib.CodeInstructionExtensions.IsValid(System.Reflection.Emit.OpCode)
+  nameWithType: CodeInstructionExtensions.IsValid(OpCode)
+- uid: HarmonyLib.CodeInstructionExtensions.IsValid*
+  name: IsValid
+  href: api/HarmonyLib.CodeInstructionExtensions.html#HarmonyLib_CodeInstructionExtensions_IsValid_
+  commentId: Overload:HarmonyLib.CodeInstructionExtensions.IsValid
+  isSpec: "True"
+  fullName: HarmonyLib.CodeInstructionExtensions.IsValid
+  nameWithType: CodeInstructionExtensions.IsValid
 - uid: HarmonyLib.CodeInstructionExtensions.LoadsConstant(HarmonyLib.CodeInstruction)
   name: LoadsConstant(CodeInstruction)
   href: api/HarmonyLib.CodeInstructionExtensions.html#HarmonyLib_CodeInstructionExtensions_LoadsConstant_HarmonyLib_CodeInstruction_
@@ -1427,6 +1559,12 @@ references:
   commentId: M:HarmonyLib.CodeInstructionExtensions.LoadsConstant(HarmonyLib.CodeInstruction,System.Int64)
   fullName: HarmonyLib.CodeInstructionExtensions.LoadsConstant(HarmonyLib.CodeInstruction, System.Int64)
   nameWithType: CodeInstructionExtensions.LoadsConstant(CodeInstruction, Int64)
+- uid: HarmonyLib.CodeInstructionExtensions.LoadsConstant(HarmonyLib.CodeInstruction,System.String)
+  name: LoadsConstant(CodeInstruction, String)
+  href: api/HarmonyLib.CodeInstructionExtensions.html#HarmonyLib_CodeInstructionExtensions_LoadsConstant_HarmonyLib_CodeInstruction_System_String_
+  commentId: M:HarmonyLib.CodeInstructionExtensions.LoadsConstant(HarmonyLib.CodeInstruction,System.String)
+  fullName: HarmonyLib.CodeInstructionExtensions.LoadsConstant(HarmonyLib.CodeInstruction, System.String)
+  nameWithType: CodeInstructionExtensions.LoadsConstant(CodeInstruction, String)
 - uid: HarmonyLib.CodeInstructionExtensions.LoadsConstant*
   name: LoadsConstant
   href: api/HarmonyLib.CodeInstructionExtensions.html#HarmonyLib_CodeInstructionExtensions_LoadsConstant_
@@ -1575,6 +1713,924 @@ references:
   isSpec: "True"
   fullName: HarmonyLib.CodeInstructionExtensions.WithLabels
   nameWithType: CodeInstructionExtensions.WithLabels
+- uid: HarmonyLib.CodeMatch
+  name: CodeMatch
+  href: api/HarmonyLib.CodeMatch.html
+  commentId: T:HarmonyLib.CodeMatch
+  fullName: HarmonyLib.CodeMatch
+  nameWithType: CodeMatch
+- uid: HarmonyLib.CodeMatch.#ctor(HarmonyLib.CodeInstruction,System.String)
+  name: CodeMatch(CodeInstruction, String)
+  href: api/HarmonyLib.CodeMatch.html#HarmonyLib_CodeMatch__ctor_HarmonyLib_CodeInstruction_System_String_
+  commentId: M:HarmonyLib.CodeMatch.#ctor(HarmonyLib.CodeInstruction,System.String)
+  fullName: HarmonyLib.CodeMatch.CodeMatch(HarmonyLib.CodeInstruction, System.String)
+  nameWithType: CodeMatch.CodeMatch(CodeInstruction, String)
+- uid: HarmonyLib.CodeMatch.#ctor(System.Func{HarmonyLib.CodeInstruction,System.Boolean},System.String)
+  name: CodeMatch(Func<CodeInstruction, Boolean>, String)
+  href: api/HarmonyLib.CodeMatch.html#HarmonyLib_CodeMatch__ctor_System_Func_HarmonyLib_CodeInstruction_System_Boolean__System_String_
+  commentId: M:HarmonyLib.CodeMatch.#ctor(System.Func{HarmonyLib.CodeInstruction,System.Boolean},System.String)
+  name.vb: CodeMatch(Func(Of CodeInstruction, Boolean), String)
+  fullName: HarmonyLib.CodeMatch.CodeMatch(System.Func<HarmonyLib.CodeInstruction, System.Boolean>, System.String)
+  fullName.vb: HarmonyLib.CodeMatch.CodeMatch(System.Func(Of HarmonyLib.CodeInstruction, System.Boolean), System.String)
+  nameWithType: CodeMatch.CodeMatch(Func<CodeInstruction, Boolean>, String)
+  nameWithType.vb: CodeMatch.CodeMatch(Func(Of CodeInstruction, Boolean), String)
+- uid: HarmonyLib.CodeMatch.#ctor(System.Linq.Expressions.Expression{System.Action},System.String)
+  name: CodeMatch(Expression<Action>, String)
+  href: api/HarmonyLib.CodeMatch.html#HarmonyLib_CodeMatch__ctor_System_Linq_Expressions_Expression_System_Action__System_String_
+  commentId: M:HarmonyLib.CodeMatch.#ctor(System.Linq.Expressions.Expression{System.Action},System.String)
+  name.vb: CodeMatch(Expression(Of Action), String)
+  fullName: HarmonyLib.CodeMatch.CodeMatch(System.Linq.Expressions.Expression<System.Action>, System.String)
+  fullName.vb: HarmonyLib.CodeMatch.CodeMatch(System.Linq.Expressions.Expression(Of System.Action), System.String)
+  nameWithType: CodeMatch.CodeMatch(Expression<Action>, String)
+  nameWithType.vb: CodeMatch.CodeMatch(Expression(Of Action), String)
+- uid: HarmonyLib.CodeMatch.#ctor(System.Linq.Expressions.LambdaExpression,System.String)
+  name: CodeMatch(LambdaExpression, String)
+  href: api/HarmonyLib.CodeMatch.html#HarmonyLib_CodeMatch__ctor_System_Linq_Expressions_LambdaExpression_System_String_
+  commentId: M:HarmonyLib.CodeMatch.#ctor(System.Linq.Expressions.LambdaExpression,System.String)
+  fullName: HarmonyLib.CodeMatch.CodeMatch(System.Linq.Expressions.LambdaExpression, System.String)
+  nameWithType: CodeMatch.CodeMatch(LambdaExpression, String)
+- uid: HarmonyLib.CodeMatch.#ctor(System.Nullable{System.Reflection.Emit.OpCode},System.Object,System.String)
+  name: CodeMatch(Nullable<OpCode>, Object, String)
+  href: api/HarmonyLib.CodeMatch.html#HarmonyLib_CodeMatch__ctor_System_Nullable_System_Reflection_Emit_OpCode__System_Object_System_String_
+  commentId: M:HarmonyLib.CodeMatch.#ctor(System.Nullable{System.Reflection.Emit.OpCode},System.Object,System.String)
+  name.vb: CodeMatch(Nullable(Of OpCode), Object, String)
+  fullName: HarmonyLib.CodeMatch.CodeMatch(System.Nullable<System.Reflection.Emit.OpCode>, System.Object, System.String)
+  fullName.vb: HarmonyLib.CodeMatch.CodeMatch(System.Nullable(Of System.Reflection.Emit.OpCode), System.Object, System.String)
+  nameWithType: CodeMatch.CodeMatch(Nullable<OpCode>, Object, String)
+  nameWithType.vb: CodeMatch.CodeMatch(Nullable(Of OpCode), Object, String)
+- uid: HarmonyLib.CodeMatch.#ctor*
+  name: CodeMatch
+  href: api/HarmonyLib.CodeMatch.html#HarmonyLib_CodeMatch__ctor_
+  commentId: Overload:HarmonyLib.CodeMatch.#ctor
+  isSpec: "True"
+  fullName: HarmonyLib.CodeMatch.CodeMatch
+  nameWithType: CodeMatch.CodeMatch
+- uid: HarmonyLib.CodeMatch.jumpsFrom
+  name: jumpsFrom
+  href: api/HarmonyLib.CodeMatch.html#HarmonyLib_CodeMatch_jumpsFrom
+  commentId: F:HarmonyLib.CodeMatch.jumpsFrom
+  fullName: HarmonyLib.CodeMatch.jumpsFrom
+  nameWithType: CodeMatch.jumpsFrom
+- uid: HarmonyLib.CodeMatch.jumpsTo
+  name: jumpsTo
+  href: api/HarmonyLib.CodeMatch.html#HarmonyLib_CodeMatch_jumpsTo
+  commentId: F:HarmonyLib.CodeMatch.jumpsTo
+  fullName: HarmonyLib.CodeMatch.jumpsTo
+  nameWithType: CodeMatch.jumpsTo
+- uid: HarmonyLib.CodeMatch.name
+  name: name
+  href: api/HarmonyLib.CodeMatch.html#HarmonyLib_CodeMatch_name
+  commentId: F:HarmonyLib.CodeMatch.name
+  fullName: HarmonyLib.CodeMatch.name
+  nameWithType: CodeMatch.name
+- uid: HarmonyLib.CodeMatch.opcodes
+  name: opcodes
+  href: api/HarmonyLib.CodeMatch.html#HarmonyLib_CodeMatch_opcodes
+  commentId: F:HarmonyLib.CodeMatch.opcodes
+  fullName: HarmonyLib.CodeMatch.opcodes
+  nameWithType: CodeMatch.opcodes
+- uid: HarmonyLib.CodeMatch.operands
+  name: operands
+  href: api/HarmonyLib.CodeMatch.html#HarmonyLib_CodeMatch_operands
+  commentId: F:HarmonyLib.CodeMatch.operands
+  fullName: HarmonyLib.CodeMatch.operands
+  nameWithType: CodeMatch.operands
+- uid: HarmonyLib.CodeMatch.predicate
+  name: predicate
+  href: api/HarmonyLib.CodeMatch.html#HarmonyLib_CodeMatch_predicate
+  commentId: F:HarmonyLib.CodeMatch.predicate
+  fullName: HarmonyLib.CodeMatch.predicate
+  nameWithType: CodeMatch.predicate
+- uid: HarmonyLib.CodeMatch.ToString
+  name: ToString()
+  href: api/HarmonyLib.CodeMatch.html#HarmonyLib_CodeMatch_ToString
+  commentId: M:HarmonyLib.CodeMatch.ToString
+  fullName: HarmonyLib.CodeMatch.ToString()
+  nameWithType: CodeMatch.ToString()
+- uid: HarmonyLib.CodeMatch.ToString*
+  name: ToString
+  href: api/HarmonyLib.CodeMatch.html#HarmonyLib_CodeMatch_ToString_
+  commentId: Overload:HarmonyLib.CodeMatch.ToString
+  isSpec: "True"
+  fullName: HarmonyLib.CodeMatch.ToString
+  nameWithType: CodeMatch.ToString
+- uid: HarmonyLib.CodeMatcher
+  name: CodeMatcher
+  href: api/HarmonyLib.CodeMatcher.html
+  commentId: T:HarmonyLib.CodeMatcher
+  fullName: HarmonyLib.CodeMatcher
+  nameWithType: CodeMatcher
+- uid: HarmonyLib.CodeMatcher.#ctor
+  name: CodeMatcher()
+  href: api/HarmonyLib.CodeMatcher.html#HarmonyLib_CodeMatcher__ctor
+  commentId: M:HarmonyLib.CodeMatcher.#ctor
+  fullName: HarmonyLib.CodeMatcher.CodeMatcher()
+  nameWithType: CodeMatcher.CodeMatcher()
+- uid: HarmonyLib.CodeMatcher.#ctor(System.Collections.Generic.IEnumerable{HarmonyLib.CodeInstruction},System.Reflection.Emit.ILGenerator)
+  name: CodeMatcher(IEnumerable<CodeInstruction>, ILGenerator)
+  href: api/HarmonyLib.CodeMatcher.html#HarmonyLib_CodeMatcher__ctor_System_Collections_Generic_IEnumerable_HarmonyLib_CodeInstruction__System_Reflection_Emit_ILGenerator_
+  commentId: M:HarmonyLib.CodeMatcher.#ctor(System.Collections.Generic.IEnumerable{HarmonyLib.CodeInstruction},System.Reflection.Emit.ILGenerator)
+  name.vb: CodeMatcher(IEnumerable(Of CodeInstruction), ILGenerator)
+  fullName: HarmonyLib.CodeMatcher.CodeMatcher(System.Collections.Generic.IEnumerable<HarmonyLib.CodeInstruction>, System.Reflection.Emit.ILGenerator)
+  fullName.vb: HarmonyLib.CodeMatcher.CodeMatcher(System.Collections.Generic.IEnumerable(Of HarmonyLib.CodeInstruction), System.Reflection.Emit.ILGenerator)
+  nameWithType: CodeMatcher.CodeMatcher(IEnumerable<CodeInstruction>, ILGenerator)
+  nameWithType.vb: CodeMatcher.CodeMatcher(IEnumerable(Of CodeInstruction), ILGenerator)
+- uid: HarmonyLib.CodeMatcher.#ctor*
+  name: CodeMatcher
+  href: api/HarmonyLib.CodeMatcher.html#HarmonyLib_CodeMatcher__ctor_
+  commentId: Overload:HarmonyLib.CodeMatcher.#ctor
+  isSpec: "True"
+  fullName: HarmonyLib.CodeMatcher.CodeMatcher
+  nameWithType: CodeMatcher.CodeMatcher
+- uid: HarmonyLib.CodeMatcher.AddLabels(System.Collections.Generic.IEnumerable{System.Reflection.Emit.Label})
+  name: AddLabels(IEnumerable<Label>)
+  href: api/HarmonyLib.CodeMatcher.html#HarmonyLib_CodeMatcher_AddLabels_System_Collections_Generic_IEnumerable_System_Reflection_Emit_Label__
+  commentId: M:HarmonyLib.CodeMatcher.AddLabels(System.Collections.Generic.IEnumerable{System.Reflection.Emit.Label})
+  name.vb: AddLabels(IEnumerable(Of Label))
+  fullName: HarmonyLib.CodeMatcher.AddLabels(System.Collections.Generic.IEnumerable<System.Reflection.Emit.Label>)
+  fullName.vb: HarmonyLib.CodeMatcher.AddLabels(System.Collections.Generic.IEnumerable(Of System.Reflection.Emit.Label))
+  nameWithType: CodeMatcher.AddLabels(IEnumerable<Label>)
+  nameWithType.vb: CodeMatcher.AddLabels(IEnumerable(Of Label))
+- uid: HarmonyLib.CodeMatcher.AddLabels*
+  name: AddLabels
+  href: api/HarmonyLib.CodeMatcher.html#HarmonyLib_CodeMatcher_AddLabels_
+  commentId: Overload:HarmonyLib.CodeMatcher.AddLabels
+  isSpec: "True"
+  fullName: HarmonyLib.CodeMatcher.AddLabels
+  nameWithType: CodeMatcher.AddLabels
+- uid: HarmonyLib.CodeMatcher.AddLabelsAt(System.Int32,System.Collections.Generic.IEnumerable{System.Reflection.Emit.Label})
+  name: AddLabelsAt(Int32, IEnumerable<Label>)
+  href: api/HarmonyLib.CodeMatcher.html#HarmonyLib_CodeMatcher_AddLabelsAt_System_Int32_System_Collections_Generic_IEnumerable_System_Reflection_Emit_Label__
+  commentId: M:HarmonyLib.CodeMatcher.AddLabelsAt(System.Int32,System.Collections.Generic.IEnumerable{System.Reflection.Emit.Label})
+  name.vb: AddLabelsAt(Int32, IEnumerable(Of Label))
+  fullName: HarmonyLib.CodeMatcher.AddLabelsAt(System.Int32, System.Collections.Generic.IEnumerable<System.Reflection.Emit.Label>)
+  fullName.vb: HarmonyLib.CodeMatcher.AddLabelsAt(System.Int32, System.Collections.Generic.IEnumerable(Of System.Reflection.Emit.Label))
+  nameWithType: CodeMatcher.AddLabelsAt(Int32, IEnumerable<Label>)
+  nameWithType.vb: CodeMatcher.AddLabelsAt(Int32, IEnumerable(Of Label))
+- uid: HarmonyLib.CodeMatcher.AddLabelsAt*
+  name: AddLabelsAt
+  href: api/HarmonyLib.CodeMatcher.html#HarmonyLib_CodeMatcher_AddLabelsAt_
+  commentId: Overload:HarmonyLib.CodeMatcher.AddLabelsAt
+  isSpec: "True"
+  fullName: HarmonyLib.CodeMatcher.AddLabelsAt
+  nameWithType: CodeMatcher.AddLabelsAt
+- uid: HarmonyLib.CodeMatcher.Advance(System.Int32)
+  name: Advance(Int32)
+  href: api/HarmonyLib.CodeMatcher.html#HarmonyLib_CodeMatcher_Advance_System_Int32_
+  commentId: M:HarmonyLib.CodeMatcher.Advance(System.Int32)
+  fullName: HarmonyLib.CodeMatcher.Advance(System.Int32)
+  nameWithType: CodeMatcher.Advance(Int32)
+- uid: HarmonyLib.CodeMatcher.Advance*
+  name: Advance
+  href: api/HarmonyLib.CodeMatcher.html#HarmonyLib_CodeMatcher_Advance_
+  commentId: Overload:HarmonyLib.CodeMatcher.Advance
+  isSpec: "True"
+  fullName: HarmonyLib.CodeMatcher.Advance
+  nameWithType: CodeMatcher.Advance
+- uid: HarmonyLib.CodeMatcher.Blocks
+  name: Blocks
+  href: api/HarmonyLib.CodeMatcher.html#HarmonyLib_CodeMatcher_Blocks
+  commentId: P:HarmonyLib.CodeMatcher.Blocks
+  fullName: HarmonyLib.CodeMatcher.Blocks
+  nameWithType: CodeMatcher.Blocks
+- uid: HarmonyLib.CodeMatcher.Blocks*
+  name: Blocks
+  href: api/HarmonyLib.CodeMatcher.html#HarmonyLib_CodeMatcher_Blocks_
+  commentId: Overload:HarmonyLib.CodeMatcher.Blocks
+  isSpec: "True"
+  fullName: HarmonyLib.CodeMatcher.Blocks
+  nameWithType: CodeMatcher.Blocks
+- uid: HarmonyLib.CodeMatcher.Clone
+  name: Clone()
+  href: api/HarmonyLib.CodeMatcher.html#HarmonyLib_CodeMatcher_Clone
+  commentId: M:HarmonyLib.CodeMatcher.Clone
+  fullName: HarmonyLib.CodeMatcher.Clone()
+  nameWithType: CodeMatcher.Clone()
+- uid: HarmonyLib.CodeMatcher.Clone*
+  name: Clone
+  href: api/HarmonyLib.CodeMatcher.html#HarmonyLib_CodeMatcher_Clone_
+  commentId: Overload:HarmonyLib.CodeMatcher.Clone
+  isSpec: "True"
+  fullName: HarmonyLib.CodeMatcher.Clone
+  nameWithType: CodeMatcher.Clone
+- uid: HarmonyLib.CodeMatcher.CreateLabel(System.Reflection.Emit.Label@)
+  name: CreateLabel(out Label)
+  href: api/HarmonyLib.CodeMatcher.html#HarmonyLib_CodeMatcher_CreateLabel_System_Reflection_Emit_Label__
+  commentId: M:HarmonyLib.CodeMatcher.CreateLabel(System.Reflection.Emit.Label@)
+  name.vb: CreateLabel(ByRef Label)
+  fullName: HarmonyLib.CodeMatcher.CreateLabel(out System.Reflection.Emit.Label)
+  fullName.vb: HarmonyLib.CodeMatcher.CreateLabel(ByRef System.Reflection.Emit.Label)
+  nameWithType: CodeMatcher.CreateLabel(out Label)
+  nameWithType.vb: CodeMatcher.CreateLabel(ByRef Label)
+- uid: HarmonyLib.CodeMatcher.CreateLabel*
+  name: CreateLabel
+  href: api/HarmonyLib.CodeMatcher.html#HarmonyLib_CodeMatcher_CreateLabel_
+  commentId: Overload:HarmonyLib.CodeMatcher.CreateLabel
+  isSpec: "True"
+  fullName: HarmonyLib.CodeMatcher.CreateLabel
+  nameWithType: CodeMatcher.CreateLabel
+- uid: HarmonyLib.CodeMatcher.CreateLabelAt(System.Int32,System.Reflection.Emit.Label@)
+  name: CreateLabelAt(Int32, out Label)
+  href: api/HarmonyLib.CodeMatcher.html#HarmonyLib_CodeMatcher_CreateLabelAt_System_Int32_System_Reflection_Emit_Label__
+  commentId: M:HarmonyLib.CodeMatcher.CreateLabelAt(System.Int32,System.Reflection.Emit.Label@)
+  name.vb: CreateLabelAt(Int32, ByRef Label)
+  fullName: HarmonyLib.CodeMatcher.CreateLabelAt(System.Int32, out System.Reflection.Emit.Label)
+  fullName.vb: HarmonyLib.CodeMatcher.CreateLabelAt(System.Int32, ByRef System.Reflection.Emit.Label)
+  nameWithType: CodeMatcher.CreateLabelAt(Int32, out Label)
+  nameWithType.vb: CodeMatcher.CreateLabelAt(Int32, ByRef Label)
+- uid: HarmonyLib.CodeMatcher.CreateLabelAt*
+  name: CreateLabelAt
+  href: api/HarmonyLib.CodeMatcher.html#HarmonyLib_CodeMatcher_CreateLabelAt_
+  commentId: Overload:HarmonyLib.CodeMatcher.CreateLabelAt
+  isSpec: "True"
+  fullName: HarmonyLib.CodeMatcher.CreateLabelAt
+  nameWithType: CodeMatcher.CreateLabelAt
+- uid: HarmonyLib.CodeMatcher.CreateLabelWithOffsets(System.Int32,System.Reflection.Emit.Label@)
+  name: CreateLabelWithOffsets(Int32, out Label)
+  href: api/HarmonyLib.CodeMatcher.html#HarmonyLib_CodeMatcher_CreateLabelWithOffsets_System_Int32_System_Reflection_Emit_Label__
+  commentId: M:HarmonyLib.CodeMatcher.CreateLabelWithOffsets(System.Int32,System.Reflection.Emit.Label@)
+  name.vb: CreateLabelWithOffsets(Int32, ByRef Label)
+  fullName: HarmonyLib.CodeMatcher.CreateLabelWithOffsets(System.Int32, out System.Reflection.Emit.Label)
+  fullName.vb: HarmonyLib.CodeMatcher.CreateLabelWithOffsets(System.Int32, ByRef System.Reflection.Emit.Label)
+  nameWithType: CodeMatcher.CreateLabelWithOffsets(Int32, out Label)
+  nameWithType.vb: CodeMatcher.CreateLabelWithOffsets(Int32, ByRef Label)
+- uid: HarmonyLib.CodeMatcher.CreateLabelWithOffsets*
+  name: CreateLabelWithOffsets
+  href: api/HarmonyLib.CodeMatcher.html#HarmonyLib_CodeMatcher_CreateLabelWithOffsets_
+  commentId: Overload:HarmonyLib.CodeMatcher.CreateLabelWithOffsets
+  isSpec: "True"
+  fullName: HarmonyLib.CodeMatcher.CreateLabelWithOffsets
+  nameWithType: CodeMatcher.CreateLabelWithOffsets
+- uid: HarmonyLib.CodeMatcher.DistinctLabels(System.Collections.Generic.IEnumerable{HarmonyLib.CodeInstruction})
+  name: DistinctLabels(IEnumerable<CodeInstruction>)
+  href: api/HarmonyLib.CodeMatcher.html#HarmonyLib_CodeMatcher_DistinctLabels_System_Collections_Generic_IEnumerable_HarmonyLib_CodeInstruction__
+  commentId: M:HarmonyLib.CodeMatcher.DistinctLabels(System.Collections.Generic.IEnumerable{HarmonyLib.CodeInstruction})
+  name.vb: DistinctLabels(IEnumerable(Of CodeInstruction))
+  fullName: HarmonyLib.CodeMatcher.DistinctLabels(System.Collections.Generic.IEnumerable<HarmonyLib.CodeInstruction>)
+  fullName.vb: HarmonyLib.CodeMatcher.DistinctLabels(System.Collections.Generic.IEnumerable(Of HarmonyLib.CodeInstruction))
+  nameWithType: CodeMatcher.DistinctLabels(IEnumerable<CodeInstruction>)
+  nameWithType.vb: CodeMatcher.DistinctLabels(IEnumerable(Of CodeInstruction))
+- uid: HarmonyLib.CodeMatcher.DistinctLabels*
+  name: DistinctLabels
+  href: api/HarmonyLib.CodeMatcher.html#HarmonyLib_CodeMatcher_DistinctLabels_
+  commentId: Overload:HarmonyLib.CodeMatcher.DistinctLabels
+  isSpec: "True"
+  fullName: HarmonyLib.CodeMatcher.DistinctLabels
+  nameWithType: CodeMatcher.DistinctLabels
+- uid: HarmonyLib.CodeMatcher.End
+  name: End()
+  href: api/HarmonyLib.CodeMatcher.html#HarmonyLib_CodeMatcher_End
+  commentId: M:HarmonyLib.CodeMatcher.End
+  fullName: HarmonyLib.CodeMatcher.End()
+  nameWithType: CodeMatcher.End()
+- uid: HarmonyLib.CodeMatcher.End*
+  name: End
+  href: api/HarmonyLib.CodeMatcher.html#HarmonyLib_CodeMatcher_End_
+  commentId: Overload:HarmonyLib.CodeMatcher.End
+  isSpec: "True"
+  fullName: HarmonyLib.CodeMatcher.End
+  nameWithType: CodeMatcher.End
+- uid: HarmonyLib.CodeMatcher.Insert(HarmonyLib.CodeInstruction[])
+  name: Insert(CodeInstruction[])
+  href: api/HarmonyLib.CodeMatcher.html#HarmonyLib_CodeMatcher_Insert_HarmonyLib_CodeInstruction___
+  commentId: M:HarmonyLib.CodeMatcher.Insert(HarmonyLib.CodeInstruction[])
+  name.vb: Insert(CodeInstruction())
+  fullName: HarmonyLib.CodeMatcher.Insert(HarmonyLib.CodeInstruction[])
+  fullName.vb: HarmonyLib.CodeMatcher.Insert(HarmonyLib.CodeInstruction())
+  nameWithType: CodeMatcher.Insert(CodeInstruction[])
+  nameWithType.vb: CodeMatcher.Insert(CodeInstruction())
+- uid: HarmonyLib.CodeMatcher.Insert(System.Collections.Generic.IEnumerable{HarmonyLib.CodeInstruction})
+  name: Insert(IEnumerable<CodeInstruction>)
+  href: api/HarmonyLib.CodeMatcher.html#HarmonyLib_CodeMatcher_Insert_System_Collections_Generic_IEnumerable_HarmonyLib_CodeInstruction__
+  commentId: M:HarmonyLib.CodeMatcher.Insert(System.Collections.Generic.IEnumerable{HarmonyLib.CodeInstruction})
+  name.vb: Insert(IEnumerable(Of CodeInstruction))
+  fullName: HarmonyLib.CodeMatcher.Insert(System.Collections.Generic.IEnumerable<HarmonyLib.CodeInstruction>)
+  fullName.vb: HarmonyLib.CodeMatcher.Insert(System.Collections.Generic.IEnumerable(Of HarmonyLib.CodeInstruction))
+  nameWithType: CodeMatcher.Insert(IEnumerable<CodeInstruction>)
+  nameWithType.vb: CodeMatcher.Insert(IEnumerable(Of CodeInstruction))
+- uid: HarmonyLib.CodeMatcher.Insert*
+  name: Insert
+  href: api/HarmonyLib.CodeMatcher.html#HarmonyLib_CodeMatcher_Insert_
+  commentId: Overload:HarmonyLib.CodeMatcher.Insert
+  isSpec: "True"
+  fullName: HarmonyLib.CodeMatcher.Insert
+  nameWithType: CodeMatcher.Insert
+- uid: HarmonyLib.CodeMatcher.InsertAndAdvance(HarmonyLib.CodeInstruction[])
+  name: InsertAndAdvance(CodeInstruction[])
+  href: api/HarmonyLib.CodeMatcher.html#HarmonyLib_CodeMatcher_InsertAndAdvance_HarmonyLib_CodeInstruction___
+  commentId: M:HarmonyLib.CodeMatcher.InsertAndAdvance(HarmonyLib.CodeInstruction[])
+  name.vb: InsertAndAdvance(CodeInstruction())
+  fullName: HarmonyLib.CodeMatcher.InsertAndAdvance(HarmonyLib.CodeInstruction[])
+  fullName.vb: HarmonyLib.CodeMatcher.InsertAndAdvance(HarmonyLib.CodeInstruction())
+  nameWithType: CodeMatcher.InsertAndAdvance(CodeInstruction[])
+  nameWithType.vb: CodeMatcher.InsertAndAdvance(CodeInstruction())
+- uid: HarmonyLib.CodeMatcher.InsertAndAdvance(System.Collections.Generic.IEnumerable{HarmonyLib.CodeInstruction})
+  name: InsertAndAdvance(IEnumerable<CodeInstruction>)
+  href: api/HarmonyLib.CodeMatcher.html#HarmonyLib_CodeMatcher_InsertAndAdvance_System_Collections_Generic_IEnumerable_HarmonyLib_CodeInstruction__
+  commentId: M:HarmonyLib.CodeMatcher.InsertAndAdvance(System.Collections.Generic.IEnumerable{HarmonyLib.CodeInstruction})
+  name.vb: InsertAndAdvance(IEnumerable(Of CodeInstruction))
+  fullName: HarmonyLib.CodeMatcher.InsertAndAdvance(System.Collections.Generic.IEnumerable<HarmonyLib.CodeInstruction>)
+  fullName.vb: HarmonyLib.CodeMatcher.InsertAndAdvance(System.Collections.Generic.IEnumerable(Of HarmonyLib.CodeInstruction))
+  nameWithType: CodeMatcher.InsertAndAdvance(IEnumerable<CodeInstruction>)
+  nameWithType.vb: CodeMatcher.InsertAndAdvance(IEnumerable(Of CodeInstruction))
+- uid: HarmonyLib.CodeMatcher.InsertAndAdvance*
+  name: InsertAndAdvance
+  href: api/HarmonyLib.CodeMatcher.html#HarmonyLib_CodeMatcher_InsertAndAdvance_
+  commentId: Overload:HarmonyLib.CodeMatcher.InsertAndAdvance
+  isSpec: "True"
+  fullName: HarmonyLib.CodeMatcher.InsertAndAdvance
+  nameWithType: CodeMatcher.InsertAndAdvance
+- uid: HarmonyLib.CodeMatcher.InsertBranch(System.Reflection.Emit.OpCode,System.Int32)
+  name: InsertBranch(OpCode, Int32)
+  href: api/HarmonyLib.CodeMatcher.html#HarmonyLib_CodeMatcher_InsertBranch_System_Reflection_Emit_OpCode_System_Int32_
+  commentId: M:HarmonyLib.CodeMatcher.InsertBranch(System.Reflection.Emit.OpCode,System.Int32)
+  fullName: HarmonyLib.CodeMatcher.InsertBranch(System.Reflection.Emit.OpCode, System.Int32)
+  nameWithType: CodeMatcher.InsertBranch(OpCode, Int32)
+- uid: HarmonyLib.CodeMatcher.InsertBranch*
+  name: InsertBranch
+  href: api/HarmonyLib.CodeMatcher.html#HarmonyLib_CodeMatcher_InsertBranch_
+  commentId: Overload:HarmonyLib.CodeMatcher.InsertBranch
+  isSpec: "True"
+  fullName: HarmonyLib.CodeMatcher.InsertBranch
+  nameWithType: CodeMatcher.InsertBranch
+- uid: HarmonyLib.CodeMatcher.InsertBranchAndAdvance(System.Reflection.Emit.OpCode,System.Int32)
+  name: InsertBranchAndAdvance(OpCode, Int32)
+  href: api/HarmonyLib.CodeMatcher.html#HarmonyLib_CodeMatcher_InsertBranchAndAdvance_System_Reflection_Emit_OpCode_System_Int32_
+  commentId: M:HarmonyLib.CodeMatcher.InsertBranchAndAdvance(System.Reflection.Emit.OpCode,System.Int32)
+  fullName: HarmonyLib.CodeMatcher.InsertBranchAndAdvance(System.Reflection.Emit.OpCode, System.Int32)
+  nameWithType: CodeMatcher.InsertBranchAndAdvance(OpCode, Int32)
+- uid: HarmonyLib.CodeMatcher.InsertBranchAndAdvance*
+  name: InsertBranchAndAdvance
+  href: api/HarmonyLib.CodeMatcher.html#HarmonyLib_CodeMatcher_InsertBranchAndAdvance_
+  commentId: Overload:HarmonyLib.CodeMatcher.InsertBranchAndAdvance
+  isSpec: "True"
+  fullName: HarmonyLib.CodeMatcher.InsertBranchAndAdvance
+  nameWithType: CodeMatcher.InsertBranchAndAdvance
+- uid: HarmonyLib.CodeMatcher.Instruction
+  name: Instruction
+  href: api/HarmonyLib.CodeMatcher.html#HarmonyLib_CodeMatcher_Instruction
+  commentId: P:HarmonyLib.CodeMatcher.Instruction
+  fullName: HarmonyLib.CodeMatcher.Instruction
+  nameWithType: CodeMatcher.Instruction
+- uid: HarmonyLib.CodeMatcher.Instruction*
+  name: Instruction
+  href: api/HarmonyLib.CodeMatcher.html#HarmonyLib_CodeMatcher_Instruction_
+  commentId: Overload:HarmonyLib.CodeMatcher.Instruction
+  isSpec: "True"
+  fullName: HarmonyLib.CodeMatcher.Instruction
+  nameWithType: CodeMatcher.Instruction
+- uid: HarmonyLib.CodeMatcher.InstructionAt(System.Int32)
+  name: InstructionAt(Int32)
+  href: api/HarmonyLib.CodeMatcher.html#HarmonyLib_CodeMatcher_InstructionAt_System_Int32_
+  commentId: M:HarmonyLib.CodeMatcher.InstructionAt(System.Int32)
+  fullName: HarmonyLib.CodeMatcher.InstructionAt(System.Int32)
+  nameWithType: CodeMatcher.InstructionAt(Int32)
+- uid: HarmonyLib.CodeMatcher.InstructionAt*
+  name: InstructionAt
+  href: api/HarmonyLib.CodeMatcher.html#HarmonyLib_CodeMatcher_InstructionAt_
+  commentId: Overload:HarmonyLib.CodeMatcher.InstructionAt
+  isSpec: "True"
+  fullName: HarmonyLib.CodeMatcher.InstructionAt
+  nameWithType: CodeMatcher.InstructionAt
+- uid: HarmonyLib.CodeMatcher.InstructionEnumeration
+  name: InstructionEnumeration()
+  href: api/HarmonyLib.CodeMatcher.html#HarmonyLib_CodeMatcher_InstructionEnumeration
+  commentId: M:HarmonyLib.CodeMatcher.InstructionEnumeration
+  fullName: HarmonyLib.CodeMatcher.InstructionEnumeration()
+  nameWithType: CodeMatcher.InstructionEnumeration()
+- uid: HarmonyLib.CodeMatcher.InstructionEnumeration*
+  name: InstructionEnumeration
+  href: api/HarmonyLib.CodeMatcher.html#HarmonyLib_CodeMatcher_InstructionEnumeration_
+  commentId: Overload:HarmonyLib.CodeMatcher.InstructionEnumeration
+  isSpec: "True"
+  fullName: HarmonyLib.CodeMatcher.InstructionEnumeration
+  nameWithType: CodeMatcher.InstructionEnumeration
+- uid: HarmonyLib.CodeMatcher.Instructions
+  name: Instructions()
+  href: api/HarmonyLib.CodeMatcher.html#HarmonyLib_CodeMatcher_Instructions
+  commentId: M:HarmonyLib.CodeMatcher.Instructions
+  fullName: HarmonyLib.CodeMatcher.Instructions()
+  nameWithType: CodeMatcher.Instructions()
+- uid: HarmonyLib.CodeMatcher.Instructions(System.Int32)
+  name: Instructions(Int32)
+  href: api/HarmonyLib.CodeMatcher.html#HarmonyLib_CodeMatcher_Instructions_System_Int32_
+  commentId: M:HarmonyLib.CodeMatcher.Instructions(System.Int32)
+  fullName: HarmonyLib.CodeMatcher.Instructions(System.Int32)
+  nameWithType: CodeMatcher.Instructions(Int32)
+- uid: HarmonyLib.CodeMatcher.Instructions*
+  name: Instructions
+  href: api/HarmonyLib.CodeMatcher.html#HarmonyLib_CodeMatcher_Instructions_
+  commentId: Overload:HarmonyLib.CodeMatcher.Instructions
+  isSpec: "True"
+  fullName: HarmonyLib.CodeMatcher.Instructions
+  nameWithType: CodeMatcher.Instructions
+- uid: HarmonyLib.CodeMatcher.InstructionsInRange(System.Int32,System.Int32)
+  name: InstructionsInRange(Int32, Int32)
+  href: api/HarmonyLib.CodeMatcher.html#HarmonyLib_CodeMatcher_InstructionsInRange_System_Int32_System_Int32_
+  commentId: M:HarmonyLib.CodeMatcher.InstructionsInRange(System.Int32,System.Int32)
+  fullName: HarmonyLib.CodeMatcher.InstructionsInRange(System.Int32, System.Int32)
+  nameWithType: CodeMatcher.InstructionsInRange(Int32, Int32)
+- uid: HarmonyLib.CodeMatcher.InstructionsInRange*
+  name: InstructionsInRange
+  href: api/HarmonyLib.CodeMatcher.html#HarmonyLib_CodeMatcher_InstructionsInRange_
+  commentId: Overload:HarmonyLib.CodeMatcher.InstructionsInRange
+  isSpec: "True"
+  fullName: HarmonyLib.CodeMatcher.InstructionsInRange
+  nameWithType: CodeMatcher.InstructionsInRange
+- uid: HarmonyLib.CodeMatcher.InstructionsWithOffsets(System.Int32,System.Int32)
+  name: InstructionsWithOffsets(Int32, Int32)
+  href: api/HarmonyLib.CodeMatcher.html#HarmonyLib_CodeMatcher_InstructionsWithOffsets_System_Int32_System_Int32_
+  commentId: M:HarmonyLib.CodeMatcher.InstructionsWithOffsets(System.Int32,System.Int32)
+  fullName: HarmonyLib.CodeMatcher.InstructionsWithOffsets(System.Int32, System.Int32)
+  nameWithType: CodeMatcher.InstructionsWithOffsets(Int32, Int32)
+- uid: HarmonyLib.CodeMatcher.InstructionsWithOffsets*
+  name: InstructionsWithOffsets
+  href: api/HarmonyLib.CodeMatcher.html#HarmonyLib_CodeMatcher_InstructionsWithOffsets_
+  commentId: Overload:HarmonyLib.CodeMatcher.InstructionsWithOffsets
+  isSpec: "True"
+  fullName: HarmonyLib.CodeMatcher.InstructionsWithOffsets
+  nameWithType: CodeMatcher.InstructionsWithOffsets
+- uid: HarmonyLib.CodeMatcher.IsInvalid
+  name: IsInvalid
+  href: api/HarmonyLib.CodeMatcher.html#HarmonyLib_CodeMatcher_IsInvalid
+  commentId: P:HarmonyLib.CodeMatcher.IsInvalid
+  fullName: HarmonyLib.CodeMatcher.IsInvalid
+  nameWithType: CodeMatcher.IsInvalid
+- uid: HarmonyLib.CodeMatcher.IsInvalid*
+  name: IsInvalid
+  href: api/HarmonyLib.CodeMatcher.html#HarmonyLib_CodeMatcher_IsInvalid_
+  commentId: Overload:HarmonyLib.CodeMatcher.IsInvalid
+  isSpec: "True"
+  fullName: HarmonyLib.CodeMatcher.IsInvalid
+  nameWithType: CodeMatcher.IsInvalid
+- uid: HarmonyLib.CodeMatcher.IsValid
+  name: IsValid
+  href: api/HarmonyLib.CodeMatcher.html#HarmonyLib_CodeMatcher_IsValid
+  commentId: P:HarmonyLib.CodeMatcher.IsValid
+  fullName: HarmonyLib.CodeMatcher.IsValid
+  nameWithType: CodeMatcher.IsValid
+- uid: HarmonyLib.CodeMatcher.IsValid*
+  name: IsValid
+  href: api/HarmonyLib.CodeMatcher.html#HarmonyLib_CodeMatcher_IsValid_
+  commentId: Overload:HarmonyLib.CodeMatcher.IsValid
+  isSpec: "True"
+  fullName: HarmonyLib.CodeMatcher.IsValid
+  nameWithType: CodeMatcher.IsValid
+- uid: HarmonyLib.CodeMatcher.Labels
+  name: Labels
+  href: api/HarmonyLib.CodeMatcher.html#HarmonyLib_CodeMatcher_Labels
+  commentId: P:HarmonyLib.CodeMatcher.Labels
+  fullName: HarmonyLib.CodeMatcher.Labels
+  nameWithType: CodeMatcher.Labels
+- uid: HarmonyLib.CodeMatcher.Labels*
+  name: Labels
+  href: api/HarmonyLib.CodeMatcher.html#HarmonyLib_CodeMatcher_Labels_
+  commentId: Overload:HarmonyLib.CodeMatcher.Labels
+  isSpec: "True"
+  fullName: HarmonyLib.CodeMatcher.Labels
+  nameWithType: CodeMatcher.Labels
+- uid: HarmonyLib.CodeMatcher.Length
+  name: Length
+  href: api/HarmonyLib.CodeMatcher.html#HarmonyLib_CodeMatcher_Length
+  commentId: P:HarmonyLib.CodeMatcher.Length
+  fullName: HarmonyLib.CodeMatcher.Length
+  nameWithType: CodeMatcher.Length
+- uid: HarmonyLib.CodeMatcher.Length*
+  name: Length
+  href: api/HarmonyLib.CodeMatcher.html#HarmonyLib_CodeMatcher_Length_
+  commentId: Overload:HarmonyLib.CodeMatcher.Length
+  isSpec: "True"
+  fullName: HarmonyLib.CodeMatcher.Length
+  nameWithType: CodeMatcher.Length
+- uid: HarmonyLib.CodeMatcher.MatchEndBackwards(HarmonyLib.CodeMatch[])
+  name: MatchEndBackwards(CodeMatch[])
+  href: api/HarmonyLib.CodeMatcher.html#HarmonyLib_CodeMatcher_MatchEndBackwards_HarmonyLib_CodeMatch___
+  commentId: M:HarmonyLib.CodeMatcher.MatchEndBackwards(HarmonyLib.CodeMatch[])
+  name.vb: MatchEndBackwards(CodeMatch())
+  fullName: HarmonyLib.CodeMatcher.MatchEndBackwards(HarmonyLib.CodeMatch[])
+  fullName.vb: HarmonyLib.CodeMatcher.MatchEndBackwards(HarmonyLib.CodeMatch())
+  nameWithType: CodeMatcher.MatchEndBackwards(CodeMatch[])
+  nameWithType.vb: CodeMatcher.MatchEndBackwards(CodeMatch())
+- uid: HarmonyLib.CodeMatcher.MatchEndBackwards*
+  name: MatchEndBackwards
+  href: api/HarmonyLib.CodeMatcher.html#HarmonyLib_CodeMatcher_MatchEndBackwards_
+  commentId: Overload:HarmonyLib.CodeMatcher.MatchEndBackwards
+  isSpec: "True"
+  fullName: HarmonyLib.CodeMatcher.MatchEndBackwards
+  nameWithType: CodeMatcher.MatchEndBackwards
+- uid: HarmonyLib.CodeMatcher.MatchEndForward(HarmonyLib.CodeMatch[])
+  name: MatchEndForward(CodeMatch[])
+  href: api/HarmonyLib.CodeMatcher.html#HarmonyLib_CodeMatcher_MatchEndForward_HarmonyLib_CodeMatch___
+  commentId: M:HarmonyLib.CodeMatcher.MatchEndForward(HarmonyLib.CodeMatch[])
+  name.vb: MatchEndForward(CodeMatch())
+  fullName: HarmonyLib.CodeMatcher.MatchEndForward(HarmonyLib.CodeMatch[])
+  fullName.vb: HarmonyLib.CodeMatcher.MatchEndForward(HarmonyLib.CodeMatch())
+  nameWithType: CodeMatcher.MatchEndForward(CodeMatch[])
+  nameWithType.vb: CodeMatcher.MatchEndForward(CodeMatch())
+- uid: HarmonyLib.CodeMatcher.MatchEndForward*
+  name: MatchEndForward
+  href: api/HarmonyLib.CodeMatcher.html#HarmonyLib_CodeMatcher_MatchEndForward_
+  commentId: Overload:HarmonyLib.CodeMatcher.MatchEndForward
+  isSpec: "True"
+  fullName: HarmonyLib.CodeMatcher.MatchEndForward
+  nameWithType: CodeMatcher.MatchEndForward
+- uid: HarmonyLib.CodeMatcher.MatchStartBackwards(HarmonyLib.CodeMatch[])
+  name: MatchStartBackwards(CodeMatch[])
+  href: api/HarmonyLib.CodeMatcher.html#HarmonyLib_CodeMatcher_MatchStartBackwards_HarmonyLib_CodeMatch___
+  commentId: M:HarmonyLib.CodeMatcher.MatchStartBackwards(HarmonyLib.CodeMatch[])
+  name.vb: MatchStartBackwards(CodeMatch())
+  fullName: HarmonyLib.CodeMatcher.MatchStartBackwards(HarmonyLib.CodeMatch[])
+  fullName.vb: HarmonyLib.CodeMatcher.MatchStartBackwards(HarmonyLib.CodeMatch())
+  nameWithType: CodeMatcher.MatchStartBackwards(CodeMatch[])
+  nameWithType.vb: CodeMatcher.MatchStartBackwards(CodeMatch())
+- uid: HarmonyLib.CodeMatcher.MatchStartBackwards*
+  name: MatchStartBackwards
+  href: api/HarmonyLib.CodeMatcher.html#HarmonyLib_CodeMatcher_MatchStartBackwards_
+  commentId: Overload:HarmonyLib.CodeMatcher.MatchStartBackwards
+  isSpec: "True"
+  fullName: HarmonyLib.CodeMatcher.MatchStartBackwards
+  nameWithType: CodeMatcher.MatchStartBackwards
+- uid: HarmonyLib.CodeMatcher.MatchStartForward(HarmonyLib.CodeMatch[])
+  name: MatchStartForward(CodeMatch[])
+  href: api/HarmonyLib.CodeMatcher.html#HarmonyLib_CodeMatcher_MatchStartForward_HarmonyLib_CodeMatch___
+  commentId: M:HarmonyLib.CodeMatcher.MatchStartForward(HarmonyLib.CodeMatch[])
+  name.vb: MatchStartForward(CodeMatch())
+  fullName: HarmonyLib.CodeMatcher.MatchStartForward(HarmonyLib.CodeMatch[])
+  fullName.vb: HarmonyLib.CodeMatcher.MatchStartForward(HarmonyLib.CodeMatch())
+  nameWithType: CodeMatcher.MatchStartForward(CodeMatch[])
+  nameWithType.vb: CodeMatcher.MatchStartForward(CodeMatch())
+- uid: HarmonyLib.CodeMatcher.MatchStartForward*
+  name: MatchStartForward
+  href: api/HarmonyLib.CodeMatcher.html#HarmonyLib_CodeMatcher_MatchStartForward_
+  commentId: Overload:HarmonyLib.CodeMatcher.MatchStartForward
+  isSpec: "True"
+  fullName: HarmonyLib.CodeMatcher.MatchStartForward
+  nameWithType: CodeMatcher.MatchStartForward
+- uid: HarmonyLib.CodeMatcher.NamedMatch(System.String)
+  name: NamedMatch(String)
+  href: api/HarmonyLib.CodeMatcher.html#HarmonyLib_CodeMatcher_NamedMatch_System_String_
+  commentId: M:HarmonyLib.CodeMatcher.NamedMatch(System.String)
+  fullName: HarmonyLib.CodeMatcher.NamedMatch(System.String)
+  nameWithType: CodeMatcher.NamedMatch(String)
+- uid: HarmonyLib.CodeMatcher.NamedMatch*
+  name: NamedMatch
+  href: api/HarmonyLib.CodeMatcher.html#HarmonyLib_CodeMatcher_NamedMatch_
+  commentId: Overload:HarmonyLib.CodeMatcher.NamedMatch
+  isSpec: "True"
+  fullName: HarmonyLib.CodeMatcher.NamedMatch
+  nameWithType: CodeMatcher.NamedMatch
+- uid: HarmonyLib.CodeMatcher.Opcode
+  name: Opcode
+  href: api/HarmonyLib.CodeMatcher.html#HarmonyLib_CodeMatcher_Opcode
+  commentId: P:HarmonyLib.CodeMatcher.Opcode
+  fullName: HarmonyLib.CodeMatcher.Opcode
+  nameWithType: CodeMatcher.Opcode
+- uid: HarmonyLib.CodeMatcher.Opcode*
+  name: Opcode
+  href: api/HarmonyLib.CodeMatcher.html#HarmonyLib_CodeMatcher_Opcode_
+  commentId: Overload:HarmonyLib.CodeMatcher.Opcode
+  isSpec: "True"
+  fullName: HarmonyLib.CodeMatcher.Opcode
+  nameWithType: CodeMatcher.Opcode
+- uid: HarmonyLib.CodeMatcher.Operand
+  name: Operand
+  href: api/HarmonyLib.CodeMatcher.html#HarmonyLib_CodeMatcher_Operand
+  commentId: P:HarmonyLib.CodeMatcher.Operand
+  fullName: HarmonyLib.CodeMatcher.Operand
+  nameWithType: CodeMatcher.Operand
+- uid: HarmonyLib.CodeMatcher.Operand*
+  name: Operand
+  href: api/HarmonyLib.CodeMatcher.html#HarmonyLib_CodeMatcher_Operand_
+  commentId: Overload:HarmonyLib.CodeMatcher.Operand
+  isSpec: "True"
+  fullName: HarmonyLib.CodeMatcher.Operand
+  nameWithType: CodeMatcher.Operand
+- uid: HarmonyLib.CodeMatcher.Pos
+  name: Pos
+  href: api/HarmonyLib.CodeMatcher.html#HarmonyLib_CodeMatcher_Pos
+  commentId: P:HarmonyLib.CodeMatcher.Pos
+  fullName: HarmonyLib.CodeMatcher.Pos
+  nameWithType: CodeMatcher.Pos
+- uid: HarmonyLib.CodeMatcher.Pos*
+  name: Pos
+  href: api/HarmonyLib.CodeMatcher.html#HarmonyLib_CodeMatcher_Pos_
+  commentId: Overload:HarmonyLib.CodeMatcher.Pos
+  isSpec: "True"
+  fullName: HarmonyLib.CodeMatcher.Pos
+  nameWithType: CodeMatcher.Pos
+- uid: HarmonyLib.CodeMatcher.Remaining
+  name: Remaining
+  href: api/HarmonyLib.CodeMatcher.html#HarmonyLib_CodeMatcher_Remaining
+  commentId: P:HarmonyLib.CodeMatcher.Remaining
+  fullName: HarmonyLib.CodeMatcher.Remaining
+  nameWithType: CodeMatcher.Remaining
+- uid: HarmonyLib.CodeMatcher.Remaining*
+  name: Remaining
+  href: api/HarmonyLib.CodeMatcher.html#HarmonyLib_CodeMatcher_Remaining_
+  commentId: Overload:HarmonyLib.CodeMatcher.Remaining
+  isSpec: "True"
+  fullName: HarmonyLib.CodeMatcher.Remaining
+  nameWithType: CodeMatcher.Remaining
+- uid: HarmonyLib.CodeMatcher.RemoveInstruction
+  name: RemoveInstruction()
+  href: api/HarmonyLib.CodeMatcher.html#HarmonyLib_CodeMatcher_RemoveInstruction
+  commentId: M:HarmonyLib.CodeMatcher.RemoveInstruction
+  fullName: HarmonyLib.CodeMatcher.RemoveInstruction()
+  nameWithType: CodeMatcher.RemoveInstruction()
+- uid: HarmonyLib.CodeMatcher.RemoveInstruction*
+  name: RemoveInstruction
+  href: api/HarmonyLib.CodeMatcher.html#HarmonyLib_CodeMatcher_RemoveInstruction_
+  commentId: Overload:HarmonyLib.CodeMatcher.RemoveInstruction
+  isSpec: "True"
+  fullName: HarmonyLib.CodeMatcher.RemoveInstruction
+  nameWithType: CodeMatcher.RemoveInstruction
+- uid: HarmonyLib.CodeMatcher.RemoveInstructions(System.Int32)
+  name: RemoveInstructions(Int32)
+  href: api/HarmonyLib.CodeMatcher.html#HarmonyLib_CodeMatcher_RemoveInstructions_System_Int32_
+  commentId: M:HarmonyLib.CodeMatcher.RemoveInstructions(System.Int32)
+  fullName: HarmonyLib.CodeMatcher.RemoveInstructions(System.Int32)
+  nameWithType: CodeMatcher.RemoveInstructions(Int32)
+- uid: HarmonyLib.CodeMatcher.RemoveInstructions*
+  name: RemoveInstructions
+  href: api/HarmonyLib.CodeMatcher.html#HarmonyLib_CodeMatcher_RemoveInstructions_
+  commentId: Overload:HarmonyLib.CodeMatcher.RemoveInstructions
+  isSpec: "True"
+  fullName: HarmonyLib.CodeMatcher.RemoveInstructions
+  nameWithType: CodeMatcher.RemoveInstructions
+- uid: HarmonyLib.CodeMatcher.RemoveInstructionsInRange(System.Int32,System.Int32)
+  name: RemoveInstructionsInRange(Int32, Int32)
+  href: api/HarmonyLib.CodeMatcher.html#HarmonyLib_CodeMatcher_RemoveInstructionsInRange_System_Int32_System_Int32_
+  commentId: M:HarmonyLib.CodeMatcher.RemoveInstructionsInRange(System.Int32,System.Int32)
+  fullName: HarmonyLib.CodeMatcher.RemoveInstructionsInRange(System.Int32, System.Int32)
+  nameWithType: CodeMatcher.RemoveInstructionsInRange(Int32, Int32)
+- uid: HarmonyLib.CodeMatcher.RemoveInstructionsInRange*
+  name: RemoveInstructionsInRange
+  href: api/HarmonyLib.CodeMatcher.html#HarmonyLib_CodeMatcher_RemoveInstructionsInRange_
+  commentId: Overload:HarmonyLib.CodeMatcher.RemoveInstructionsInRange
+  isSpec: "True"
+  fullName: HarmonyLib.CodeMatcher.RemoveInstructionsInRange
+  nameWithType: CodeMatcher.RemoveInstructionsInRange
+- uid: HarmonyLib.CodeMatcher.RemoveInstructionsWithOffsets(System.Int32,System.Int32)
+  name: RemoveInstructionsWithOffsets(Int32, Int32)
+  href: api/HarmonyLib.CodeMatcher.html#HarmonyLib_CodeMatcher_RemoveInstructionsWithOffsets_System_Int32_System_Int32_
+  commentId: M:HarmonyLib.CodeMatcher.RemoveInstructionsWithOffsets(System.Int32,System.Int32)
+  fullName: HarmonyLib.CodeMatcher.RemoveInstructionsWithOffsets(System.Int32, System.Int32)
+  nameWithType: CodeMatcher.RemoveInstructionsWithOffsets(Int32, Int32)
+- uid: HarmonyLib.CodeMatcher.RemoveInstructionsWithOffsets*
+  name: RemoveInstructionsWithOffsets
+  href: api/HarmonyLib.CodeMatcher.html#HarmonyLib_CodeMatcher_RemoveInstructionsWithOffsets_
+  commentId: Overload:HarmonyLib.CodeMatcher.RemoveInstructionsWithOffsets
+  isSpec: "True"
+  fullName: HarmonyLib.CodeMatcher.RemoveInstructionsWithOffsets
+  nameWithType: CodeMatcher.RemoveInstructionsWithOffsets
+- uid: HarmonyLib.CodeMatcher.Repeat(System.Action{HarmonyLib.CodeMatcher},System.Action{System.String})
+  name: Repeat(Action<CodeMatcher>, Action<String>)
+  href: api/HarmonyLib.CodeMatcher.html#HarmonyLib_CodeMatcher_Repeat_System_Action_HarmonyLib_CodeMatcher__System_Action_System_String__
+  commentId: M:HarmonyLib.CodeMatcher.Repeat(System.Action{HarmonyLib.CodeMatcher},System.Action{System.String})
+  name.vb: Repeat(Action(Of CodeMatcher), Action(Of String))
+  fullName: HarmonyLib.CodeMatcher.Repeat(System.Action<HarmonyLib.CodeMatcher>, System.Action<System.String>)
+  fullName.vb: HarmonyLib.CodeMatcher.Repeat(System.Action(Of HarmonyLib.CodeMatcher), System.Action(Of System.String))
+  nameWithType: CodeMatcher.Repeat(Action<CodeMatcher>, Action<String>)
+  nameWithType.vb: CodeMatcher.Repeat(Action(Of CodeMatcher), Action(Of String))
+- uid: HarmonyLib.CodeMatcher.Repeat*
+  name: Repeat
+  href: api/HarmonyLib.CodeMatcher.html#HarmonyLib_CodeMatcher_Repeat_
+  commentId: Overload:HarmonyLib.CodeMatcher.Repeat
+  isSpec: "True"
+  fullName: HarmonyLib.CodeMatcher.Repeat
+  nameWithType: CodeMatcher.Repeat
+- uid: HarmonyLib.CodeMatcher.ReportFailure(System.Reflection.MethodBase,System.Action{System.String})
+  name: ReportFailure(MethodBase, Action<String>)
+  href: api/HarmonyLib.CodeMatcher.html#HarmonyLib_CodeMatcher_ReportFailure_System_Reflection_MethodBase_System_Action_System_String__
+  commentId: M:HarmonyLib.CodeMatcher.ReportFailure(System.Reflection.MethodBase,System.Action{System.String})
+  name.vb: ReportFailure(MethodBase, Action(Of String))
+  fullName: HarmonyLib.CodeMatcher.ReportFailure(System.Reflection.MethodBase, System.Action<System.String>)
+  fullName.vb: HarmonyLib.CodeMatcher.ReportFailure(System.Reflection.MethodBase, System.Action(Of System.String))
+  nameWithType: CodeMatcher.ReportFailure(MethodBase, Action<String>)
+  nameWithType.vb: CodeMatcher.ReportFailure(MethodBase, Action(Of String))
+- uid: HarmonyLib.CodeMatcher.ReportFailure*
+  name: ReportFailure
+  href: api/HarmonyLib.CodeMatcher.html#HarmonyLib_CodeMatcher_ReportFailure_
+  commentId: Overload:HarmonyLib.CodeMatcher.ReportFailure
+  isSpec: "True"
+  fullName: HarmonyLib.CodeMatcher.ReportFailure
+  nameWithType: CodeMatcher.ReportFailure
+- uid: HarmonyLib.CodeMatcher.SearchBackwards(System.Func{HarmonyLib.CodeInstruction,System.Boolean})
+  name: SearchBackwards(Func<CodeInstruction, Boolean>)
+  href: api/HarmonyLib.CodeMatcher.html#HarmonyLib_CodeMatcher_SearchBackwards_System_Func_HarmonyLib_CodeInstruction_System_Boolean__
+  commentId: M:HarmonyLib.CodeMatcher.SearchBackwards(System.Func{HarmonyLib.CodeInstruction,System.Boolean})
+  name.vb: SearchBackwards(Func(Of CodeInstruction, Boolean))
+  fullName: HarmonyLib.CodeMatcher.SearchBackwards(System.Func<HarmonyLib.CodeInstruction, System.Boolean>)
+  fullName.vb: HarmonyLib.CodeMatcher.SearchBackwards(System.Func(Of HarmonyLib.CodeInstruction, System.Boolean))
+  nameWithType: CodeMatcher.SearchBackwards(Func<CodeInstruction, Boolean>)
+  nameWithType.vb: CodeMatcher.SearchBackwards(Func(Of CodeInstruction, Boolean))
+- uid: HarmonyLib.CodeMatcher.SearchBackwards*
+  name: SearchBackwards
+  href: api/HarmonyLib.CodeMatcher.html#HarmonyLib_CodeMatcher_SearchBackwards_
+  commentId: Overload:HarmonyLib.CodeMatcher.SearchBackwards
+  isSpec: "True"
+  fullName: HarmonyLib.CodeMatcher.SearchBackwards
+  nameWithType: CodeMatcher.SearchBackwards
+- uid: HarmonyLib.CodeMatcher.SearchForward(System.Func{HarmonyLib.CodeInstruction,System.Boolean})
+  name: SearchForward(Func<CodeInstruction, Boolean>)
+  href: api/HarmonyLib.CodeMatcher.html#HarmonyLib_CodeMatcher_SearchForward_System_Func_HarmonyLib_CodeInstruction_System_Boolean__
+  commentId: M:HarmonyLib.CodeMatcher.SearchForward(System.Func{HarmonyLib.CodeInstruction,System.Boolean})
+  name.vb: SearchForward(Func(Of CodeInstruction, Boolean))
+  fullName: HarmonyLib.CodeMatcher.SearchForward(System.Func<HarmonyLib.CodeInstruction, System.Boolean>)
+  fullName.vb: HarmonyLib.CodeMatcher.SearchForward(System.Func(Of HarmonyLib.CodeInstruction, System.Boolean))
+  nameWithType: CodeMatcher.SearchForward(Func<CodeInstruction, Boolean>)
+  nameWithType.vb: CodeMatcher.SearchForward(Func(Of CodeInstruction, Boolean))
+- uid: HarmonyLib.CodeMatcher.SearchForward*
+  name: SearchForward
+  href: api/HarmonyLib.CodeMatcher.html#HarmonyLib_CodeMatcher_SearchForward_
+  commentId: Overload:HarmonyLib.CodeMatcher.SearchForward
+  isSpec: "True"
+  fullName: HarmonyLib.CodeMatcher.SearchForward
+  nameWithType: CodeMatcher.SearchForward
+- uid: HarmonyLib.CodeMatcher.Set(System.Reflection.Emit.OpCode,System.Object)
+  name: Set(OpCode, Object)
+  href: api/HarmonyLib.CodeMatcher.html#HarmonyLib_CodeMatcher_Set_System_Reflection_Emit_OpCode_System_Object_
+  commentId: M:HarmonyLib.CodeMatcher.Set(System.Reflection.Emit.OpCode,System.Object)
+  fullName: HarmonyLib.CodeMatcher.Set(System.Reflection.Emit.OpCode, System.Object)
+  nameWithType: CodeMatcher.Set(OpCode, Object)
+- uid: HarmonyLib.CodeMatcher.Set*
+  name: Set
+  href: api/HarmonyLib.CodeMatcher.html#HarmonyLib_CodeMatcher_Set_
+  commentId: Overload:HarmonyLib.CodeMatcher.Set
+  isSpec: "True"
+  fullName: HarmonyLib.CodeMatcher.Set
+  nameWithType: CodeMatcher.Set
+- uid: HarmonyLib.CodeMatcher.SetAndAdvance(System.Reflection.Emit.OpCode,System.Object)
+  name: SetAndAdvance(OpCode, Object)
+  href: api/HarmonyLib.CodeMatcher.html#HarmonyLib_CodeMatcher_SetAndAdvance_System_Reflection_Emit_OpCode_System_Object_
+  commentId: M:HarmonyLib.CodeMatcher.SetAndAdvance(System.Reflection.Emit.OpCode,System.Object)
+  fullName: HarmonyLib.CodeMatcher.SetAndAdvance(System.Reflection.Emit.OpCode, System.Object)
+  nameWithType: CodeMatcher.SetAndAdvance(OpCode, Object)
+- uid: HarmonyLib.CodeMatcher.SetAndAdvance*
+  name: SetAndAdvance
+  href: api/HarmonyLib.CodeMatcher.html#HarmonyLib_CodeMatcher_SetAndAdvance_
+  commentId: Overload:HarmonyLib.CodeMatcher.SetAndAdvance
+  isSpec: "True"
+  fullName: HarmonyLib.CodeMatcher.SetAndAdvance
+  nameWithType: CodeMatcher.SetAndAdvance
+- uid: HarmonyLib.CodeMatcher.SetInstruction(HarmonyLib.CodeInstruction)
+  name: SetInstruction(CodeInstruction)
+  href: api/HarmonyLib.CodeMatcher.html#HarmonyLib_CodeMatcher_SetInstruction_HarmonyLib_CodeInstruction_
+  commentId: M:HarmonyLib.CodeMatcher.SetInstruction(HarmonyLib.CodeInstruction)
+  fullName: HarmonyLib.CodeMatcher.SetInstruction(HarmonyLib.CodeInstruction)
+  nameWithType: CodeMatcher.SetInstruction(CodeInstruction)
+- uid: HarmonyLib.CodeMatcher.SetInstruction*
+  name: SetInstruction
+  href: api/HarmonyLib.CodeMatcher.html#HarmonyLib_CodeMatcher_SetInstruction_
+  commentId: Overload:HarmonyLib.CodeMatcher.SetInstruction
+  isSpec: "True"
+  fullName: HarmonyLib.CodeMatcher.SetInstruction
+  nameWithType: CodeMatcher.SetInstruction
+- uid: HarmonyLib.CodeMatcher.SetInstructionAndAdvance(HarmonyLib.CodeInstruction)
+  name: SetInstructionAndAdvance(CodeInstruction)
+  href: api/HarmonyLib.CodeMatcher.html#HarmonyLib_CodeMatcher_SetInstructionAndAdvance_HarmonyLib_CodeInstruction_
+  commentId: M:HarmonyLib.CodeMatcher.SetInstructionAndAdvance(HarmonyLib.CodeInstruction)
+  fullName: HarmonyLib.CodeMatcher.SetInstructionAndAdvance(HarmonyLib.CodeInstruction)
+  nameWithType: CodeMatcher.SetInstructionAndAdvance(CodeInstruction)
+- uid: HarmonyLib.CodeMatcher.SetInstructionAndAdvance*
+  name: SetInstructionAndAdvance
+  href: api/HarmonyLib.CodeMatcher.html#HarmonyLib_CodeMatcher_SetInstructionAndAdvance_
+  commentId: Overload:HarmonyLib.CodeMatcher.SetInstructionAndAdvance
+  isSpec: "True"
+  fullName: HarmonyLib.CodeMatcher.SetInstructionAndAdvance
+  nameWithType: CodeMatcher.SetInstructionAndAdvance
+- uid: HarmonyLib.CodeMatcher.SetJumpTo(System.Reflection.Emit.OpCode,System.Int32,System.Reflection.Emit.Label@)
+  name: SetJumpTo(OpCode, Int32, out Label)
+  href: api/HarmonyLib.CodeMatcher.html#HarmonyLib_CodeMatcher_SetJumpTo_System_Reflection_Emit_OpCode_System_Int32_System_Reflection_Emit_Label__
+  commentId: M:HarmonyLib.CodeMatcher.SetJumpTo(System.Reflection.Emit.OpCode,System.Int32,System.Reflection.Emit.Label@)
+  name.vb: SetJumpTo(OpCode, Int32, ByRef Label)
+  fullName: HarmonyLib.CodeMatcher.SetJumpTo(System.Reflection.Emit.OpCode, System.Int32, out System.Reflection.Emit.Label)
+  fullName.vb: HarmonyLib.CodeMatcher.SetJumpTo(System.Reflection.Emit.OpCode, System.Int32, ByRef System.Reflection.Emit.Label)
+  nameWithType: CodeMatcher.SetJumpTo(OpCode, Int32, out Label)
+  nameWithType.vb: CodeMatcher.SetJumpTo(OpCode, Int32, ByRef Label)
+- uid: HarmonyLib.CodeMatcher.SetJumpTo*
+  name: SetJumpTo
+  href: api/HarmonyLib.CodeMatcher.html#HarmonyLib_CodeMatcher_SetJumpTo_
+  commentId: Overload:HarmonyLib.CodeMatcher.SetJumpTo
+  isSpec: "True"
+  fullName: HarmonyLib.CodeMatcher.SetJumpTo
+  nameWithType: CodeMatcher.SetJumpTo
+- uid: HarmonyLib.CodeMatcher.SetOpcodeAndAdvance(System.Reflection.Emit.OpCode)
+  name: SetOpcodeAndAdvance(OpCode)
+  href: api/HarmonyLib.CodeMatcher.html#HarmonyLib_CodeMatcher_SetOpcodeAndAdvance_System_Reflection_Emit_OpCode_
+  commentId: M:HarmonyLib.CodeMatcher.SetOpcodeAndAdvance(System.Reflection.Emit.OpCode)
+  fullName: HarmonyLib.CodeMatcher.SetOpcodeAndAdvance(System.Reflection.Emit.OpCode)
+  nameWithType: CodeMatcher.SetOpcodeAndAdvance(OpCode)
+- uid: HarmonyLib.CodeMatcher.SetOpcodeAndAdvance*
+  name: SetOpcodeAndAdvance
+  href: api/HarmonyLib.CodeMatcher.html#HarmonyLib_CodeMatcher_SetOpcodeAndAdvance_
+  commentId: Overload:HarmonyLib.CodeMatcher.SetOpcodeAndAdvance
+  isSpec: "True"
+  fullName: HarmonyLib.CodeMatcher.SetOpcodeAndAdvance
+  nameWithType: CodeMatcher.SetOpcodeAndAdvance
+- uid: HarmonyLib.CodeMatcher.SetOperandAndAdvance(System.Object)
+  name: SetOperandAndAdvance(Object)
+  href: api/HarmonyLib.CodeMatcher.html#HarmonyLib_CodeMatcher_SetOperandAndAdvance_System_Object_
+  commentId: M:HarmonyLib.CodeMatcher.SetOperandAndAdvance(System.Object)
+  fullName: HarmonyLib.CodeMatcher.SetOperandAndAdvance(System.Object)
+  nameWithType: CodeMatcher.SetOperandAndAdvance(Object)
+- uid: HarmonyLib.CodeMatcher.SetOperandAndAdvance*
+  name: SetOperandAndAdvance
+  href: api/HarmonyLib.CodeMatcher.html#HarmonyLib_CodeMatcher_SetOperandAndAdvance_
+  commentId: Overload:HarmonyLib.CodeMatcher.SetOperandAndAdvance
+  isSpec: "True"
+  fullName: HarmonyLib.CodeMatcher.SetOperandAndAdvance
+  nameWithType: CodeMatcher.SetOperandAndAdvance
+- uid: HarmonyLib.CodeMatcher.Start
+  name: Start()
+  href: api/HarmonyLib.CodeMatcher.html#HarmonyLib_CodeMatcher_Start
+  commentId: M:HarmonyLib.CodeMatcher.Start
+  fullName: HarmonyLib.CodeMatcher.Start()
+  nameWithType: CodeMatcher.Start()
+- uid: HarmonyLib.CodeMatcher.Start*
+  name: Start
+  href: api/HarmonyLib.CodeMatcher.html#HarmonyLib_CodeMatcher_Start_
+  commentId: Overload:HarmonyLib.CodeMatcher.Start
+  isSpec: "True"
+  fullName: HarmonyLib.CodeMatcher.Start
+  nameWithType: CodeMatcher.Start
+- uid: HarmonyLib.CodeMatcher.ThrowIfFalse(System.String,System.Func{HarmonyLib.CodeMatcher,System.Boolean})
+  name: ThrowIfFalse(String, Func<CodeMatcher, Boolean>)
+  href: api/HarmonyLib.CodeMatcher.html#HarmonyLib_CodeMatcher_ThrowIfFalse_System_String_System_Func_HarmonyLib_CodeMatcher_System_Boolean__
+  commentId: M:HarmonyLib.CodeMatcher.ThrowIfFalse(System.String,System.Func{HarmonyLib.CodeMatcher,System.Boolean})
+  name.vb: ThrowIfFalse(String, Func(Of CodeMatcher, Boolean))
+  fullName: HarmonyLib.CodeMatcher.ThrowIfFalse(System.String, System.Func<HarmonyLib.CodeMatcher, System.Boolean>)
+  fullName.vb: HarmonyLib.CodeMatcher.ThrowIfFalse(System.String, System.Func(Of HarmonyLib.CodeMatcher, System.Boolean))
+  nameWithType: CodeMatcher.ThrowIfFalse(String, Func<CodeMatcher, Boolean>)
+  nameWithType.vb: CodeMatcher.ThrowIfFalse(String, Func(Of CodeMatcher, Boolean))
+- uid: HarmonyLib.CodeMatcher.ThrowIfFalse*
+  name: ThrowIfFalse
+  href: api/HarmonyLib.CodeMatcher.html#HarmonyLib_CodeMatcher_ThrowIfFalse_
+  commentId: Overload:HarmonyLib.CodeMatcher.ThrowIfFalse
+  isSpec: "True"
+  fullName: HarmonyLib.CodeMatcher.ThrowIfFalse
+  nameWithType: CodeMatcher.ThrowIfFalse
+- uid: HarmonyLib.CodeMatcher.ThrowIfInvalid(System.String)
+  name: ThrowIfInvalid(String)
+  href: api/HarmonyLib.CodeMatcher.html#HarmonyLib_CodeMatcher_ThrowIfInvalid_System_String_
+  commentId: M:HarmonyLib.CodeMatcher.ThrowIfInvalid(System.String)
+  fullName: HarmonyLib.CodeMatcher.ThrowIfInvalid(System.String)
+  nameWithType: CodeMatcher.ThrowIfInvalid(String)
+- uid: HarmonyLib.CodeMatcher.ThrowIfInvalid*
+  name: ThrowIfInvalid
+  href: api/HarmonyLib.CodeMatcher.html#HarmonyLib_CodeMatcher_ThrowIfInvalid_
+  commentId: Overload:HarmonyLib.CodeMatcher.ThrowIfInvalid
+  isSpec: "True"
+  fullName: HarmonyLib.CodeMatcher.ThrowIfInvalid
+  nameWithType: CodeMatcher.ThrowIfInvalid
+- uid: HarmonyLib.CodeMatcher.ThrowIfNotMatch(System.String,HarmonyLib.CodeMatch[])
+  name: ThrowIfNotMatch(String, CodeMatch[])
+  href: api/HarmonyLib.CodeMatcher.html#HarmonyLib_CodeMatcher_ThrowIfNotMatch_System_String_HarmonyLib_CodeMatch___
+  commentId: M:HarmonyLib.CodeMatcher.ThrowIfNotMatch(System.String,HarmonyLib.CodeMatch[])
+  name.vb: ThrowIfNotMatch(String, CodeMatch())
+  fullName: HarmonyLib.CodeMatcher.ThrowIfNotMatch(System.String, HarmonyLib.CodeMatch[])
+  fullName.vb: HarmonyLib.CodeMatcher.ThrowIfNotMatch(System.String, HarmonyLib.CodeMatch())
+  nameWithType: CodeMatcher.ThrowIfNotMatch(String, CodeMatch[])
+  nameWithType.vb: CodeMatcher.ThrowIfNotMatch(String, CodeMatch())
+- uid: HarmonyLib.CodeMatcher.ThrowIfNotMatch*
+  name: ThrowIfNotMatch
+  href: api/HarmonyLib.CodeMatcher.html#HarmonyLib_CodeMatcher_ThrowIfNotMatch_
+  commentId: Overload:HarmonyLib.CodeMatcher.ThrowIfNotMatch
+  isSpec: "True"
+  fullName: HarmonyLib.CodeMatcher.ThrowIfNotMatch
+  nameWithType: CodeMatcher.ThrowIfNotMatch
+- uid: HarmonyLib.CodeMatcher.ThrowIfNotMatchBack(System.String,HarmonyLib.CodeMatch[])
+  name: ThrowIfNotMatchBack(String, CodeMatch[])
+  href: api/HarmonyLib.CodeMatcher.html#HarmonyLib_CodeMatcher_ThrowIfNotMatchBack_System_String_HarmonyLib_CodeMatch___
+  commentId: M:HarmonyLib.CodeMatcher.ThrowIfNotMatchBack(System.String,HarmonyLib.CodeMatch[])
+  name.vb: ThrowIfNotMatchBack(String, CodeMatch())
+  fullName: HarmonyLib.CodeMatcher.ThrowIfNotMatchBack(System.String, HarmonyLib.CodeMatch[])
+  fullName.vb: HarmonyLib.CodeMatcher.ThrowIfNotMatchBack(System.String, HarmonyLib.CodeMatch())
+  nameWithType: CodeMatcher.ThrowIfNotMatchBack(String, CodeMatch[])
+  nameWithType.vb: CodeMatcher.ThrowIfNotMatchBack(String, CodeMatch())
+- uid: HarmonyLib.CodeMatcher.ThrowIfNotMatchBack*
+  name: ThrowIfNotMatchBack
+  href: api/HarmonyLib.CodeMatcher.html#HarmonyLib_CodeMatcher_ThrowIfNotMatchBack_
+  commentId: Overload:HarmonyLib.CodeMatcher.ThrowIfNotMatchBack
+  isSpec: "True"
+  fullName: HarmonyLib.CodeMatcher.ThrowIfNotMatchBack
+  nameWithType: CodeMatcher.ThrowIfNotMatchBack
+- uid: HarmonyLib.CodeMatcher.ThrowIfNotMatchForward(System.String,HarmonyLib.CodeMatch[])
+  name: ThrowIfNotMatchForward(String, CodeMatch[])
+  href: api/HarmonyLib.CodeMatcher.html#HarmonyLib_CodeMatcher_ThrowIfNotMatchForward_System_String_HarmonyLib_CodeMatch___
+  commentId: M:HarmonyLib.CodeMatcher.ThrowIfNotMatchForward(System.String,HarmonyLib.CodeMatch[])
+  name.vb: ThrowIfNotMatchForward(String, CodeMatch())
+  fullName: HarmonyLib.CodeMatcher.ThrowIfNotMatchForward(System.String, HarmonyLib.CodeMatch[])
+  fullName.vb: HarmonyLib.CodeMatcher.ThrowIfNotMatchForward(System.String, HarmonyLib.CodeMatch())
+  nameWithType: CodeMatcher.ThrowIfNotMatchForward(String, CodeMatch[])
+  nameWithType.vb: CodeMatcher.ThrowIfNotMatchForward(String, CodeMatch())
+- uid: HarmonyLib.CodeMatcher.ThrowIfNotMatchForward*
+  name: ThrowIfNotMatchForward
+  href: api/HarmonyLib.CodeMatcher.html#HarmonyLib_CodeMatcher_ThrowIfNotMatchForward_
+  commentId: Overload:HarmonyLib.CodeMatcher.ThrowIfNotMatchForward
+  isSpec: "True"
+  fullName: HarmonyLib.CodeMatcher.ThrowIfNotMatchForward
+  nameWithType: CodeMatcher.ThrowIfNotMatchForward
 - uid: HarmonyLib.CollectionExtensions
   name: CollectionExtensions
   href: api/HarmonyLib.CollectionExtensions.html
@@ -1879,6 +2935,19 @@ references:
   isSpec: "True"
   fullName: HarmonyLib.FileLog.ChangeIndent
   nameWithType: FileLog.ChangeIndent
+- uid: HarmonyLib.FileLog.Debug(System.String)
+  name: Debug(String)
+  href: api/HarmonyLib.FileLog.html#HarmonyLib_FileLog_Debug_System_String_
+  commentId: M:HarmonyLib.FileLog.Debug(System.String)
+  fullName: HarmonyLib.FileLog.Debug(System.String)
+  nameWithType: FileLog.Debug(String)
+- uid: HarmonyLib.FileLog.Debug*
+  name: Debug
+  href: api/HarmonyLib.FileLog.html#HarmonyLib_FileLog_Debug_
+  commentId: Overload:HarmonyLib.FileLog.Debug
+  isSpec: "True"
+  fullName: HarmonyLib.FileLog.Debug
+  nameWithType: FileLog.Debug
 - uid: HarmonyLib.FileLog.FlushBuffer
   name: FlushBuffer()
   href: api/HarmonyLib.FileLog.html#HarmonyLib_FileLog_FlushBuffer
@@ -1965,12 +3034,32 @@ references:
   isSpec: "True"
   fullName: HarmonyLib.FileLog.LogBytes
   nameWithType: FileLog.LogBytes
-- uid: HarmonyLib.FileLog.logPath
-  name: logPath
-  href: api/HarmonyLib.FileLog.html#HarmonyLib_FileLog_logPath
-  commentId: F:HarmonyLib.FileLog.logPath
-  fullName: HarmonyLib.FileLog.logPath
-  nameWithType: FileLog.logPath
+- uid: HarmonyLib.FileLog.LogPath
+  name: LogPath
+  href: api/HarmonyLib.FileLog.html#HarmonyLib_FileLog_LogPath
+  commentId: P:HarmonyLib.FileLog.LogPath
+  fullName: HarmonyLib.FileLog.LogPath
+  nameWithType: FileLog.LogPath
+- uid: HarmonyLib.FileLog.LogPath*
+  name: LogPath
+  href: api/HarmonyLib.FileLog.html#HarmonyLib_FileLog_LogPath_
+  commentId: Overload:HarmonyLib.FileLog.LogPath
+  isSpec: "True"
+  fullName: HarmonyLib.FileLog.LogPath
+  nameWithType: FileLog.LogPath
+- uid: HarmonyLib.FileLog.LogWriter
+  name: LogWriter
+  href: api/HarmonyLib.FileLog.html#HarmonyLib_FileLog_LogWriter
+  commentId: P:HarmonyLib.FileLog.LogWriter
+  fullName: HarmonyLib.FileLog.LogWriter
+  nameWithType: FileLog.LogWriter
+- uid: HarmonyLib.FileLog.LogWriter*
+  name: LogWriter
+  href: api/HarmonyLib.FileLog.html#HarmonyLib_FileLog_LogWriter_
+  commentId: Overload:HarmonyLib.FileLog.LogWriter
+  isSpec: "True"
+  fullName: HarmonyLib.FileLog.LogWriter
+  nameWithType: FileLog.LogWriter
 - uid: HarmonyLib.FileLog.Reset
   name: Reset()
   href: api/HarmonyLib.FileLog.html#HarmonyLib_FileLog_Reset
@@ -2230,6 +3319,19 @@ references:
   isSpec: "True"
   fullName: HarmonyLib.Harmony.GetOriginalMethod
   nameWithType: Harmony.GetOriginalMethod
+- uid: HarmonyLib.Harmony.GetOriginalMethodFromStackframe(System.Diagnostics.StackFrame)
+  name: GetOriginalMethodFromStackframe(StackFrame)
+  href: api/HarmonyLib.Harmony.html#HarmonyLib_Harmony_GetOriginalMethodFromStackframe_System_Diagnostics_StackFrame_
+  commentId: M:HarmonyLib.Harmony.GetOriginalMethodFromStackframe(System.Diagnostics.StackFrame)
+  fullName: HarmonyLib.Harmony.GetOriginalMethodFromStackframe(System.Diagnostics.StackFrame)
+  nameWithType: Harmony.GetOriginalMethodFromStackframe(StackFrame)
+- uid: HarmonyLib.Harmony.GetOriginalMethodFromStackframe*
+  name: GetOriginalMethodFromStackframe
+  href: api/HarmonyLib.Harmony.html#HarmonyLib_Harmony_GetOriginalMethodFromStackframe_
+  commentId: Overload:HarmonyLib.Harmony.GetOriginalMethodFromStackframe
+  isSpec: "True"
+  fullName: HarmonyLib.Harmony.GetOriginalMethodFromStackframe
+  nameWithType: Harmony.GetOriginalMethodFromStackframe
 - uid: HarmonyLib.Harmony.GetPatchedMethods
   name: GetPatchedMethods()
   href: api/HarmonyLib.Harmony.html#HarmonyLib_Harmony_GetPatchedMethods
@@ -3059,6 +4161,12 @@ references:
   commentId: M:HarmonyLib.HarmonyPatch.#ctor(System.String,HarmonyLib.MethodType)
   fullName: HarmonyLib.HarmonyPatch.HarmonyPatch(System.String, HarmonyLib.MethodType)
   nameWithType: HarmonyPatch.HarmonyPatch(String, MethodType)
+- uid: HarmonyLib.HarmonyPatch.#ctor(System.String,System.String,HarmonyLib.MethodType)
+  name: HarmonyPatch(String, String, MethodType)
+  href: api/HarmonyLib.HarmonyPatch.html#HarmonyLib_HarmonyPatch__ctor_System_String_System_String_HarmonyLib_MethodType_
+  commentId: M:HarmonyLib.HarmonyPatch.#ctor(System.String,System.String,HarmonyLib.MethodType)
+  fullName: HarmonyLib.HarmonyPatch.HarmonyPatch(System.String, System.String, HarmonyLib.MethodType)
+  nameWithType: HarmonyPatch.HarmonyPatch(String, String, MethodType)
 - uid: HarmonyLib.HarmonyPatch.#ctor(System.String,System.Type[])
   name: HarmonyPatch(String, Type[])
   href: api/HarmonyLib.HarmonyPatch.html#HarmonyLib_HarmonyPatch__ctor_System_String_System_Type___
@@ -3570,6 +4678,12 @@ references:
   commentId: F:HarmonyLib.MethodType.Constructor
   fullName: HarmonyLib.MethodType.Constructor
   nameWithType: MethodType.Constructor
+- uid: HarmonyLib.MethodType.Enumerator
+  name: Enumerator
+  href: api/HarmonyLib.MethodType.html#HarmonyLib_MethodType_Enumerator
+  commentId: F:HarmonyLib.MethodType.Enumerator
+  fullName: HarmonyLib.MethodType.Enumerator
+  nameWithType: MethodType.Enumerator
 - uid: HarmonyLib.MethodType.Getter
   name: Getter
   href: api/HarmonyLib.MethodType.html#HarmonyLib_MethodType_Getter

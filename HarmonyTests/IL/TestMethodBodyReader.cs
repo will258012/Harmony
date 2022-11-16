@@ -1,15 +1,41 @@
 using HarmonyLib;
 using HarmonyLibTests.Assets;
 using NUnit.Framework;
+using System;
 using System.Collections;
 using System.Reflection;
 using System.Reflection.Emit;
 
 namespace HarmonyLibTests.IL
 {
-	[TestFixture]
+	[TestFixture, NonParallelizable]
 	public class TestMethodBodyReader : TestLogger
 	{
+		public static void WeirdMethodWithGoto()
+		{
+			LABEL:
+			try
+			{
+				for (; ; )
+				{
+				}
+			}
+			catch (Exception)
+			{
+				goto LABEL;
+			}
+		}
+
+		[Test]
+		public void Test_Read_WeirdMethodWithGoto()
+		{
+			var method = SymbolExtensions.GetMethodInfo(() => WeirdMethodWithGoto());
+			Assert.NotNull(method);
+			var instructions = PatchProcessor.GetOriginalInstructions(method);
+			Assert.NotNull(instructions);
+			Assert.Greater(instructions.Count, 0);
+		}
+
 		[Test]
 		public void Test_CanGetInstructionsWithNoILGenerator()
 		{
@@ -35,7 +61,7 @@ namespace HarmonyLibTests.IL
 				var operandType = instrNoGen.opcode.OperandType;
 				if ((operandType == OperandType.ShortInlineVar || operandType == OperandType.InlineVar) && instrNoGen.argument is object)
 				{
-#if NETCOREAPP3_0 || NETCOREAPP3_1 || NET5_0
+#if NETCOREAPP3_0 || NETCOREAPP3_1 || NET50_OR_GREATER
 					Assert.AreEqual("System.Reflection.RuntimeLocalVariableInfo", instrNoGen.argument.GetType().FullName, "w/o generator argument type @ {0} ({1})", i, instrNoGen);
 #else
 					Assert.AreEqual("System.Reflection.LocalVariableInfo", instrNoGen.argument.GetType().FullName, "w/o generator argument type @ {0} ({1})", i, instrNoGen);
