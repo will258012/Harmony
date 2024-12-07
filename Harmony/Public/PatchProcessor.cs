@@ -232,8 +232,8 @@ namespace HarmonyLib
 			var result = new Dictionary<string, Version>();
 			assemblies.Do(info =>
 			{
-				var assemblyName = info.Value.GetReferencedAssemblies().FirstOrDefault(a => a.FullName.StartsWith("0Harmony, Version", StringComparison.Ordinal));
-				if (assemblyName is not null)
+				var assemblyName = info.Value.GetReferencedAssemblies().FirstOrDefault(a => a.FullName.StartsWith("0Harmony, Version", StringComparison.Ordinal) || a.FullName.StartsWith("CitiesHarmony.Harmony, Version", StringComparison.Ordinal));
+				if (assemblyName is object)
 					result[info.Key] = assemblyName.Version;
 			});
 			return result;

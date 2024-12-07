@@ -32,8 +32,8 @@ namespace HarmonyLib
 
 	internal static class HarmonySharedState
 	{
-		const string name = "HarmonySharedState";
-		internal const int internalVersion = 102; // bump this if the layout of the HarmonySharedState type changes
+		const string name = "CHSharedState";
+		internal const int internalVersion = 102; // bumb this if the layout of the HarmonySharedState type changes
 
 		// state/originals/originalsMono are set to instances stored in the global dynamic types static fields with the same name
 		static readonly Dictionary<MethodBase, byte[]> state;
